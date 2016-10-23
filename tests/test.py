@@ -59,3 +59,10 @@ def test_5():
 
 if __name__ == "__main__":
     test_4()
+
+def test_6():
+    movie_data = sr.load_soundtrack_data("resources/soundtrack.json")
+    movie_data_with_features, errors = sr.get_spotify_features_for_whole_dataset(movie_data)
+    sr.save_soundtrack_data(movie_data_with_features, "resources/soundtrack-features.json")
+    sr.save_soundtrack_data(errors, "resources/soundtrack-features-errors.json")
+    print("Completed! " + str(len(movie_data_with_features)) + " retrieved - " + str(len(errors)) + " failed")

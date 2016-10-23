@@ -1,6 +1,6 @@
 import requests
 import base64
-
+import time
 
 class BadResponseError(Exception):
     def __init__(self, value):
@@ -17,6 +17,16 @@ class SecretData:
 
     def __init__(self):
         self.__secret_oauth__ = ""
+        self.__expires_in__ = 0
+        self.__auth_time__ = 0
+        self.__safe_time_limit__ = 60 #seconds
+
+    def is_expired(self):
+        if time.time() - (self.__auth_time__ + self.__safe_time_limit__) > self.__expires_in__:
+            return True
+        else:
+            False
+
 
     def get_oauth(self):
         return self.__secret_oauth__
@@ -52,20 +62,22 @@ class SecretData:
 
         # make the actual request
         response = requests.post(url, body, headers=header)
-        oauth_code = response.json()["access_token"]
+        response_dict = response.json()
 
         if response.ok:
             print("Spotify authorization succedeed")
-            print("Valid for ")
-            print("OAuth: " + oauth_code)
+            print("Valid for " + str(response_dict["expires_in"]))
+            print("OAuth: " + response_dict["access_token"])
             if autoset:
-                self.set_oauth(oauth_code)
+                self.set_oauth(response_dict["access_token"])
+                self.__auth_time__ = time.time()
+                self.__expires_in__ = int(response_dict["expires_in"])
 
         else:
             print("Spotify authorization failed")
             print("Error: " + response.content)
 
-        return response.json()
+        return response_dict
 
 
 def request_audio_features(track_id, secret):
@@ -143,4 +155,7 @@ def get_first_track_id(json_response):
 
     """
     return json_response['tracks']['items'][0]['id']
+
+def get_first_track_name(json_response):
+    return json_response['tracks']['items'][0]['name']
 

@@ -105,7 +105,7 @@ class ThreadManager:
 
     def print_failures(self):
         for op in self.retrial:
-            print(str(op.get_id()) + ": " + str(op.get_error()))
+            print(str(op.get_id()) + ' - "' + str(op.get_error().__class__) + ": " + str(op.get_error()))
 
     def run_all(self, op_list, restore_operation=None, retrial_mode=False, max_threads=10):
         """
@@ -173,7 +173,6 @@ class ThreadManager:
         self.add_running(operation)
         self.running_lock.release()
 
-        print("Before starting op " + str(operation.get_id()))
         operation.start()
 
 
@@ -221,8 +220,8 @@ class Operation(threading.Thread):
         self.error = error
 
     def run(self):
-        try:
-            print("Starting " + str(self.get_id()))
+        # try:
+            print("Starting op: " + str(self.get_id()))
             self.return_value = self.func(self.args)
             while not self.manager.running_lock.acquire():
                 time.sleep(__delay__)
@@ -230,22 +229,22 @@ class Operation(threading.Thread):
             self.manager.add_completed_op(self)
             self.manager.running_lock.release()
             self.manager.decrease_waiting_list_counter()
-        except Exception as e:
-            while not self.manager.running_lock.acquire():
-                time.sleep(__delay__)
-            self.manager.remove_running(self)
-            self.manager.running_lock.release()
-
-            if self.get_error() is None:
-                self.set_error(e)
-                while not self.manager.retrial_lock.acquire():
-                    time.sleep(__delay__)
-                self.manager.add_retrial(self)
-                self.manager.retrial_lock.release()
-            else:
-                while not self.manager.failures_lock.acquire():
-                    time.sleep(__delay__)
-                self.manager.add_failure(self)
-                self.manager.failures_lock.release()
+        # except Exception as e:
+        #     while not self.manager.running_lock.acquire():
+        #         time.sleep(__delay__)
+        #     self.manager.remove_running(self)
+        #     self.manager.running_lock.release()
+        #
+        #     if self.get_error() is None:
+        #         self.set_error(e)
+        #         while not self.manager.retrial_lock.acquire():
+        #             time.sleep(__delay__)
+        #         self.manager.add_retrial(self)
+        #         self.manager.retrial_lock.release()
+        #     else:
+        #         while not self.manager.failures_lock.acquire():
+        #             time.sleep(__delay__)
+        #         self.manager.add_failure(self)
+        #         self.manager.failures_lock.release()
 
 
