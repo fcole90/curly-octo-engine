@@ -25,6 +25,7 @@ class ThreadManager:
         self.retrial_lock = threading.Lock()
         self.running_lock = threading.Lock()
         self.waiting_list_counter_lock = threading.Lock()
+        self.last_id = 1
 
         self.reset_waiting_list_counter()
 
@@ -33,6 +34,10 @@ class ThreadManager:
             time.sleep(__delay__)
         self.waiting_list_counter = 0
         self.waiting_list_counter_lock.release()
+
+    def get_unique_id(self):
+        self.last_id += 1
+        return self.last_id - 1
 
     def decrease_waiting_list_counter(self, amount=1):
         while not self.waiting_list_counter_lock.acquire():
@@ -143,12 +148,16 @@ class ThreadManager:
         if not retrial_mode:
             self.set_waiting_list_counter(len(op_list))
         for op in op_list:
+            if op.get_id() == 0:
+                op.op_id = self.get_unique_id()
             while threading.active_count() >= max_threads:
                 time.sleep(__micro_delay__)
             while self.is_error_happened() and not retrial_mode:
                 if restore_operation:
                     self.run_op(restore_operation)
+                    restore_operation = restore_operation.clone(restore_operation.error, restore_operation.get_return_value())
                     self.run_all(self.retrial, None, retrial_mode=True)
+                    self.clear_retrials()
                 else:
                     print("Warning: Could not complete every operation..")
                     self.print_failures()
@@ -172,7 +181,7 @@ class ThreadManager:
             time.sleep(__delay__)
         self.add_running(operation)
         self.running_lock.release()
-
+        print("Before running: " + str(operation.get_id()))
         operation.start()
 
 
@@ -207,6 +216,13 @@ class Operation(threading.Thread):
         self.error = None
         self.return_value = None
 
+    def clone(self, error=None, value=None):
+        clone = Operation(self.manager, self.func, self.args, self.get_id()+100000)
+        clone.set_error(error)
+        clone.return_value = self.return_value
+        clone._flag = False
+        return clone
+
     def get_id(self):
         return self.op_id
 
@@ -220,7 +236,7 @@ class Operation(threading.Thread):
         self.error = error
 
     def run(self):
-        # try:
+        try:
             print("Starting op: " + str(self.get_id()))
             self.return_value = self.func(self.args)
             while not self.manager.running_lock.acquire():
@@ -229,22 +245,21 @@ class Operation(threading.Thread):
             self.manager.add_completed_op(self)
             self.manager.running_lock.release()
             self.manager.decrease_waiting_list_counter()
-        # except Exception as e:
-        #     while not self.manager.running_lock.acquire():
-        #         time.sleep(__delay__)
-        #     self.manager.remove_running(self)
-        #     self.manager.running_lock.release()
-        #
-        #     if self.get_error() is None:
-        #         self.set_error(e)
-        #         while not self.manager.retrial_lock.acquire():
-        #             time.sleep(__delay__)
-        #         self.manager.add_retrial(self)
-        #         self.manager.retrial_lock.release()
-        #     else:
-        #         while not self.manager.failures_lock.acquire():
-        #             time.sleep(__delay__)
-        #         self.manager.add_failure(self)
-        #         self.manager.failures_lock.release()
+        except Exception as e:
+            while not self.manager.running_lock.acquire():
+                time.sleep(__delay__)
+            self.manager.remove_running(self)
+            self.manager.running_lock.release()
+
+            if self.get_error() is None:
+                while not self.manager.retrial_lock.acquire():
+                    time.sleep(__delay__)
+                self.manager.add_retrial(self.clone(e))
+                self.manager.retrial_lock.release()
+            else:
+                while not self.manager.failures_lock.acquire():
+                    time.sleep(__delay__)
+                self.manager.add_failure(self)
+                self.manager.failures_lock.release()
 
 

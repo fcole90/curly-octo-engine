@@ -1,13 +1,46 @@
 import requests
 import base64
 import time
+import json
 
 class BadResponseError(Exception):
-    def __init__(self, value):
+    def __init__(self, value, query=None):
         self.value = value
+        self.query = query
 
     def __str__(self):
-        return repr(self.value)
+        message = ("Spotify Error " + str(self.value['error']['status']) +
+            " - " + self.value['error']['message'])
+        if self.query:
+            message += " - Query: '" + str(self.query) + "'"
+        return message
+
+    def get_response(self):
+        return self.value
+    # b'{\n  "error" : {\n    "status" : 404,\n    "message" : "analysis not found"\n  }\n}'
+    # b'{\n  "error" : {\n    "status" : 400,\n    "message" : "No search query"\n  }\n}'
+    # b'{\n  "error": {\n    "status": 429,\n    "message": "API rate limit exceeded"\n  }\n}'
+
+    def get_query(self):
+        return self.query
+
+
+class ReachedAPILimitError(BadResponseError):
+    def __init__(self, value):
+        self.value = value
+        self.query = None
+
+
+class AnalysisNotFoundError(BadResponseError):
+    def __init__(self, value, query):
+        self.value = value
+        self.query = query
+
+
+class NoSearchQueryError(BadResponseError):
+    def __init__(self, value, query):
+        self.value = value
+        self.query = query
 
 
 class SecretData:
@@ -102,11 +135,19 @@ def request_audio_features(track_id, secret):
     }
 
     response = requests.get(url, headers=header)
+    response_dict = response.json()
 
     if not response.ok:
-        raise BadResponseError(response.content)
+        if response_dict['error']['status'] == 404:
+            raise AnalysisNotFoundError(response_dict, url)
+        elif response_dict['error']['status'] == 400:
+            raise NoSearchQueryError(response_dict, url)
+        elif response_dict['error']['status'] == 429:
+            raise ReachedAPILimitError(response_dict)
+        else:
+            raise BadResponseError(response_dict, url)
 
-    return response.json()
+    return response_dict
 
 
 def query_track(track_name, secret):
@@ -124,6 +165,8 @@ def query_track(track_name, secret):
         json
 
     """
+    if track_name is "":
+        raise ValueError("Empty track name")
     query = '+'.join(track_name.split())
     url = "https://api.spotify.com/v1/search?q=" + query + "&type=track"
     header = {
@@ -131,12 +174,23 @@ def query_track(track_name, secret):
         "Authorization": "Bearer " + secret.get_oauth()
     }
 
+    if query is "":
+        raise ValueError("Empty query after split of " + track_name)
+
     response = requests.get(url, headers=header)
+    response_dict = response.json()
 
     if not response.ok:
-        raise BadResponseError(response.content)
+        if response_dict['error']['status'] == 404:
+            raise AnalysisNotFoundError(response_dict, url)
+        elif response_dict['error']['status'] == 400:
+            raise NoSearchQueryError(response_dict, url)
+        elif response_dict['error']['status'] == 429:
+            raise ReachedAPILimitError(response_dict)
+        else:
+            raise BadResponseError(response_dict, url)
 
-    return response.json()
+    return response_dict
 
 
 def get_first_track_id(json_response):

@@ -57,12 +57,44 @@ def test_5():
 
     manager.run_all(op_list, max_threads=15)
 
-if __name__ == "__main__":
-    test_4()
-
 def test_6():
     movie_data = sr.load_soundtrack_data("resources/soundtrack.json")
     movie_data_with_features, errors = sr.get_spotify_features_for_whole_dataset(movie_data)
     sr.save_soundtrack_data(movie_data_with_features, "resources/soundtrack-features.json")
     sr.save_soundtrack_data(errors, "resources/soundtrack-features-errors.json")
     print("Completed! " + str(len(movie_data_with_features)) + " retrieved - " + str(len(errors)) + " failed")
+
+def test_7():
+    manager = tm.ThreadManager()
+    restore_operation = tm.Operation(manager, (lambda x: 0), op_id=9999)
+
+    def x_fun(x):
+        for i in range(300):
+            print(x + str(i))
+            time.sleep(0.1)
+
+    def y_fun(x):
+        raise Exception
+        for i in range(150):
+            print(x + str(i))
+            time.sleep(0.1)
+
+    op_list = []
+    op_list.append(tm.Operation(manager, lambda x: y_fun('a')))
+    op_list.append(tm.Operation(manager, lambda x: y_fun('b')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('c')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('d')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('e')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('f')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('g')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('h')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('i')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('j')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('k')))
+    op_list.append(tm.Operation(manager, lambda x: x_fun('l')))
+
+    manager.run_all(op_list, restore_operation, max_threads=15)
+
+
+if __name__ == "__main__":
+    test_6()
