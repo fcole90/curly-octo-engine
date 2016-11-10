@@ -165,7 +165,7 @@ def query_track(track_name, secret):
         json
 
     """
-    if track_name is "":
+    if track_name.isspace():
         raise ValueError("Empty track name")
     query = '+'.join(track_name.split())
     url = "https://api.spotify.com/v1/search?q=" + query + "&type=track"

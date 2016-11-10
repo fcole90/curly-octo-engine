@@ -236,7 +236,7 @@ class Operation(threading.Thread):
         self.error = error
 
     def run(self):
-        try:
+        # try:
             print("Starting op: " + str(self.get_id()))
             self.return_value = self.func(self.args)
             while not self.manager.running_lock.acquire():
@@ -245,21 +245,21 @@ class Operation(threading.Thread):
             self.manager.add_completed_op(self)
             self.manager.running_lock.release()
             self.manager.decrease_waiting_list_counter()
-        except Exception as e:
-            while not self.manager.running_lock.acquire():
-                time.sleep(__delay__)
-            self.manager.remove_running(self)
-            self.manager.running_lock.release()
-
-            if self.get_error() is None:
-                while not self.manager.retrial_lock.acquire():
-                    time.sleep(__delay__)
-                self.manager.add_retrial(self.clone(e))
-                self.manager.retrial_lock.release()
-            else:
-                while not self.manager.failures_lock.acquire():
-                    time.sleep(__delay__)
-                self.manager.add_failure(self)
-                self.manager.failures_lock.release()
+        # except Exception as e:
+        #     while not self.manager.running_lock.acquire():
+        #         time.sleep(__delay__)
+        #     self.manager.remove_running(self)
+        #     self.manager.running_lock.release()
+        #
+        #     if self.get_error() is None:
+        #         while not self.manager.retrial_lock.acquire():
+        #             time.sleep(__delay__)
+        #         self.manager.add_retrial(self.clone(e))
+        #         self.manager.retrial_lock.release()
+        #     else:
+        #         while not self.manager.failures_lock.acquire():
+        #             time.sleep(__delay__)
+        #         self.manager.add_failure(self)
+        #         self.manager.failures_lock.release()
 
 

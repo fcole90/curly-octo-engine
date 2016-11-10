@@ -6,6 +6,7 @@ from tools import url_retriever as ur
 from tools.thread_manager import ThreadManager
 from tools.thread_manager import Operation
 import threading
+import traceback
 from soundtrack_dataset import spotify_data_retriever as spot
 import random
 import re
@@ -143,6 +144,7 @@ def wrapper_get_features_from_movie_data(args):
     secret_lock = args['secret_lock']
 
     identifier = '[ID: ' + movie_data['id'] + ' - ' + movie_data['name'] + '] '
+    warn = '/!\ '
 
     with secret_lock:
         if secret.is_expired():
@@ -164,10 +166,34 @@ def wrapper_get_features_from_movie_data(args):
             args['delay'] *= 2
         else:
             args['delay'] = random.randint(15, 45)  # seconds
-        print(identifier + str(e))
-        print(identifier + "Retrying in " + str(args['delay']) + " seconds..")
+        print(warn + identifier + str(e))
+        print(warn + identifier + "Retrying in " + str(args['delay']) + " seconds..")
         time.sleep(args['delay'])
         data = wrapper_get_features_from_movie_data(args)
+    except spot.ReachedAPILimitError as e:
+        raise e
+    except Exception as e:
+        print(warn + identifier + "Unhandled exception occurred.." + str(e))
+        if 'unhandled' in args:
+            print(identifier + "Permanent failure..")
+            raise e
+        else:
+            args['unhandled'] = True
+            delay = random.randint(5*60, 10*60)
+            min = int(delay / 60)
+            sec = delay % 60
+            message = ""
+            message += warn + identifier + str(e.__class__) + "\n"
+            message += warn + identifier + str(e) + "\n"
+            message += warn + identifier + "Stack Trace - " + str(e) + "\n"
+            message += "####################################" + "\n"
+            message += traceback.format_exc() + "\n"
+            message += "####################################" + "\n"
+            print(message)
+            print(warn + identifier + "Retrying in " + str(min) + " minutes and " + str(sec) + " seconds..")
+            time.sleep(delay)
+            data = wrapper_get_features_from_movie_data(args)
+
     return data
 
 
@@ -213,7 +239,7 @@ def get_spotify_features_from_movie_data(movie_data, secret=None):
 
     for track_name in movie_data["soundtrack"]:
         track_name_clean = helpers.clean_string(track_name)
-        if track_name_clean is "":
+        if track_name_clean.isspace():
             raise ValueError("Empty track name after cleaning, was: " + track_name)
         query_response = spot.query_track(track_name_clean, secret)
         queried_track_list = query_response['tracks']['items']
@@ -245,7 +271,7 @@ def get_spotify_features_for_whole_dataset(movie_data):
 
     for movie in movie_data:
         args = dict(secret=secret, secret_lock=secret_lock, movie_data=movie)
-        operations_list.append(Operation(manager, wrapper_function, args, int(movie['id'])))
+        operations_list.append(Operation(manager, wrapper_function, args))
 
     secret.request_authorization()
     manager.run_all(operations_list, Operation(manager, (lambda x: time.sleep(x)), 10, 999999))
