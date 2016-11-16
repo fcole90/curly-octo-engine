@@ -22,7 +22,7 @@ class BadResponseError(Exception):
         return self.query
 
 def get_imdb_id(title, year=None):
-    query_title = '+'.join(title.split())
+    query_title = '+'.join(helpers.clean_string(title).split())
     url = "http://www.omdbapi.com/?t=" + query_title
     if year:
         url += "&y=" + year
@@ -36,7 +36,10 @@ def get_imdb_id(title, year=None):
     response_dict = response.json()
 
     if not response_dict['Response'] == 'True':
-        raise BadResponseError(response.content, url)
+        if ',' in title:
+            return get_imdb_id(helpers.reform_title(title), year)
+        else:
+            raise BadResponseError(response.content, url)
 
     return response_dict['imdbID']
 
@@ -44,7 +47,7 @@ def get_imdb_id(title, year=None):
 def get_title_and_year(movielens_title):
     if '(' in movielens_title:
         title_list = movielens_title.split('(') # "Toy Story (1995)" -> ["Toy Story", "1995)"]
-        title = helpers.clean_string(title_list[0])
+        title = title_list[0]
         year = helpers.clean_number(title_list[1]) # Get the clean year
         return (title, year)
     else:
