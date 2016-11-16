@@ -1,4 +1,5 @@
 import soundtrack_dataset.soundtrack_retriever as sr
+import  keywords.imdb_interface as imdb_r
 import tools.movielens_helper as mlens
 import tools.thread_manager as tm
 import time
@@ -95,6 +96,11 @@ def test_7():
 
     manager.run_all(op_list, restore_operation, max_threads=15)
 
+def test_8():
+    return imdb_r.get_imdb_id("Toy Story", "1995")
+
+def test_9():
+    return imdb_r.get_title_and_year("Toy Story (1995)")
 
 if __name__ == "__main__":
     test_6()
