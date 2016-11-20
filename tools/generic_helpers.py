@@ -3,7 +3,7 @@ import re
 
 def clean_string(my_string):
     my_string = re.sub("[^A-Za-z]", " ", my_string)
-    return my_string.rstrip()
+    return my_string.rstrip().lstrip()
 
 def reform_title(title):
     title_list = title.split(',')
@@ -11,4 +11,4 @@ def reform_title(title):
 
 def clean_number(my_string):
     my_string = re.sub("[^0-9]", " ", my_string)
-    return my_string.rstrip()
+    return my_string.rstrip().lstrip()

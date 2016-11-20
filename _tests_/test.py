@@ -102,5 +102,20 @@ def test_8():
 def test_9():
     return imdb_r.get_title_and_year("Toy Story (1995)")
 
+
+def test_10():
+    movie_data = sr.load_soundtrack_data("resources/soundtrack.json")
+    imdb_file = open("resources/imdb_movies.dat", 'w')
+    keywords_file = open("resources/imdb_keywords.dat", 'w')
+    failure_keyword_file = open("resources/keywords/failures.log", 'w')
+
+    imdb_r.get_all_keywords_and_imdb_id_from_movielens(movie_data, imdb_file, keywords_file, failure_keyword_file)
+
+    imdb_file.close()
+    keywords_file.close()
+    failure_keyword_file.close()
+
+    print("Completed!")
+
 if __name__ == "__main__":
-    test_6()
+    test_10()
