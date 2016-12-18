@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/dissertation-project.iml" filepath="$PROJECT_DIR$/.idea/dissertation-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/curly-octo-engine.iml" filepath="$PROJECT_DIR$/.idea/curly-octo-engine.iml" />
     </modules>
   </component>
 </project>

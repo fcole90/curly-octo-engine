@@ -181,7 +181,6 @@ class ThreadManager:
             time.sleep(__delay__)
         self.add_running(operation)
         self.running_lock.release()
-        print("Before running: " + str(operation.get_id()))
         operation.start()
 
 
@@ -237,7 +236,6 @@ class Operation(threading.Thread):
 
     def run(self):
         # try:
-            print("Starting op: " + str(self.get_id()))
             self.return_value = self.func(self.args)
             while not self.manager.running_lock.acquire():
                 time.sleep(__delay__)

@@ -1,774 +1,1419 @@
 11::string indices must be integers
 29::string indices must be integers
-62::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mr+Holland+s+Opus&y=1995&type=movie&r=json'
 50::string indices must be integers
+54::string indices must be integers
 58::string indices must be integers
-66::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Lawnmower+Man+Beyond+Cyberspace&y=1996&type=movie&r=json'
-63::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Don+t+Be+a+Menace+to+South+Central+While+Drinking+Your+Juice+in+the+Hood&y=1996&type=movie&r=json'
+59::string indices must be integers
 60::string indices must be integers
+62::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mr+Holland+s+Opus&y=1995&type=movie&r=json'
+63::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Don+t+Be+a+Menace+to+South+Central+While+Drinking+Your+Juice+in+the+Hood&y=1996&type=movie&r=json'
+66::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Lawnmower+Man+Beyond+Cyberspace&y=1996&type=movie&r=json'
+73::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mis+rables&y=1995&type=movie&r=json'
+78::string indices must be integers
+79::string indices must be integers
+81::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Things+to+Do+in+Denver+when+You+re+Dead&y=1995&type=movie&r=json'
+82::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Antonia+s+Line&y=1995&type=movie&r=json'
+80::string indices must be integers
+83::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Once+Upon+a+Time+When+We+Were+Colored&y=1995&type=movie&r=json'
+90::string indices must be integers
+96::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=In+the+Bleak+Midwinter&y=1995&type=movie&r=json'
 105::string indices must be integers
+114::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Margaret+s+Museum&y=1995&type=movie&r=json'
+117::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Young+Poisoner+s+Handbook&y=1995&type=movie&r=json'
+121::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boys+of+St+Vincent&y=1993&type=movie&r=json'
 124::string indices must be integers
+126::string indices must be integers
+127::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Silence+of+the+Palace&y=1994&type=movie&r=json'
+128::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jupiter+s+Wife&y=1994&type=movie&r=json'
 129::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pie+in+the+Sky&y=1995&type=movie&r=json'
-146::string indices must be integers
+138::string indices must be integers
+141::string indices must be integers
 144::string indices must be integers
+146::string indices must be integers
 148::string indices must be integers
+147::string indices must be integers
+152::string indices must be integers
 157::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Canadian+Bacon&y=1994&type=movie&r=json'
+166::string indices must be integers
+169::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Free+Willy+The+Adventure+Home&y=1995&type=movie&r=json'
+183::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mute+Witness&y=1994&type=movie&r=json'
 185::string indices must be integers
 188::string indices must be integers
+191::string indices must be integers
 197::string indices must be integers
 199::string indices must be integers
+200::string indices must be integers
 204::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Under+Siege+Dark+Territory&y=1995&type=movie&r=json'
 207::string indices must be integers
-191::string indices must be integers
 211::string indices must be integers
+209::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=White+Man+s+Burden&y=1995&type=movie&r=json'
 217::string indices must be integers
+219::string indices must be integers
 224::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Don+Juan+DeMarco&y=1995&type=movie&r=json'
 230::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dolores+Claiborne&y=1994&type=movie&r=json'
 239::string indices must be integers
+242::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Farinelli+il+castrato&y=1994&type=movie&r=json'
+245::string indices must be integers
+248::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Houseguest&y=1994&type=movie&r=json'
+250::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heavyweights&y=1994&type=movie&r=json'
 252::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+Q&y=1994&type=movie&r=json'
 251::string indices must be integers
-219::string indices must be integers
-250::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heavyweights&y=1994&type=movie&r=json'
+255::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jerky+Boys&y=1994&type=movie&r=json'
+258::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kid+in+King+Arthur+s+Court&y=1995&type=movie&r=json'
 262::string indices must be integers
 264::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Enfer&y=1994&type=movie&r=json'
+267::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Major+Payne&y=1994&type=movie&r=json'
 269::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Crazy+Life&y=1993&type=movie&r=json'
-273::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mary+Shelley+s+Frankenstein&y=1994&type=movie&r=json'
 272::string indices must be integers
+273::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mary+Shelley+s+Frankenstein&y=1994&type=movie&r=json'
 277::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Miracle+on+th+Street&y=1994&type=movie&r=json'
-284::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=New+York+Cop&y=1996&type=movie&r=json'
 281::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nobody+s+Fool&y=1994&type=movie&r=json'
-295::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pyromaniac+s+Love+Story&y=1995&type=movie&r=json'
+284::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=New+York+Cop&y=1996&type=movie&r=json'
+285::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Beyond+Bedlam&y=1993&type=movie&r=json'
+286::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nemesis+Nebula&y=1995&type=movie&r=json'
+291::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Poison+Ivy+II&y=1995&type=movie&r=json'
 293::string indices must be integers
 294::string indices must be integers
+295::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pyromaniac+s+Love+Story&y=1995&type=movie&r=json'
+301::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Picture+Bride&y=1995&type=movie&r=json'
 303::string indices must be integers
 313::string indices must be integers
-317::string indices must be integers
-315::string indices must be integers
-318::string indices must be integers
 314::string indices must be integers
-340::string indices must be integers
-350::string indices must be integers
-346::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Backbeat&y=1993&type=movie&r=json'
-336::string indices must be integers
+315::string indices must be integers
+317::string indices must be integers
+318::string indices must be integers
+322::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Swimming+with+Sharks&y=1995&type=movie&r=json'
+325::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=National+Lampoon+s+Senior+Trip&y=1995&type=movie&r=json'
+324::string indices must be integers
+328::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tales+From+the+Crypt+Presents+Demon+Knight&y=1995&type=movie&r=json'
+334::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Vanya+on+nd+Street&y=1994&type=movie&r=json'
 335::string indices must be integers
-355::string indices must be integers
+336::string indices must be integers
+337::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=What+s+Eating+Gilbert+Grape&y=1993&type=movie&r=json'
+340::string indices must be integers
+342::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Muriel+s+Wedding&y=1994&type=movie&r=json'
+343::string indices must be integers
+345::string indices must be integers
+346::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Backbeat&y=1993&type=movie&r=json'
+350::string indices must be integers
 353::string indices must be integers
+355::string indices must be integers
 362::string indices must be integers
+363::string indices must be integers
 364::string indices must be integers
 366::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wes+Craven+s+New+Nightmare&y=1994&type=movie&r=json'
+367::string indices must be integers
 370::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Naked+Gun+The+Final+Insult&y=1994&type=movie&r=json'
+373::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Red+Rock+West&y=1992&type=movie&r=json'
 371::string indices must be integers
 374::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Richie+Rich&y=1994&type=movie&r=json'
 376::string indices must be integers
+385::string indices must be integers
 386::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=S+F+W&y=1994&type=movie&r=json'
+388::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boys+Life&y=1995&type=movie&r=json'
+387::string indices must be integers
+390::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Faster+Pussycat+Kill+Kill&y=1965&type=movie&r=json'
+389::string indices must be integers
+391::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jason+s+Lyric&y=1994&type=movie&r=json'
+392::string indices must be integers
+395::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Desert+Winds&y=1995&type=movie&r=json'
+397::string indices must be integers
 402::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Open+Season&y=1996&type=movie&r=json'
-407::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=In+the+Mouth+of+Madness&y=1995&type=movie&r=json'
-367::string indices must be integers
+403::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Two+Crimes&y=1995&type=movie&r=json'
 405::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Highlander+III+The+Sorcerer&y=1994&type=movie&r=json'
+407::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=In+the+Mouth+of+Madness&y=1995&type=movie&r=json'
 412::string indices must be integers
+414::string indices must be integers
 418::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Being+Human&y=1993&type=movie&r=json'
 419::string indices must be integers
+422::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blink&y=1994&type=movie&r=json'
 428::string indices must be integers
-432::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=City+Slickers+II+The+Legend+of+Curly+s+Gold&y=1994&type=movie&r=json'
 431::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Carlito+s+Way&y=1993&type=movie&r=json'
-397::string indices must be integers
-454::string indices must be integers
+432::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=City+Slickers+II+The+Legend+of+Curly+s+Gold&y=1994&type=movie&r=json'
+438::string indices must be integers
 447::string indices must be integers
+454::string indices must be integers
 457::string indices must be integers
+459::string indices must be integers
+462::string indices must be integers
+468::string indices must be integers
 469::string indices must be integers
 471::string indices must be integers
-468::string indices must be integers
 472::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+ll+Do+Anything&y=1994&type=movie&r=json'
+476::string indices must be integers
+477::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=What+s+Love+Got+to+Do+with+It&y=1993&type=movie&r=json'
+482::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Killing+Zoe&y=1994&type=movie&r=json'
 491::string indices must be integers
-459::string indices must be integers
-503::string indices must be integers
 502::string indices must be integers
-511::string indices must be integers
+503::string indices must be integers
 507::string indices must be integers
+509::string indices must be integers
+511::string indices must be integers
+512::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Robert+A+Heinlein+s+The+Puppet+Masters&y=1994&type=movie&r=json'
+514::string indices must be integers
 515::string indices must be integers
 518::string indices must be integers
-514::string indices must be integers
 525::string indices must be integers
 527::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Schindler+s+List&y=1993&type=movie&r=json'
-509::string indices must be integers
+528::string indices must be integers
 531::string indices must be integers
 533::string indices must be integers
 536::string indices must be integers
 537::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sirens&y=1994&type=movie&r=json'
-552::string indices must be integers
-583::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dear+Diary&y=1994&type=movie&r=json'
-589::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Terminator+Judgment+Day&y=1991&type=movie&r=json'
-575::string indices must be integers
 551::string indices must be integers
-599::string indices must be integers
-528::('Connection aborted.', RemoteDisconnected('Remote end closed connection without response',))
-593::string indices must be integers
+552::string indices must be integers
+556::string indices must be integers
 558::string indices must be integers
+560::string indices must be integers
+565::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cronos&y=1992&type=movie&r=json'
+566::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Naked+in+New+York&y=1994&type=movie&r=json'
+570::string indices must be integers
+571::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wedding+Gift&y=1994&type=movie&r=json'
+573::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ciao&y=1993&type=movie&r=json'
+575::string indices must be integers
+578::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hour+of+the+Pig&y=1993&type=movie&r=json'
+579::string indices must be integers
+581::string indices must be integers
+582::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Metisse&y=1993&type=movie&r=json'
+583::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dear+Diary&y=1994&type=movie&r=json'
+584::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+Don+t+Want+to+Talk+About+It&y=1993&type=movie&r=json'
+585::string indices must be integers
+589::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Terminator+Judgment+Day&y=1991&type=movie&r=json'
+593::string indices must be integers
+598::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Window+to+Paris&y=1994&type=movie&r=json'
+599::string indices must be integers
+601::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wooden+Man+s+Bride&y=1994&type=movie&r=json'
+602::string indices must be integers
+604::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Criminals&y=1996&type=movie&r=json'
 612::string indices must be integers
 616::string indices must be integers
+615::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bread+and+Chocolate&y=1973&type=movie&r=json'
+617::string indices must be integers
+623::string indices must be integers
+625::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Asfour+Stah&y=1990&type=movie&r=json'
+626::string indices must be integers
+627::string indices must be integers
+635::string indices must be integers
+638::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jack+and+Sarah&y=1995&type=movie&r=json'
+649::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cold+Fever&y=1994&type=movie&r=json'
+651::string indices must be integers
+652::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1995&type=movie&r=json'
+654::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Und+keiner+weint+mir+nach&y=1996&type=movie&r=json'
+655::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mutters+Courage&y=1995&type=movie&r=json'
+657::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Yankee+Zulu&y=1994&type=movie&r=json'
+658::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Billy+s+Holiday&y=1995&type=movie&r=json'
+666::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=All+Things+Fair&y=1996&type=movie&r=json'
+667::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bloodsport&y=1995&type=movie&r=json'
+670::string indices must be integers
+671::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mystery+Science+Theater+The+Movie&y=1996&type=movie&r=json'
+675::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hostile+Intentions&y=1994&type=movie&r=json'
+678::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Some+Folks+Call+It+a+Sling+Blade&y=1993&type=movie&r=json'
+679::string indices must be integers
 681::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Clean+Slate&y=1981&type=movie&r=json'
+683::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Eye+of+Vichy&y=1993&type=movie&r=json'
 685::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=It+s+My+Party&y=1995&type=movie&r=json'
 690::string indices must be integers
+693::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Under+the+Domin+Tree&y=1994&type=movie&r=json'
+694::string indices must be integers
+698::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Delta+of+Venus&y=1994&type=movie&r=json'
 708::string indices must be integers
-731::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heaven+s+Prisoners&y=1996&type=movie&r=json'
+715::string indices must be integers
+718::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Visitors&y=1993&type=movie&r=json'
+721::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halfmoon&y=1995&type=movie&r=json'
+723::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Two+Friends&y=1986&type=movie&r=json'
 724::string indices must be integers
+722::string indices must be integers
+725::string indices must be integers
+731::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heaven+s+Prisoners&y=1996&type=movie&r=json'
+729::string indices must be integers
+730::string indices must be integers
+738::string indices must be integers
+745::string indices must be integers
 747::string indices must be integers
 748::string indices must be integers
+750::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dr+Strangelove+or+How+I+Learned+to+Stop+Worrying+and+Love+the+Bomb&y=1963&type=movie&r=json'
+749::string indices must be integers
+753::string indices must be integers
+756::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Carmen+Miranda+Bananas+Is+My+Business&y=1994&type=movie&r=json'
 758::string indices must be integers
 761::string indices must be integers
+763::string indices must be integers
+768::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Someone+Else+s+America&y=1995&type=movie&r=json'
+767::string indices must be integers
+771::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Vie+est+belle&y=1987&type=movie&r=json'
+777::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pharaoh+s+Army&y=1995&type=movie&r=json'
 782::string indices must be integers
 783::string indices must be integers
-788::string indices must be integers
 784::string indices must be integers
+787::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gate+of+Heavenly+Peace&y=1995&type=movie&r=json'
+788::string indices must be integers
+789::IMDB Error - b'{"Response":"False","Error":"Must provide more than one character."}' - Query: 'http://www.omdbapi.com/?t=I&y=1990&type=movie&r=json'
+791::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Last+Klezmer+Leopold+Kozlowski&y=1995&type=movie&r=json'
+792::string indices must be integers
+793::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Life+and+Times+With+Antonin+Artaud&y=1993&type=movie&r=json'
+796::string indices must be integers
+797::string indices must be integers
 799::string indices must be integers
-805::string indices must be integers
-830::string indices must be integers
 804::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=She+s+the+One&y=1996&type=movie&r=json'
+805::string indices must be integers
+811::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bewegte+Mann&y=1994&type=movie&r=json'
+814::string indices must be integers
+818::string indices must be integers
+821::string indices must be integers
+823::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Collectionneuse&y=1967&type=movie&r=json'
+825::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Echte+Kerle&y=1996&type=movie&r=json'
+826::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Diebinnen&y=1995&type=movie&r=json'
+827::string indices must be integers
+829::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Joe+s+Apartment&y=1996&type=movie&r=json'
+828::string indices must be integers
+830::string indices must be integers
+841::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Eyes+Without+a+Face&y=1959&type=movie&r=json'
 842::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tales+from+the+Crypt+Presents+Bordello+of+Blood&y=1996&type=movie&r=json'
-847::string indices must be integers
 839::string indices must be integers
-849::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Escape+from+L+A&y=1996&type=movie&r=json'
+844::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Story+of+Xinghua&y=1993&type=movie&r=json'
+845::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Day+the+Sun+Turned+Cold&y=1994&type=movie&r=json'
+847::string indices must be integers
 848::string indices must be integers
-860::string indices must be integers
-870::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gone+Fishin&y=1997&type=movie&r=json'
-864::string indices must be integers
-880::string indices must be integers
+849::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Escape+from+L+A&y=1996&type=movie&r=json'
+854::string indices must be integers
+855::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Every+Other+Weekend&y=1990&type=movie&r=json'
+857::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Crows+and+Sparrows&y=1949&type=movie&r=json'
 858::string indices must be integers
-889::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1994&type=movie&r=json'
+859::string indices must be integers
+860::string indices must be integers
+865::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Small+Faces&y=1995&type=movie&r=json'
+864::string indices must be integers
+868::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Death+in+Brunswick&y=1991&type=movie&r=json'
+870::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gone+Fishin&y=1997&type=movie&r=json'
+872::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Aiqing+wansui&y=1994&type=movie&r=json'
+871::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Lover+s+Knot&y=1996&type=movie&r=json'
+876::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Police+Story+Project+S&y=1993&type=movie&r=json'
 879::string indices must be integers
-902::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Breakfast+at+Tiffany+s&y=1961&type=movie&r=json'
-899::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Singin+in+the+Rain&y=1952&type=movie&r=json'
+880::string indices must be integers
 882::string indices must be integers
-900::string indices must be integers
+889::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1994&type=movie&r=json'
 898::string indices must be integers
+899::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Singin+in+the+Rain&y=1952&type=movie&r=json'
+900::string indices must be integers
+902::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Breakfast+at+Tiffany+s&y=1961&type=movie&r=json'
 907::string indices must be integers
-927::string indices must be integers
-913::string indices must be integers
 909::string indices must be integers
-935::string indices must be integers
+913::string indices must be integers
+917::string indices must be integers
+919::string indices must be integers
+922::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sunset+Blvd&y=1950&type=movie&r=json'
+927::string indices must be integers
 932::string indices must be integers
+935::string indices must be integers
+939::string indices must be integers
 940::string indices must be integers
 941::string indices must be integers
-919::string indices must be integers
 943::string indices must be integers
+950::string indices must be integers
 952::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Around+the+World+in+Days&y=1956&type=movie&r=json'
 953::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=It+s+a+Wonderful+Life&y=1946&type=movie&r=json'
-950::string indices must be integers
 957::string indices must be integers
-967::string indices must be integers
+963::string indices must be integers
 965::string indices must be integers
-978::string indices must be integers
-976::string indices must be integers
-1001::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Associate&y=1982&type=movie&r=json'
 966::string indices must be integers
+967::string indices must be integers
+969::string indices must be integers
+970::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Beat+the+Devil&y=1954&type=movie&r=json'
+972::string indices must be integers
+976::string indices must be integers
+978::string indices must be integers
+980::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=In+the+Line+of+Duty&y=1987&type=movie&r=json'
+984::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pompatus+of+Love&y=1996&type=movie&r=json'
+985::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Small+Wonders&y=1996&type=movie&r=json'
+989::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Schlafes+Bruder&y=1995&type=movie&r=json'
+992::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rich+Man+s+Wife&y=1996&type=movie&r=json'
+1001::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Associate&y=1982&type=movie&r=json'
+1002::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ed+s+Next+Move&y=1996&type=movie&r=json'
+1005::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=D+The+Mighty+Ducks&y=1996&type=movie&r=json'
+1004::string indices must be integers
 1006::string indices must be integers
+1007::string indices must be integers
+1010::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+Bug&y=1969&type=movie&r=json'
 1013::string indices must be integers
 1016::string indices must be integers
-1010::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+Bug&y=1969&type=movie&r=json'
+1024::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Three+Caballeros&y=1945&type=movie&r=json'
+1025::string indices must be integers
+1026::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=So+Dear+to+My+Heart&y=1949&type=movie&r=json'
 1030::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pete+s+Dragon&y=1977&type=movie&r=json'
+1033::string indices must be integers
 1035::string indices must be integers
-1043::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=To+Gillian+on+Her+th+Birthday&y=1996&type=movie&r=json'
-1049::string indices must be integers
+1037::string indices must be integers
 1040::string indices must be integers
+1043::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=To+Gillian+on+Her+th+Birthday&y=1996&type=movie&r=json'
+1047::string indices must be integers
+1052::string indices must be integers
+1049::string indices must be integers
+1059::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=William+Shakespeare+s+Romeo+and+Juliet&y=1996&type=movie&r=json'
+1062::string indices must be integers
+1065::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Woman+in+Question&y=1950&type=movie&r=json'
 1067::string indices must be integers
+1071::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=For+the+Moment&y=1994&type=movie&r=json'
 1073::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Willy+Wonka+and+the+Chocolate+Factory&y=1971&type=movie&r=json'
+1076::string indices must be integers
+1075::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sexual+Life+of+the+Belgians&y=1994&type=movie&r=json'
+1080::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Monty+Python+s+Life+of+Brian&y=1979&type=movie&r=json'
 1079::string indices must be integers
 1082::string indices must be integers
-1076::string indices must be integers
-1094::string indices must be integers
+1083::string indices must be integers
 1085::string indices must be integers
+1091::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Weekend+at+Bernie+s&y=1989&type=movie&r=json'
+1094::string indices must be integers
 1096::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sophie+s+Choice&y=1982&type=movie&r=json'
 1097::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=E+T+the+Extra+Terrestrial&y=1982&type=movie&r=json'
+1098::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Search+for+One+eye+Jimmy&y=1996&type=movie&r=json'
 1099::string indices must be integers
+1105::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Children+of+the+Corn+IV+The+Gathering&y=1996&type=movie&r=json'
 1104::string indices must be integers
-1116::string indices must be integers
-1120::string indices must be integers
-1128::string indices must be integers
-1136::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Monty+Python+and+the+Holy+Grail&y=1974&type=movie&r=json'
-1127::string indices must be integers
-1125::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Return+of+the+Pink+Panther&y=1974&type=movie&r=json'
+1106::string indices must be integers
+1109::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Charm+s+Incidents&y=1996&type=movie&r=json'
+1108::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Prerokbe+Ognja&y=1995&type=movie&r=json'
+1110::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bird+of+Prey&y=1996&type=movie&r=json'
+1112::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Palookaville&y=1996&type=movie&r=json'
 1114::string indices must be integers
-1130::string indices must be integers
-1155::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Invitation&y=1986&type=movie&r=json'
 1113::string indices must be integers
+1117::string indices must be integers
+1116::string indices must be integers
+1118::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tashunga&y=1995&type=movie&r=json'
+1119::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Drunks&y=1997&type=movie&r=json'
+1121::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Glory+Daze&y=1996&type=movie&r=json'
+1120::string indices must be integers
+1123::string indices must be integers
+1125::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Return+of+the+Pink+Panther&y=1974&type=movie&r=json'
+1127::string indices must be integers
+1128::string indices must be integers
+1130::string indices must be integers
+1134::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Johnny+Pesos&y=1993&type=movie&r=json'
+1136::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Monty+Python+and+the+Holy+Grail&y=1974&type=movie&r=json'
+1144::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Line+King+Al+Hirschfeld&y=1996&type=movie&r=json'
+1146::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Curtis+s+Charm&y=1995&type=movie&r=json'
+1149::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=JLG+JLG+autoportrait+de+d+cembre&y=1994&type=movie&r=json'
+1148::string indices must be integers
+1150::string indices must be integers
+1155::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Invitation&y=1986&type=movie&r=json'
+1156::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Children+Are+Watching+us&y=1942&type=movie&r=json'
+1157::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Symphonie+pastorale&y=1946&type=movie&r=json'
+1161::string indices must be integers
+1162::string indices must be integers
+1164::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Two+or+Three+Things+I+Know+About+Her&y=1966&type=movie&r=json'
+1165::string indices must be integers
+1166::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Farmer+Chase&y=1995&type=movie&r=json'
+1170::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Best+of+the+Best+No+Turning+Back&y=1995&type=movie&r=json'
+1174::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Grosse+Fatigue&y=1994&type=movie&r=json'
 1173::string indices must be integers
 1176::string indices must be integers
-1183::string indices must be integers
 1179::string indices must be integers
+1181::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Shooter&y=1995&type=movie&r=json'
+1183::string indices must be integers
+1189::string indices must be integers
 1190::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tie+Me+Up+Tie+Me+Down&y=1990&type=movie&r=json'
 1193::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=One+Flew+Over+the+Cuckoo+s+Nest&y=1975&type=movie&r=json'
-1202::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Withnail+and+I&y=1987&type=movie&r=json'
-1189::string indices must be integers
-1201::string indices must be integers
-1205::string indices must be integers
 1197::string indices must be integers
+1201::string indices must be integers
+1202::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Withnail+and+I&y=1987&type=movie&r=json'
+1205::string indices must be integers
+1206::string indices must be integers
 1209::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Once+Upon+a+Time+in+the+West&y=1969&type=movie&r=json'
 1212::string indices must be integers
-1206::string indices must be integers
-1220::string indices must be integers
 1216::string indices must be integers
 1218::string indices must be integers
-1226::string indices must be integers
-1233::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boat&y=1981&type=movie&r=json'
-1231::string indices must be integers
-1234::string indices must be integers
-1245::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Miller+s+Crossing&y=1990&type=movie&r=json'
-1243::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rosencrantz+and+Guildenstern+Are+Dead&y=1990&type=movie&r=json'
+1220::string indices must be integers
 1221::string indices must be integers
-1247::string indices must be integers
-1250::string indices must be integers
+1223::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Grand+Day+Out&y=1992&type=movie&r=json'
+1226::string indices must be integers
+1231::string indices must be integers
+1233::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boat&y=1981&type=movie&r=json'
+1234::string indices must be integers
+1237::string indices must be integers
 1240::string indices must be integers
-1253::string indices must be integers
+1241::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Braindead&y=1992&type=movie&r=json'
+1243::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rosencrantz+and+Guildenstern+Are+Dead&y=1990&type=movie&r=json'
+1245::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Miller+s+Crossing&y=1990&type=movie&r=json'
+1247::string indices must be integers
 1251::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1963&type=movie&r=json'
-1258::string indices must be integers
-1263::string indices must be integers
-1260::IMDB Error - b'{"Response":"False","Error":"Must provide more than one character."}' - Query: 'http://www.omdbapi.com/?t=M&y=1931&type=movie&r=json'
-1267::string indices must be integers
+1250::string indices must be integers
+1253::string indices must be integers
 1254::string indices must be integers
+1258::string indices must be integers
+1260::IMDB Error - b'{"Response":"False","Error":"Must provide more than one character."}' - Query: 'http://www.omdbapi.com/?t=M&y=1931&type=movie&r=json'
 1262::string indices must be integers
-1284::string indices must be integers
-1285::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heathers&y=1989&type=movie&r=json'
+1263::string indices must be integers
+1267::string indices must be integers
 1281::string indices must be integers
+1285::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heathers&y=1989&type=movie&r=json'
+1284::string indices must be integers
 1289::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Koyaanisqatsi&y=1983&type=movie&r=json'
 1294::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=M+A+S+H&y=1970&type=movie&r=json'
+1295::string indices must be integers
+1296::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Room+with+a+View&y=1986&type=movie&r=json'
 1299::string indices must be integers
 1303::string indices must be integers
+1315::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Paris+Was+a+Woman&y=1995&type=movie&r=json'
+1317::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+m+Not+Rappaport&y=1996&type=movie&r=json'
+1319::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kids+of+Survival&y=1993&type=movie&r=json'
+1322::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Amityville+It+s+About+Time&y=1992&type=movie&r=json'
 1323::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Amityville+D&y=1983&type=movie&r=json'
-1296::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Room+with+a+View&y=1986&type=movie&r=json'
-1327::string indices must be integers
-1332::string indices must be integers
-1335::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blood+Beach&y=1981&type=movie&r=json'
-1334::string indices must be integers
+1321::string indices must be integers
 1330::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=April+Fool+s+Day&y=1986&type=movie&r=json'
+1327::string indices must be integers
+1328::string indices must be integers
+1335::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blood+Beach&y=1981&type=movie&r=json'
+1332::string indices must be integers
+1333::string indices must be integers
+1334::string indices must be integers
 1339::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bram+Stoker+s+Dracula&y=1992&type=movie&r=json'
 1337::string indices must be integers
 1347::string indices must be integers
+1349::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nosferatu+a+Venezia&y=1986&type=movie&r=json'
+1351::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blood+Wine&y=1997&type=movie&r=json'
 1350::string indices must be integers
 1353::string indices must be integers
-1333::string indices must be integers
-1366::string indices must be integers
-1369::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+Can+t+Sleep&y=1994&type=movie&r=json'
 1362::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Garden+of+Finzi+Contini&y=1970&type=movie&r=json'
 1363::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Preacher+s+Wife&y=1996&type=movie&r=json'
+1366::string indices must be integers
+1369::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+Can+t+Sleep&y=1994&type=movie&r=json'
+1368::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Forbidden+Christ&y=1950&type=movie&r=json'
 1374::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Star+Trek+The+Wrath+of+Khan&y=1982&type=movie&r=json'
+1384::string indices must be integers
 1389::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jaws+D&y=1983&type=movie&r=json'
 1399::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Marvin+s+Room&y=1996&type=movie&r=json'
+1404::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Night+Falls+on+Manhattan&y=1997&type=movie&r=json'
+1406::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=C+r+monie&y=1995&type=movie&r=json'
 1408::string indices must be integers
-1417::string indices must be integers
+1412::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Some+Mother+s+Son&y=1996&type=movie&r=json'
 1410::string indices must be integers
-1433::string indices must be integers
+1413::string indices must be integers
+1420::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Message+to+Love+The+Isle+of+Wight+Festival&y=1996&type=movie&r=json'
+1417::string indices must be integers
+1423::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hearts+and+Minds&y=1996&type=movie&r=json'
 1429::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jackie+Chan+s+First+Strike&y=1996&type=movie&r=json'
-1447::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gridlock+d&y=1997&type=movie&r=json'
+1433::string indices must be integers
 1438::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dante+s+Peak&y=1997&type=movie&r=json'
+1437::string indices must be integers
+1444::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Guantanamera&y=1994&type=movie&r=json'
+1445::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=McHale+s+Navy&y=1997&type=movie&r=json'
+1447::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gridlock+d&y=1997&type=movie&r=json'
+1443::string indices must be integers
+1453::string indices must be integers
 1454::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=SubUrbia&y=1997&type=movie&r=json'
 1456::string indices must be integers
+1467::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Salut+cousin&y=1996&type=movie&r=json'
+1474::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jungle+Jungle&y=1997&type=movie&r=json'
 1480::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Smilla+s+Sense+of+Snow&y=1997&type=movie&r=json'
 1479::string indices must be integers
-1489::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cats+Don+t+Dance&y=1997&type=movie&r=json'
 1482::string indices must be integers
-1513::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Romy+and+Michele+s+High+School+Reunion&y=1997&type=movie&r=json'
+1484::string indices must be integers
+1489::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cats+Don+t+Dance&y=1997&type=movie&r=json'
+1486::string indices must be integers
 1488::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Devil+s+Own&y=1997&type=movie&r=json'
+1494::string indices must be integers
+1510::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Brother+s+Kiss&y=1997&type=movie&r=json'
+1513::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Romy+and+Michele+s+High+School+Reunion&y=1997&type=movie&r=json'
+1523::string indices must be integers
+1524::string indices must be integers
 1527::string indices must be integers
+1534::string indices must be integers
+1535::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+Valour+Compassion&y=1997&type=movie&r=json'
+1543::string indices must be integers
 1544::string indices must be integers
+1548::string indices must be integers
+1554::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pillow+Book&y=1995&type=movie&r=json'
+1555::string indices must be integers
+1559::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Next+Step&y=1995&type=movie&r=json'
 1556::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Speed+Cruise+Control&y=1997&type=movie&r=json'
-1569::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Best+Friend+s+Wedding&y=1997&type=movie&r=json'
 1564::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Roseanna+s+Grave&y=1997&type=movie&r=json'
+1567::string indices must be integers
+1569::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Best+Friend+s+Wedding&y=1997&type=movie&r=json'
+1571::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=When+the+Cats+Away&y=1996&type=movie&r=json'
+1578::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Innocent+Sleep&y=1995&type=movie&r=json'
+1583::string indices must be integers
 1586::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=G+I+Jane&y=1997&type=movie&r=json'
+1538::string indices must be integers
 1595::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Free+Willy+The+Rescue&y=1997&type=movie&r=json'
+1600::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=She+s+So+Lovely&y=1997&type=movie&r=json'
+1609::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1997&type=movie&r=json'
 1610::string indices must be integers
 1617::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=L+A+Confidential&y=1997&type=movie&r=json'
 1616::string indices must be integers
-1625::string indices must be integers
-1633::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ulee+s+Gold&y=1997&type=movie&r=json'
-1624::string indices must be integers
-1635::string indices must be integers
-1629::string indices must be integers
-1642::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Indian+Summer&y=1996&type=movie&r=json'
-1631::string indices must be integers
 1615::string indices must be integers
+1624::string indices must be integers
+1625::string indices must be integers
+1628::string indices must be integers
+1633::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ulee+s+Gold&y=1997&type=movie&r=json'
+1629::string indices must be integers
+1630::string indices must be integers
+1631::string indices must be integers
+1632::string indices must be integers
+1635::string indices must be integers
+1642::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Indian+Summer&y=1996&type=movie&r=json'
 1641::string indices must be integers
-1660::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Eve+s+Bayou&y=1997&type=movie&r=json'
+1646::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rocket+Man&y=1997&type=movie&r=json'
+1645::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Devil+s+Advocate&y=1997&type=movie&r=json'
+1648::string indices must be integers
 1656::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Swept+from+the+Sea&y=1997&type=movie&r=json'
-1678::string indices must be integers
-1672::string indices must be integers
-1683::string indices must be integers
-1687::string indices must be integers
-1689::string indices must be integers
+1659::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hurricane+Streets&y=1998&type=movie&r=json'
+1660::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Eve+s+Bayou&y=1997&type=movie&r=json'
+1658::string indices must be integers
+1664::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=N+nette+et+Boni&y=1996&type=movie&r=json'
 1669::string indices must be integers
+1672::string indices must be integers
+1678::string indices must be integers
 1682::string indices must be integers
+1687::string indices must be integers
+1683::string indices must be integers
+1692::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Alien+Escape&y=1995&type=movie&r=json'
+1689::string indices must be integers
+1694::string indices must be integers
 1697::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Big+Bang+Theory&y=1994&type=movie&r=json'
 1699::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Butcher+Boy&y=1998&type=movie&r=json'
 1698::string indices must be integers
+1706::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Harlem+River+Drive&y=1996&type=movie&r=json'
+1710::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Man+of+Her+Dreams&y=1996&type=movie&r=json'
 1713::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mouse+Hunt&y=1997&type=movie&r=json'
-1728::string indices must be integers
-1727::string indices must be integers
+1716::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Other+Voices&y=1997&type=movie&r=json'
+1720::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Time+Tracers&y=1995&type=movie&r=json'
 1719::string indices must be integers
 1725::string indices must be integers
-1732::string indices must be integers
+1727::string indices must be integers
 1726::string indices must be integers
-1777::string indices must be integers
+1728::string indices must be integers
+1734::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Life+in+Pink&y=1997&type=movie&r=json'
+1732::string indices must be integers
+1739::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ninjas+High+Noon+On+Mega+Mountain&y=1998&type=movie&r=json'
+1740::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Men+of+Means&y=1998&type=movie&r=json'
+1743::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Arguing+the+World&y=1996&type=movie&r=json'
+1749::string indices must be integers
+1757::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Duoluo+tianshi&y=1995&type=movie&r=json'
+1756::string indices must be integers
+1768::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mat+i+syn&y=1997&type=movie&r=json'
+1765::string indices must be integers
 1769::string indices must be integers
+1777::string indices must be integers
+1782::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Little+City&y=1998&type=movie&r=json'
+1781::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Further+Gesture&y=1996&type=movie&r=json'
+1787::string indices must be integers
+1792::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=U+S+Marshalls&y=1998&type=movie&r=json'
+1789::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sadness+of+Sex&y=1995&type=movie&r=json'
+1796::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=In+God+s+Hands&y=1998&type=movie&r=json'
+1795::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Callej+n+de+los+milagros&y=1995&type=movie&r=json'
 1801::string indices must be integers
 1804::string indices must be integers
+1809::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hana+bi&y=1997&type=movie&r=json'
+1807::string indices must be integers
+1819::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Storefront+Hitchcock&y=1997&type=movie&r=json'
 1814::string indices must be integers
-1821::string indices must be integers
+1826::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Barney+s+Great+Adventure&y=1998&type=movie&r=json'
 1820::string indices must be integers
-1837::string indices must be integers
-1855::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Krippendorf+s+Tribe&y=1998&type=movie&r=json'
-1848::string indices must be integers
+1821::string indices must be integers
 1825::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Player+s+Club&y=1998&type=movie&r=json'
+1830::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Follow+the+Bitch&y=1998&type=movie&r=json'
+1832::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Heaven+s+Burning&y=1997&type=movie&r=json'
+1827::string indices must be integers
+1834::string indices must be integers
+1837::string indices must be integers
+1836::string indices must be integers
+1841::string indices must be integers
+1848::string indices must be integers
+1852::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+Walked+In&y=1998&type=movie&r=json'
+1850::string indices must be integers
+1855::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Krippendorf+s+Tribe&y=1998&type=movie&r=json'
+1853::string indices must be integers
+1857::string indices must be integers
+1865::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wild+Man+Blues&y=1998&type=movie&r=json'
+1868::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Truce&y=1996&type=movie&r=json'
+1866::string indices must be integers
+1871::string indices must be integers
+1873::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mis+rables&y=1998&type=movie&r=json'
+1879::string indices must be integers
 1885::string indices must be integers
 1892::string indices must be integers
+1891::string indices must be integers
+1895::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Can+t+Hardly+Wait&y=1998&type=movie&r=json'
 1899::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Passion+in+the+Desert&y=1998&type=movie&r=json'
+1898::string indices must be integers
+1901::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dear+Jesse&y=1997&type=movie&r=json'
+1900::string indices must be integers
+1905::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Marie+Baie+Des+Anges&y=1997&type=movie&r=json'
 1909::string indices must be integers
 1923::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=There+s+Something+About+Mary&y=1998&type=movie&r=json'
-1891::string indices must be integers
 1924::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Plan+from+Outer+Space&y=1958&type=movie&r=json'
-1895::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Can+t+Hardly+Wait&y=1998&type=movie&r=json'
-1942::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=All+the+King+s+Men&y=1949&type=movie&r=json'
+1926::string indices must be integers
+1934::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=You+Can+t+Take+It+With+You&y=1938&type=movie&r=json'
+1932::string indices must be integers
+1933::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Life+of+mile+Zola&y=1937&type=movie&r=json'
+1940::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gentleman+s+Agreement&y=1947&type=movie&r=json'
 1938::string indices must be integers
+1942::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=All+the+King+s+Men&y=1949&type=movie&r=json'
+1943::string indices must be integers
 1939::string indices must be integers
+1949::string indices must be integers
 1953::string indices must be integers
 1960::string indices must be integers
-1971::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nightmare+on+Elm+Street+The+Dream+Master&y=1988&type=movie&r=json'
-1968::string indices must be integers
-1980::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+VII+The+New+Blood&y=1988&type=movie&r=json'
-1972::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nightmare+on+Elm+Street+The+Dream+Child&y=1989&type=movie&r=json'
-1978::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+V+A+New+Beginning&y=1985&type=movie&r=json'
 1973::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Freddy+s+Dead+The+Final+Nightmare&y=1991&type=movie&r=json'
-1979::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+VI+Jason+Lives&y=1986&type=movie&r=json'
-1977::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+The+Final+Chapter&y=1984&type=movie&r=json'
+1968::string indices must be integers
+1969::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nightmare+on+Elm+Street+Part+Freddy+s+Revenge&y=1985&type=movie&r=json'
 1974::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th&y=1980&type=movie&r=json'
-1984::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halloween+III+Season+of+the+Witch&y=1983&type=movie&r=json'
 1970::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nightmare+on+Elm+Street+Dream+Warriors&y=1987&type=movie&r=json'
-1986::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halloween+The+Revenge+of+Michael+Myers&y=1989&type=movie&r=json'
+1971::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nightmare+on+Elm+Street+The+Dream+Master&y=1988&type=movie&r=json'
+1972::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nightmare+on+Elm+Street+The+Dream+Child&y=1989&type=movie&r=json'
+1975::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part&y=1981&type=movie&r=json'
+1976::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+D&y=1982&type=movie&r=json'
+1978::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+V+A+New+Beginning&y=1985&type=movie&r=json'
+1977::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+The+Final+Chapter&y=1984&type=movie&r=json'
+1979::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+VI+Jason+Lives&y=1986&type=movie&r=json'
+1980::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+VII+The+New+Blood&y=1988&type=movie&r=json'
 1981::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Friday+the+th+Part+VIII+Jason+Takes+Manhattan&y=1989&type=movie&r=json'
-1991::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Child+s+Play&y=1988&type=movie&r=json'
-1992::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Child+s+Play&y=1990&type=movie&r=json'
 1985::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halloween+The+Return+of+Michael+Myers&y=1988&type=movie&r=json'
-2004::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gremlins+The+New+Batch&y=1990&type=movie&r=json'
+1984::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halloween+III+Season+of+the+Witch&y=1983&type=movie&r=json'
+1986::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halloween+The+Revenge+of+Michael+Myers&y=1989&type=movie&r=json'
+1988::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hello+Mary+Lou+Prom+Night+II&y=1987&type=movie&r=json'
+1989::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Prom+Night+III+The+Last+Kiss&y=1989&type=movie&r=json'
+1991::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Child+s+Play&y=1988&type=movie&r=json'
+1993::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Child+s+Play&y=1992&type=movie&r=json'
+1992::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Child+s+Play&y=1990&type=movie&r=json'
 1997::string indices must be integers
+1999::string indices must be integers
+2004::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gremlins+The+New+Batch&y=1990&type=movie&r=json'
+2005::string indices must be integers
 2010::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Metropolis&y=1926&type=movie&r=json'
 2006::string indices must be integers
-2005::string indices must be integers
-2013::string indices must be integers
-2014::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Freaky+Friday&y=1977&type=movie&r=json'
-2023::string indices must be integers
-2022::string indices must be integers
-2024::string indices must be integers
-2033::string indices must be integers
-2045::string indices must be integers
-2034::string indices must be integers
 2008::string indices must be integers
-2048::string indices must be integers
+2014::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Freaky+Friday&y=1977&type=movie&r=json'
+2013::string indices must be integers
+2016::string indices must be integers
+2015::string indices must be integers
+2023::string indices must be integers
+2024::string indices must be integers
+2022::string indices must be integers
+2029::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Billy+s+Hollywood+Screen+Kiss&y=1997&type=movie&r=json'
+2030::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=East+Palace+West+Palace&y=1997&type=movie&r=json'
+2035::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blackbeard+s+Ghost&y=1968&type=movie&r=json'
+2032::string indices must be integers
+2033::string indices must be integers
+2034::string indices must be integers
+2042::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=D+The+Mighty+Ducks&y=1994&type=movie&r=json'
+2043::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Darby+O+Gill+and+the+Little+People&y=1959&type=movie&r=json'
+2038::string indices must be integers
+2040::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Computer+Wore+Tennis+Shoes&y=1970&type=movie&r=json'
+2044::string indices must be integers
+2045::string indices must be integers
+2047::string indices must be integers
 2049::string indices must be integers
-2058::string indices must be integers
+2048::string indices must be integers
 2057::string indices must be integers
+2058::string indices must be integers
 2059::string indices must be integers
-2065::string indices must be integers
 2062::string indices must be integers
-2072::string indices must be integers
+2065::string indices must be integers
+2069::string indices must be integers
+2079::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kidnapped&y=1960&type=movie&r=json'
 2077::string indices must be integers
-2083::string indices must be integers
 2078::string indices must be integers
 2081::string indices must be integers
-2069::string indices must be integers
-2090::string indices must be integers
+2082::string indices must be integers
+2083::string indices must be integers
+2072::string indices must be integers
 2089::string indices must be integers
+2090::string indices must be integers
+2092::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Return+of+Jafar&y=1993&type=movie&r=json'
 2095::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Shaggy+D+A&y=1976&type=movie&r=json'
-2101::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Squanto+A+Warrior+s+Tale&y=1994&type=movie&r=json'
 2094::string indices must be integers
+2102::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Steamboat+Willie&y=1940&type=movie&r=json'
+2101::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Squanto+A+Warrior+s+Tale&y=1994&type=movie&r=json'
 2103::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tall+Tale&y=1994&type=movie&r=json'
 2107::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Halloween+H&y=1998&type=movie&r=json'
 2108::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=L+A+Story&y=1991&type=movie&r=json'
-2116::string indices must be integers
 2110::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dead+Men+Don+t+Wear+Plaid&y=1982&type=movie&r=json'
-2114::string indices must be integers
+2109::string indices must be integers
+2111::string indices must be integers
 2117::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nineteen+Eighty+Four&y=1984&type=movie&r=json'
-2124::string indices must be integers
-2139::string indices must be integers
-2132::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Who+s+Afraid+of+Virginia+Woolf&y=1966&type=movie&r=json'
-2141::string indices must be integers
-2137::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Charlotte+s+Web&y=1973&type=movie&r=json'
-2140::string indices must be integers
-2147::string indices must be integers
-2136::string indices must be integers
-2146::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=St+Elmo+s+Fire&y=1985&type=movie&r=json'
+2114::string indices must be integers
+2116::string indices must be integers
 2118::string indices must be integers
-2151::string indices must be integers
-2160::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rosemary+s+Baby&y=1968&type=movie&r=json'
+2124::string indices must be integers
+2129::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Saltmen+of+Tibet&y=1997&type=movie&r=json'
+2132::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Who+s+Afraid+of+Virginia+Woolf&y=1966&type=movie&r=json'
+2137::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Charlotte+s+Web&y=1973&type=movie&r=json'
+2136::string indices must be integers
+2139::string indices must be integers
+2141::string indices must be integers
+2140::string indices must be integers
 2142::string indices must be integers
-2161::string indices must be integers
-2182::string indices must be integers
-2188::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1998&type=movie&r=json'
+2146::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=St+Elmo+s+Fire&y=1985&type=movie&r=json'
+2147::string indices must be integers
+2150::string indices must be integers
+2151::string indices must be integers
+2159::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Henry+Portrait+of+a+Serial+Killer&y=1990&type=movie&r=json'
+2160::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rosemary+s+Baby&y=1968&type=movie&r=json'
 2155::string indices must be integers
 2156::string indices must be integers
-2194::string indices must be integers
-2150::string indices must be integers
-2184::string indices must be integers
-2212::string indices must be integers
-2208::string indices must be integers
+2157::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Chambermaid+on+the+Titanic&y=1998&type=movie&r=json'
+2158::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Henry+Portrait+of+a+Serial+Killer&y=1996&type=movie&r=json'
+2163::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Attack+of+the+Killer+Tomatoes&y=1980&type=movie&r=json'
+2165::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Your+Friends+and+Neighbors&y=1998&type=movie&r=json'
+2161::string indices must be integers
+2162::string indices must be integers
+2074::string indices must be integers
+2175::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=D+j+Vu&y=1997&type=movie&r=json'
+2173::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Navigator+A+Mediaeval+Odyssey&y=1988&type=movie&r=json'
+2182::string indices must be integers
+2188::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1998&type=movie&r=json'
 2183::string indices must be integers
-2225::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Easy+Virtue&y=1927&type=movie&r=json'
-2226::string indices must be integers
-2224::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Downhill&y=1927&type=movie&r=json'
-2239::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Swept+Away&y=1975&type=movie&r=json'
+2184::string indices must be integers
 2191::string indices must be integers
+2194::string indices must be integers
+2201::string indices must be integers
+2209::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Young+and+Innocent&y=1937&type=movie&r=json'
+2208::string indices must be integers
+2213::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Waltzes+from+Vienna&y=1933&type=movie&r=json'
+2214::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Number+Seventeen&y=1932&type=movie&r=json'
+2215::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rich+and+Strange&y=1932&type=movie&r=json'
+2212::string indices must be integers
+2218::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Juno+and+Paycock&y=1930&type=movie&r=json'
+2216::string indices must be integers
+2220::string indices must be integers
+2224::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Downhill&y=1927&type=movie&r=json'
+2225::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Easy+Virtue&y=1927&type=movie&r=json'
+2223::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Farmer+s+Wife&y=1928&type=movie&r=json'
+2233::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Digging+to+China&y=1998&type=movie&r=json'
+2226::string indices must be integers
 2227::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Lodger&y=1926&type=movie&r=json'
+2228::string indices must be integers
+2229::string indices must be integers
+2242::string indices must be integers
+2234::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Let+s+Talk+About+Sex&y=1998&type=movie&r=json'
+2235::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=One+Man+s+Hero&y=1999&type=movie&r=json'
+2238::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Seven+Beauties&y=1976&type=movie&r=json'
+2239::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Swept+Away&y=1975&type=movie&r=json'
+2244::string indices must be integers
+2250::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Men+Don+t+Leave&y=1990&type=movie&r=json'
+2251::string indices must be integers
 2258::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Master+Ninja+I&y=1984&type=movie&r=json'
 2264::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=We+re+No+Angels&y=1989&type=movie&r=json'
 2263::string indices must be integers
+2266::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Butcher+s+Wife&y=1991&type=movie&r=json'
+2268::string indices must be integers
+2270::string indices must be integers
+2274::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Lilian+s+Story&y=1995&type=movie&r=json'
+2277::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Somewhere+in+the+City&y=1997&type=movie&r=json'
 2276::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Soldier+s+Daughter+Never+Cries&y=1998&type=movie&r=json'
 2283::string indices must be integers
-2268::string indices must be integers
-2289::string indices must be integers
+2286::string indices must be integers
 2288::string indices must be integers
+2289::string indices must be integers
+2292::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Overnight+Delivery&y=1996&type=movie&r=json'
 2296::string indices must be integers
 2295::string indices must be integers
+2299::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Battle+of+the+Sexes&y=1959&type=movie&r=json'
 2300::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Producers&y=1968&type=movie&r=json'
 2311::IMDB Error - b'{"Response":"False","Error":"Something went wrong."}' - Query: 'http://www.omdbapi.com/?t=&y=1984&type=movie&r=json'
+2309::string indices must be integers
 2310::string indices must be integers
 2313::string indices must be integers
-2330::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hands+on+a+Hard+Body&y=1996&type=movie&r=json'
+2319::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Reach+the+Rock&y=1997&type=movie&r=json'
+2317::string indices must be integers
 2323::string indices must be integers
-2335::string indices must be integers
+2330::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hands+on+a+Hard+Body&y=1996&type=movie&r=json'
 2334::string indices must be integers
+2335::string indices must be integers
+2339::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+ll+Be+Home+For+Christmas&y=1998&type=movie&r=json'
+2343::string indices must be integers
 2346::string indices must be integers
 2347::string indices must be integers
-2343::string indices must be integers
 2352::string indices must be integers
 2354::string indices must be integers
-2360::string indices must be integers
 2355::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bug+s+Life&y=1998&type=movie&r=json'
+2360::string indices must be integers
 2370::string indices must be integers
+2375::string indices must be integers
+2379::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Police+Academy+Their+First+Assignment&y=1985&type=movie&r=json'
 2376::string indices must be integers
+2380::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Police+Academy+Back+in+Training&y=1986&type=movie&r=json'
+2381::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Police+Academy+Citizens+on+Patrol&y=1987&type=movie&r=json'
+2382::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Police+Academy+Assignment+Miami+Beach&y=1988&type=movie&r=json'
+2383::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Police+Academy+City+Under+Siege&y=1989&type=movie&r=json'
+2386::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jerry+Springer+Ringmaster&y=1998&type=movie&r=json'
+2391::string indices must be integers
 2394::string indices must be integers
 2398::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Miracle+on+th+Street&y=1947&type=movie&r=json'
-2391::string indices must be integers
 2399::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Santa+Claus+The+Movie&y=1985&type=movie&r=json'
 2405::string indices must be integers
-2420::string indices must be integers
 2421::string indices must be integers
+2420::string indices must be integers
+2422::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Karate+Kid+III&y=1989&type=movie&r=json'
+2424::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=You+ve+Got+Mail&y=1998&type=movie&r=json'
 2426::string indices must be integers
+2425::string indices must be integers
 2428::string indices must be integers
 2427::string indices must be integers
-2422::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Karate+Kid+III&y=1989&type=movie&r=json'
 2433::string indices must be integers
-2424::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=You+ve+Got+Mail&y=1998&type=movie&r=json'
-2425::string indices must be integers
 2441::string indices must be integers
+2449::string indices must be integers
+2452::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gate+II+Trespassers&y=1990&type=movie&r=json'
+2451::string indices must be integers
 2453::string indices must be integers
-2456::string indices must be integers
 2454::string indices must be integers
 2455::string indices must be integers
-2451::string indices must be integers
+2456::string indices must be integers
 2459::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Texas+Chainsaw+Massacre&y=1974&type=movie&r=json'
+2460::string indices must be integers
+2462::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Return+of+the+Texas+Chainsaw+Massacre&y=1994&type=movie&r=json'
+2468::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jumpin+Jack+Flash&y=1986&type=movie&r=json'
 2467::string indices must be integers
 2474::string indices must be integers
+2484::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tinseltown&y=1998&type=movie&r=json'
 2485::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=She+s+All+That&y=1999&type=movie&r=json'
+2483::string indices must be integers
+2486::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=hour+Woman&y=1998&type=movie&r=json'
+2493::string indices must be integers
 2494::string indices must be integers
+2495::string indices must be integers
 2503::string indices must be integers
 2506::string indices must be integers
 2508::string indices must be integers
 2511::string indices must be integers
+2512::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ballad+of+Narayama&y=1982&type=movie&r=json'
 2515::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Children+of+the+Corn+II+The+Final+Sacrifice&y=1993&type=movie&r=json'
+2516::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Children+of+the+Corn+III&y=1994&type=movie&r=json'
 2519::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=House+on+Haunted+Hill&y=1958&type=movie&r=json'
 2524::string indices must be integers
 2528::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Logan+s+Run&y=1976&type=movie&r=json'
 2536::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Concorde+Airport&y=1979&type=movie&r=json'
 2540::string indices must be integers
 2542::string indices must be integers
+2545::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Relax+It+s+Just+Sex&y=1998&type=movie&r=json'
+2544::string indices must be integers
 2546::string indices must be integers
+2548::string indices must be integers
+2552::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Boyfriend+s+Back&y=1993&type=movie&r=json'
 2550::string indices must be integers
+2554::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Children+of+the+Damned&y=1963&type=movie&r=json'
 2559::string indices must be integers
+2566::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Doug+s+st+Movie&y=1999&type=movie&r=json'
+2564::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Empty+Mirror&y=1999&type=movie&r=json'
 2565::string indices must be integers
+2568::string indices must be integers
 2570::string indices must be integers
 2574::string indices must be integers
+2575::string indices must be integers
+2578::string indices must be integers
 2583::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cookie+s+Fortune&y=1999&type=movie&r=json'
+2585::string indices must be integers
+2588::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Clubland&y=1998&type=movie&r=json'
 2586::string indices must be integers
-2568::string indices must be integers
+2595::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Photographer&y=1998&type=movie&r=json'
+2592::string indices must be integers
 2593::string indices must be integers
+2602::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mighty+Peking+Man&y=1977&type=movie&r=json'
+2603::IMDB Error - b'{"Response":"False","Error":"Must provide more than one character."}' - Query: 'http://www.omdbapi.com/?t=N&y=1998&type=movie&r=json'
+2601::string indices must be integers
+2609::string indices must be integers
 2611::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Winslow+Boy&y=1998&type=movie&r=json'
-2618::string indices must be integers
-2622::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Midsummer+Night+s+Dream&y=1999&type=movie&r=json'
 2617::string indices must be integers
+2618::string indices must be integers
+2623::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Trippin&y=1999&type=movie&r=json'
+2622::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Midsummer+Night+s+Dream&y=1999&type=movie&r=json'
 2627::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Endurance&y=1998&type=movie&r=json'
-2633::string indices must be integers
-2634::string indices must be integers
-2638::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mummy+s+Tomb&y=1942&type=movie&r=json'
 2629::string indices must be integers
+2632::string indices must be integers
+2633::string indices must be integers
+2635::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mummy+s+Curse&y=1944&type=movie&r=json'
+2634::string indices must be integers
+2636::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mummy+s+Ghost&y=1944&type=movie&r=json'
+2637::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mummy+s+Hand&y=1940&type=movie&r=json'
+2638::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mummy+s+Tomb&y=1942&type=movie&r=json'
+2650::string indices must be integers
+2652::string indices must be integers
+2655::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Howling+II+Your+Sister+Is+a+Werewolf&y=1985&type=movie&r=json'
 2654::string indices must be integers
 2657::string indices must be integers
 2658::string indices must be integers
 2660::string indices must be integers
 2662::string indices must be integers
-2652::string indices must be integers
-2672::string indices must be integers
 2667::string indices must be integers
-2679::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Finding+North&y=1999&type=movie&r=json'
+2672::string indices must be integers
 2674::string indices must be integers
 2678::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Desert+Blue&y=1999&type=movie&r=json'
+2679::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Finding+North&y=1999&type=movie&r=json'
+2684::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Taxman&y=1999&type=movie&r=json'
 2686::string indices must be integers
 2685::string indices must be integers
 2688::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=General+s+Daughter&y=1999&type=movie&r=json'
 2690::string indices must be integers
+2697::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Son+the+Fanatic&y=1998&type=movie&r=json'
+2696::string indices must be integers
+2700::string indices must be integers
+2704::string indices must be integers
+2708::string indices must be integers
 2710::string indices must be integers
-2719::string indices must be integers
 2714::string indices must be integers
 2715::string indices must be integers
+2719::string indices must be integers
+2727::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Killer+s+Kiss&y=1955&type=movie&r=json'
 2726::string indices must be integers
-2731::string indices must be integers
-2735::string indices must be integers
 2732::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jules+and+Jim&y=1961&type=movie&r=json'
+2731::string indices must be integers
 2734::string indices must be integers
-2740::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kindred&y=1986&type=movie&r=json'
+2735::string indices must be integers
+2742::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=M+nage&y=1986&type=movie&r=json'
 2739::string indices must be integers
+2740::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kindred&y=1986&type=movie&r=json'
+2748::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Allan+Quartermain+and+the+Lost+City+of+Gold&y=1987&type=movie&r=json'
 2745::string indices must be integers
 2747::string indices must be integers
-2763::string indices must be integers
-2762::string indices must be integers
+2749::string indices must be integers
+2754::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Deadtime+Stories&y=1987&type=movie&r=json'
+2753::string indices must be integers
 2760::string indices must be integers
+2762::string indices must be integers
 2761::string indices must be integers
+2763::string indices must be integers
 2764::string indices must be integers
-2780::string indices must be integers
+2765::string indices must be integers
+2766::string indices must be integers
 2769::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Yards&y=1999&type=movie&r=json'
-2784::string indices must be integers
+2776::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Marcello+Mastroianni+I+Remember+Yes&y=1997&type=movie&r=json'
+2780::string indices must be integers
+2781::string indices must be integers
 2787::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cat+s+Eye&y=1985&type=movie&r=json'
+2783::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tomb+of+Ligeia&y=1965&type=movie&r=json'
+2784::string indices must be integers
 2790::string indices must be integers
+2793::string indices must be integers
 2800::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Little+Nemo+Adventures+in+Slumberland&y=1992&type=movie&r=json'
-2804::string indices must be integers
 2803::string indices must be integers
+2804::string indices must be integers
 2814::string indices must be integers
+2823::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Spiders&y=1919&type=movie&r=json'
 2826::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=th+Warrior&y=1999&type=movie&r=json'
 2827::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Astronaut+s+Wife&y=1999&type=movie&r=json'
-2829::string indices must be integers
 2831::string indices must be integers
+2829::string indices must be integers
 2832::string indices must be integers
+2837::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bedrooms+Hallways&y=1998&type=movie&r=json'
+2834::string indices must be integers
+2845::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=White+Boys&y=1999&type=movie&r=json'
+2844::string indices must be integers
+2846::string indices must be integers
+2848::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Othello&y=1952&type=movie&r=json'
 2851::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Saturn&y=1979&type=movie&r=json'
+2854::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Don+t+Look+in+the+Basement&y=1973&type=movie&r=json'
 2852::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Soldier+s+Story&y=1984&type=movie&r=json'
 2862::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Caligula&y=1980&type=movie&r=json'
 2863::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hard+Day+s+Night&y=1964&type=movie&r=json'
-2844::string indices must be integers
-2848::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Othello&y=1952&type=movie&r=json'
+2868::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Fright+Night+Part+II&y=1989&type=movie&r=json'
+2866::string indices must be integers
+2869::string indices must be integers
 2874::string indices must be integers
+2879::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Operation+Condor&y=1990&type=movie&r=json'
+2880::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Operation+Condor&y=1990&type=movie&r=json'
+2886::string indices must be integers
+2897::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=And+the+Ship+Sails+On&y=1984&type=movie&r=json'
+2899::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gulliver+s+Travels&y=1939&type=movie&r=json'
 2898::string indices must be integers
 2908::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boys+Don+t+Cry&y=1999&type=movie&r=json'
-2899::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gulliver+s+Travels&y=1939&type=movie&r=json'
+2910::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ennui&y=1998&type=movie&r=json'
+2911::string indices must be integers
 2912::string indices must be integers
-2921::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=High+Plains+Drifter&y=1972&type=movie&r=json'
+2913::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mating+Habits+of+the+Earthbound+Human&y=1998&type=movie&r=json'
 2918::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ferris+Bueller+s+Day+Off&y=1986&type=movie&r=json'
-2928::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Razor+s+Edge&y=1984&type=movie&r=json'
-2927::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Brief+Encounter&y=1946&type=movie&r=json'
+2921::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=High+Plains+Drifter&y=1972&type=movie&r=json'
 2922::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hang+em+High&y=1967&type=movie&r=json'
-2935::string indices must be integers
+2923::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Citizen+s+Band&y=1977&type=movie&r=json'
+2927::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Brief+Encounter&y=1946&type=movie&r=json'
 2925::string indices must be integers
-2951::string indices must be integers
-2953::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Home+Alone+Lost+in+New+York&y=1992&type=movie&r=json'
-2944::string indices must be integers
-2961::string indices must be integers
+2931::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Time+of+the+Gypsies&y=1989&type=movie&r=json'
+2928::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Razor+s+Edge&y=1984&type=movie&r=json'
+2936::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sullivan+s+Travels&y=1942&type=movie&r=json'
+2933::string indices must be integers
+2934::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+Bewitched&y=1986&type=movie&r=json'
+2935::string indices must be integers
+2937::string indices must be integers
 2945::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Mike+s+Murder&y=1984&type=movie&r=json'
+2944::string indices must be integers
+2951::string indices must be integers
 2950::string indices must be integers
-2967::string indices must be integers
+2953::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Home+Alone+Lost+in+New+York&y=1992&type=movie&r=json'
+2960::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Beefcake&y=1999&type=movie&r=json'
+2961::string indices must be integers
+2965::string indices must be integers
 2966::string indices must be integers
+2967::string indices must be integers
 2969::string indices must be integers
+2980::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Men+Cry+Bullets&y=1997&type=movie&r=json'
 2975::string indices must be integers
-2982::string indices must be integers
 2983::string indices must be integers
+2982::string indices must be integers
+2998::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dreaming+of+Joseph+Lees&y=1998&type=movie&r=json'
+2995::string indices must be integers
+3001::string indices must be integers
 3000::string indices must be integers
 3005::string indices must be integers
-3013::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bride+of+Re+Animator&y=1990&type=movie&r=json'
+3004::string indices must be integers
 3006::string indices must be integers
+3011::string indices must be integers
+3013::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bride+of+Re+Animator&y=1990&type=movie&r=json'
+3014::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bustin+Loose&y=1981&type=movie&r=json'
 3021::string indices must be integers
 3022::string indices must be integers
 3028::string indices must be integers
 3032::string indices must be integers
 3038::string indices must be integers
+3042::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Meatballs+III&y=1987&type=movie&r=json'
+3045::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Peter+s+Friends&y=1992&type=movie&r=json'
+3047::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Experience+Preferred+But+Not+Essential&y=1982&type=movie&r=json'
+3046::string indices must be integers
+3054::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pok+mon+The+First+Movie&y=1998&type=movie&r=json'
 3055::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Felicia+s+Journey&y=1999&type=movie&r=json'
 3053::string indices must be integers
-3004::string indices must be integers
+3057::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Where+s+Marlowe&y=1999&type=movie&r=json'
+3060::string indices must be integers
 3058::string indices must be integers
 3062::string indices must be integers
-3060::string indices must be integers
+3064::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Poison+Ivy+New+Seduction&y=1997&type=movie&r=json'
+3065::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ten+Benny&y=1997&type=movie&r=json'
 3066::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tora+Tora+Tora&y=1970&type=movie&r=json'
-3068::string indices must be integers
 3071::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Stand+and+Deliver&y=1987&type=movie&r=json'
+3070::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Adventures+of+Buckaroo+Bonzai+Across+the+th+Dimension&y=1984&type=movie&r=json'
+3068::string indices must be integers
+3069::string indices must be integers
 3073::string indices must be integers
-3100::string indices must be integers
-3098::string indices must be integers
+3080::string indices must be integers
+3084::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Home+Page&y=1999&type=movie&r=json'
 3082::string indices must be integers
-3109::string indices must be integers
+3086::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=March+of+the+Wooden+Soldiers&y=1934&type=movie&r=json'
+3085::string indices must be integers
+3089::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bicycle+Thief&y=1948&type=movie&r=json'
+3095::string indices must be integers
+3097::string indices must be integers
+3098::string indices must be integers
+3100::string indices must be integers
 3108::string indices must be integers
+3109::string indices must be integers
 3120::string indices must be integers
 3121::string indices must be integers
+3123::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Spring+Fever+USA&y=1989&type=movie&r=json'
 3125::string indices must be integers
 3126::string indices must be integers
-3136::string indices must be integers
+3128::string indices must be integers
+3134::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Grand+Illusion&y=1937&type=movie&r=json'
 3135::string indices must be integers
+3136::string indices must be integers
 3137::string indices must be integers
+3142::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=U+Rattle+and+Hum&y=1988&type=movie&r=json'
+3140::string indices must be integers
 3141::string indices must be integers
-3145::string indices must be integers
 3144::string indices must be integers
+3145::string indices must be integers
 3147::string indices must be integers
+3150::string indices must be integers
 3152::string indices must be integers
+3151::string indices must be integers
 3153::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=th+Voyage+of+Sinbad&y=1958&type=movie&r=json'
+3158::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Emperor+and+the+Assassin&y=1999&type=movie&r=json'
+3164::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Alley+Cats&y=1968&type=movie&r=json'
+3169::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Falcon+and+the+Snowman&y=1984&type=movie&r=json'
 3177::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Next+Friday&y=1999&type=movie&r=json'
-3179::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Angela+s+Ashes&y=1999&type=movie&r=json'
-3183::string indices must be integers
 3176::string indices must be integers
-3189::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Dog+Skip&y=1999&type=movie&r=json'
-3191::string indices must be integers
-3207::string indices must be integers
-3204::string indices must be integers
-3211::string indices must be integers
-3217::string indices must be integers
-3197::string indices must be integers
+3179::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Angela+s+Ashes&y=1999&type=movie&r=json'
 3178::string indices must be integers
-3223::string indices must be integers
+3183::string indices must be integers
+3189::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=My+Dog+Skip&y=1999&type=movie&r=json'
+3188::string indices must be integers
+3191::string indices must be integers
+3192::string indices must be integers
+3194::string indices must be integers
+3197::string indices must be integers
+3202::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Even+Dwarfs+Started+Small&y=1971&type=movie&r=json'
+3200::string indices must be integers
+3204::string indices must be integers
+3207::string indices must be integers
+3209::string indices must be integers
+3211::string indices must be integers
+3216::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Vampyros+Lesbos&y=1970&type=movie&r=json'
+3217::string indices must be integers
 3221::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Draughtsman+s+Contract&y=1982&type=movie&r=json'
-3241::string indices must be integers
-3248::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sister+Act+Back+in+the+Habit&y=1993&type=movie&r=json'
-3240::string indices must be integers
+3226::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hellhounds+on+My+Trail&y=1999&type=movie&r=json'
+3223::string indices must be integers
+3229::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Another+Man+s+Poison&y=1952&type=movie&r=json'
+3230::string indices must be integers
+3234::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Train+Ride+to+Hollywood&y=1978&type=movie&r=json'
+3231::string indices must be integers
+3237::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kestrel+s+Eye&y=1998&type=movie&r=json'
+3239::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Isn+t+She+Great&y=2000&type=movie&r=json'
 3242::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Santitos&y=1997&type=movie&r=json'
-3249::string indices must be integers
+3241::string indices must be integers
+3244::string indices must be integers
+3240::string indices must be integers
+3248::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sister+Act+Back+in+the+Habit&y=1993&type=movie&r=json'
 3253::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wayne+s+World&y=1992&type=movie&r=json'
+3249::string indices must be integers
 3254::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wayne+s+World&y=1993&type=movie&r=json'
+3255::string indices must be integers
 3257::string indices must be integers
 3263::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=White+Men+Can+t+Jump&y=1992&type=movie&r=json'
-3267::string indices must be integers
 3268::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Stop+Or+My+Mom+Will+Shoot&y=1992&type=movie&r=json'
+3267::string indices must be integers
 3270::string indices must be integers
 3275::string indices must be integers
 3280::string indices must be integers
+3281::string indices must be integers
 3285::string indices must be integers
 3287::string indices must be integers
-3309::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dog+s+Life&y=1920&type=movie&r=json'
+3292::string indices must be integers
+3303::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Black+Tar+Heroin+The+Dark+End+of+the+Street&y=1999&type=movie&r=json'
+3301::string indices must be integers
 3306::string indices must be integers
+3308::string indices must be integers
 3311::string indices must be integers
-3318::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Deterrence&y=1998&type=movie&r=json'
-3312::string indices must be integers
 3310::string indices must be integers
+3312::string indices must be integers
+3309::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dog+s+Life&y=1920&type=movie&r=json'
+3314::string indices must be integers
+3318::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Deterrence&y=1998&type=movie&r=json'
+3321::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Waiting+Game&y=2000&type=movie&r=json'
+3327::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Beyond+the+Mat&y=2000&type=movie&r=json'
 3325::string indices must be integers
+3329::string indices must be integers
+3332::string indices must be integers
+3333::string indices must be integers
+3336::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=It+Happened+Here&y=1961&type=movie&r=json'
+3337::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+ll+Never+Forget+What+s+is+Name&y=1967&type=movie&r=json'
+3340::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bride+of+the+Monster&y=1956&type=movie&r=json'
+3352::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Brown+s+Requiem&y=1998&type=movie&r=json'
+3348::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Night+Visitor&y=1970&type=movie&r=json'
 3349::string indices must be integers
 3350::string indices must be integers
 3353::string indices must be integers
-3348::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Night+Visitor&y=1970&type=movie&r=json'
 3355::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ninth+Gate&y=2000&type=movie&r=json'
-3365::string indices must be integers
 3366::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Where+Eagles+Dare&y=1969&type=movie&r=json'
-3301::string indices must be integers
+3364::string indices must be integers
+3365::string indices must be integers
 3367::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Devil+s+Brigade&y=1968&type=movie&r=json'
 3368::string indices must be integers
+3374::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Daughters+of+the+Dust&y=1992&type=movie&r=json'
 3372::string indices must be integers
+3376::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Fantastic+Night&y=1949&type=movie&r=json'
+3378::string indices must be integers
 3384::string indices must be integers
+3387::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Who+s+Harry+Crumb&y=1989&type=movie&r=json'
 3389::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Let+s+Get+Harry&y=1986&type=movie&r=json'
-3398::string indices must be integers
-3397::string indices must be integers
+3391::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Who+s+That+Girl&y=1987&type=movie&r=json'
 3396::string indices must be integers
+3397::string indices must be integers
+3399::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sesame+Street+Presents+Follow+That+Bird&y=1985&type=movie&r=json'
 3400::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=We+re+Back+A+Dinosaur+s+Story&y=1993&type=movie&r=json'
+3398::string indices must be integers
 3405::string indices must be integers
+3407::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Carriers+Are+Waiting&y=1999&type=movie&r=json'
 3412::string indices must be integers
-3415::string indices must be integers
 3416::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Trial&y=1963&type=movie&r=json'
 3417::string indices must be integers
+3422::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=She+s+Gotta+Have+It&y=1986&type=movie&r=json'
+3415::string indices must be integers
 3427::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Coogan+s+Bluff&y=1968&type=movie&r=json'
+3429::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Creature+Comforts&y=1990&type=movie&r=json'
 3428::string indices must be integers
+3433::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Death+Wish+The+Crackdown&y=1987&type=movie&r=json'
 3451::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Guess+Who+s+Coming+to+Dinner&y=1967&type=movie&r=json'
 3447::string indices must be integers
+3449::string indices must be integers
 3458::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blood+and+Sand&y=1989&type=movie&r=json'
+3457::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Waking+the+Dead&y=1999&type=movie&r=json'
+3456::string indices must be integers
 3464::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Solar+Crisis&y=1993&type=movie&r=json'
+3465::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=That+s+Life&y=1986&type=movie&r=json'
+3470::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Dersu+Uzala&y=1974&type=movie&r=json'
 3468::string indices must be integers
+3472::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Horror+Hotel&y=1960&type=movie&r=json'
+3473::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jonah+Who+Will+Be+in+the+Year&y=1976&type=movie&r=json'
 3476::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jacob+s+Ladder&y=1990&type=movie&r=json'
 3475::string indices must be integers
+3478::string indices must be integers
 3483::string indices must be integers
 3484::string indices must be integers
 3487::string indices must be integers
+3488::string indices must be integers
+3492::string indices must be integers
+3501::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Murphy+s+Romance&y=1985&type=movie&r=json'
 3507::string indices must be integers
 3508::string indices must be integers
-3517::string indices must be integers
 3514::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Joe+Gould+s+Secret&y=2000&type=movie&r=json'
-3478::string indices must be integers
-3518::string indices must be integers
+3515::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Me+Myself+I&y=2000&type=movie&r=json'
 3519::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Force+from+Navarone&y=1978&type=movie&r=json'
 3522::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Sacco+and+Vanzetti&y=1971&type=movie&r=json'
-3529::string indices must be integers
+3517::string indices must be integers
+3518::string indices must be integers
 3528::string indices must be integers
+3532::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Freedom+for+Us&y=1931&type=movie&r=json'
+3529::string indices must be integers
+3533::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Actor+s+Revenge&y=1963&type=movie&r=json'
 3540::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Passion+of+Mind&y=1999&type=movie&r=json'
-3550::string indices must be integers
+3539::string indices must be integers
+3554::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+and+Basketball&y=2000&type=movie&r=json'
 3555::IMDB Error - b'{"Response":"False","Error":"Must provide more than one character."}' - Query: 'http://www.omdbapi.com/?t=U&y=2000&type=movie&r=json'
-3558::string indices must be integers
+3550::string indices must be integers
+3560::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Phantom+Love&y=1978&type=movie&r=json'
+3561::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Stacy+s+Knights&y=1982&type=movie&r=json'
 3556::string indices must be integers
-3567::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bossa+Nova&y=1999&type=movie&r=json'
+3558::string indices must be integers
 3563::string indices must be integers
-3571::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Time+Code&y=2000&type=movie&r=json'
 3564::string indices must be integers
+3567::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Bossa+Nova&y=1999&type=movie&r=json'
+3568::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Smiling+Fish+and+Goat+on+Fire&y=1999&type=movie&r=json'
 3566::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Big+Kahuna&y=2000&type=movie&r=json'
-3583::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Black+Tights&y=1960&type=movie&r=json'
+3571::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Time+Code&y=2000&type=movie&r=json'
+3574::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Carnosaur+Primal+Species&y=1996&type=movie&r=json'
+3569::string indices must be integers
+3570::string indices must be integers
+3577::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Two+Moon+Juction&y=1988&type=movie&r=json'
 3576::string indices must be integers
+3583::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Black+Tights&y=1960&type=movie&r=json'
+3585::string indices must be integers
 3586::string indices must be integers
+3588::string indices must be integers
+3595::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Held+Up&y=2000&type=movie&r=json'
+3590::string indices must be integers
 3602::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=G+I+Blues&y=1960&type=movie&r=json'
+3601::string indices must be integers
 3603::string indices must be integers
 3608::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pee+wee+s+Big+Adventure&y=1985&type=movie&r=json'
+3611::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Saludos+Amigos&y=1943&type=movie&r=json'
+3619::string indices must be integers
+3620::string indices must be integers
+3622::string indices must be integers
+3629::string indices must be integers
+3630::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=House+of+Exorcism&y=1974&type=movie&r=json'
 3631::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=It+s+in+the+Water&y=1998&type=movie&r=json'
 3633::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=On+Her+Majesty+s+Secret+Service&y=1969&type=movie&r=json'
 3635::string indices must be integers
-3647::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Running+Free&y=2000&type=movie&r=json'
+3639::string indices must be integers
 3640::string indices must be integers
+3645::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cleo+From+to&y=1962&type=movie&r=json'
+3646::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Big+Momma+s+House&y=2000&type=movie&r=json'
+3647::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Running+Free&y=2000&type=movie&r=json'
+3643::string indices must be integers
+3650::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Anguish&y=1986&type=movie&r=json'
+3648::string indices must be integers
+3651::string indices must be integers
+3655::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blow+Out&y=1973&type=movie&r=json'
+3653::string indices must be integers
+3654::string indices must be integers
 3659::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Quatermass+II&y=1957&type=movie&r=json'
 3658::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Quatermass+and+the+Pit&y=1967&type=movie&r=json'
-3653::string indices must be integers
-3655::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blow+Out&y=1973&type=movie&r=json'
-3654::string indices must be integers
-3639::string indices must be integers
+3660::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Puppet+Master&y=1989&type=movie&r=json'
 3662::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Puppet+Master+III+Toulon+s+Revenge&y=1991&type=movie&r=json'
 3664::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Puppet+Master+The+Final+Chapter&y=1994&type=movie&r=json'
-3660::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Puppet+Master&y=1989&type=movie&r=json'
+3666::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Retro+Puppetmaster&y=1999&type=movie&r=json'
 3667::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Rent+A+Cop&y=1988&type=movie&r=json'
+3670::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Story+of+G+I+Joe&y=1945&type=movie&r=json'
 3678::string indices must be integers
-3684::string indices must be integers
+3679::string indices must be integers
+3680::string indices must be integers
+3685::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Prizzi+s+Honor&y=1985&type=movie&r=json'
 3688::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Porky+s&y=1981&type=movie&r=json'
-3698::string indices must be integers
+3687::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Light+Years&y=1988&type=movie&r=json'
+3684::string indices must be integers
+3689::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Porky+s+II+The+Next+Day&y=1983&type=movie&r=json'
 3690::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Porky+s+Revenge&y=1985&type=movie&r=json'
-3717::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gone+in+Seconds&y=2000&type=movie&r=json'
+3693::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Toxic+Avenger&y=1985&type=movie&r=json'
+3694::string indices must be integers
+3695::string indices must be integers
+3698::string indices must be integers
+3700::string indices must be integers
+3707::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Nine+Weeks&y=1986&type=movie&r=json'
+3714::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Clara+s+Heart&y=1988&type=movie&r=json'
 3713::string indices must be integers
+3717::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Gone+in+Seconds&y=2000&type=movie&r=json'
 3719::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Love+s+Labour+s+Lost&y=2000&type=movie&r=json'
-3732::string indices must be integers
+3721::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Trixie&y=1999&type=movie&r=json'
+3728::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=One+False+Move&y=1991&type=movie&r=json'
+3731::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Cutter+s+Way&y=1981&type=movie&r=json'
 3730::string indices must be integers
+3732::string indices must be integers
 3733::string indices must be integers
+3736::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Big+Carnival&y=1951&type=movie&r=json'
 3738::string indices must be integers
 3742::string indices must be integers
-3750::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boricua+s+Bond&y=2000&type=movie&r=json'
-3748::string indices must be integers
 3745::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Titan+A+E&y=2000&type=movie&r=json'
-3754::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Adventures+of+Rocky+and+Bullwinkle&y=2000&type=movie&r=json'
+3750::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Boricua+s+Bond&y=2000&type=movie&r=json'
 3753::string indices must be integers
+3752::string indices must be integers
+3754::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Adventures+of+Rocky+and+Bullwinkle&y=2000&type=movie&r=json'
+3759::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Fun+and+Fancy+Free&y=1947&type=movie&r=json'
 3755::string indices must be integers
-3764::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=F+X&y=1992&type=movie&r=json'
 3756::string indices must be integers
+3762::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Daughter+of+Dr+Jeckyll&y=1957&type=movie&r=json'
+3764::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=F+X&y=1992&type=movie&r=json'
+3760::string indices must be integers
 3765::string indices must be integers
+3767::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Missing+in+Action+The+Beginning&y=1985&type=movie&r=json'
+3748::string indices must be integers
+3772::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Hatchet+For+the+Honeymoon&y=1969&type=movie&r=json'
 3771::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Golden+Voyage+of+Sinbad&y=1974&type=movie&r=json'
-3784::string indices must be integers
 3782::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Shaft+s+Big+Score&y=1972&type=movie&r=json'
+3786::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=But+I+m+a+Cheerleader&y=1999&type=movie&r=json'
+3784::string indices must be integers
+3788::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Blowup&y=1966&type=movie&r=json'
 3789::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pawnbroker&y=1965&type=movie&r=json'
+3795::string indices must be integers
+3799::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Pok+mon+the+Movie&y=2000&type=movie&r=json'
+3796::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Wisdom+of+Crocodiles&y=2000&type=movie&r=json'
 3797::string indices must be integers
+3803::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Greaser+s+Palace&y=1972&type=movie&r=json'
 3804::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=H+O+T+S&y=1979&type=movie&r=json'
+3806::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=MacKenna+s+Gold&y=1969&type=movie&r=json'
 3808::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Two+Women&y=1961&type=movie&r=json'
+3816::string indices must be integers
+3817::string indices must be integers
+3822::string indices must be integers
 3836::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kelly+s+Heroes&y=1970&type=movie&r=json'
+3833::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Brain+That+Wouldn+t+Die&y=1962&type=movie&r=json'
+3835::string indices must be integers
+3842::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Make+Them+Die+Slowly&y=1980&type=movie&r=json'
+3850::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Whatever+Happened+to+Aunt+Alice&y=1969&type=movie&r=json'
+3851::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=I+m+the+One+That+I+Want&y=2000&type=movie&r=json'
+3847::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ilsa&y=1974&type=movie&r=json'
+3849::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Spiral+Staircase&y=1946&type=movie&r=json'
+3854::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Aim+e+Jaguar&y=1999&type=movie&r=json'
 3852::string indices must be integers
+3853::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Tic+Code&y=1998&type=movie&r=json'
+3855::string indices must be integers
+3859::string indices must be integers
+3860::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Opportunists&y=1999&type=movie&r=json'
 3861::string indices must be integers
 3863::string indices must be integers
-3869::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Naked+Gun+The+Smell+of+Fear&y=1991&type=movie&r=json'
+3865::string indices must be integers
 3868::string indices must be integers
+3869::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Naked+Gun+The+Smell+of+Fear&y=1991&type=movie&r=json'
 3874::string indices must be integers
-3879::string indices must be integers
-3875::string indices must be integers
 3876::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Jerry+Tom&y=1998&type=movie&r=json'
+3875::string indices must be integers
+3883::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Catfish+in+Black+Bean+Sauce&y=2000&type=movie&r=json'
+3880::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Ballad+of+Ramblin+Jack&y=2000&type=movie&r=json'
+3879::string indices must be integers
 3884::string indices must be integers
+3887::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Went+to+Coney+Island+on+a+Mission+From+God+Be+Back+by+Five&y=1998&type=movie&r=json'
 3890::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Back+Stage&y=2000&type=movie&r=json'
 3895::string indices must be integers
 3896::string indices must be integers
+3900::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Crime+and+Punishment+in+Suburbia&y=2000&type=movie&r=json'
+3904::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Uninvited+Guest&y=2000&type=movie&r=json'
 3905::string indices must be integers
+3907::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Prince+of+Central+Park&y=1999&type=movie&r=json'
+3914::string indices must be integers
+3929::string indices must be integers
 3930::string indices must be integers
+3931::string indices must be integers
+3932::string indices must be integers
 3935::IMDB Error - b'{"Response":"False","Error":"Movie not found!"}' - Query: 'http://www.omdbapi.com/?t=Kronos&y=1973&type=movie&r=json'
+3933::string indices must be integers
 3936::string indices must be integers
 3938::string indices must be integers
+3940::string indices must be integers
+3939::string indices must be integers
 3952::string indices must be integers

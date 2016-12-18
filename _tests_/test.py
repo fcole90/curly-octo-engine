@@ -104,7 +104,7 @@ def test_9():
 
 
 def test_10():
-    movie_data = sr.load_soundtrack_data("resources/soundtrack.json")
+    movie_data = mlens.load_movielens_movies("resources/movies.dat")
     imdb_file = open("resources/imdb_movies.dat", 'w')
     keywords_file = open("resources/imdb_keywords.dat", 'w')
     failure_keyword_file = open("resources/keywords/failures.log", 'w')
@@ -117,5 +117,17 @@ def test_10():
 
     print("Completed!")
 
+def test_11():
+    movie_data = mlens.load_movielens_movies("resources/movies.dat")
+    scripts_file = open("resources/scripts_movies.dat", 'w')
+    failure_file = open("resources/scripts/failures.log", 'w')
+
+    imdb_r.get_all_scripts_from_movielens(movie_data, scripts_file, failure_file)
+
+    scripts_file.close()
+    failure_file.close()
+
+    print("Completed!")
+
 if __name__ == "__main__":
-    test_10()
+    test_11()

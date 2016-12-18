@@ -101,6 +101,10 @@ def save_failures(movielens_id, error_dict, error_file):
     error_file.write(line)
 
 
+def save_movie_script(movielens_id, is_full, script, file):
+    text = '::'.join(['@newmovie', str(movielens_id), str(is_full), script])
+    file.write(text)
+
 def wrapper_imdb_retrieve_data(args):
     movie_data = args['movie_data']
     identifier = '[ID: ' + movie_data['id'] + ' - ' + movie_data['name'] + '] '
@@ -116,6 +120,7 @@ def wrapper_imdb_retrieve_data(args):
             save_imdb_id(movie_data['id'], imdb_id, args['imdb_file'], imdb_title)
             save_keywords(movie_data['id'], keywords, args['keywords_file'])
     except Exception as e:
+        raise e
         with args['error_file_lock']:
             save_failures(args['movie_data']['id'], str(e), args['failures_keywords_file'])
 
@@ -169,7 +174,49 @@ def get_imsdb_script_text(movielens_title):
 
 
 def is_full_script(text):
-    if len(text) < 100:
+    if len(text) < 200:
         return False
     else:
         return True
+
+
+def wrapper_imsdb_retrieve_script(args):
+    movie_data = args['movie_data']
+    identifier = '[ID: ' + movie_data['id'] + ' - ' + movie_data['name'] + '] '
+    warn = '/!\ '
+
+    print(identifier + "Starting to retrieve.. ")
+    try:
+        script = get_imsdb_script_text(movie_data['name'])
+        with args['data_file_lock']:
+            save_movie_script(movie_data['id'], is_full_script(script), script, args['scripts_file'])
+    except Exception as e:
+        with args['error_file_lock']:
+            save_failures(args['movie_data']['id'], str(e), args['failures_file'])
+
+    print(identifier + "Retrivial complete..")
+
+def get_all_scripts_from_movielens(movie_data, scripts_file, failures_file):
+    manager = ThreadManager()
+    wrapper_function = wrapper_imsdb_retrieve_script
+    data_file_lock = threading.Lock()
+    error_file_lock = threading.Lock()
+
+    operations_list = []
+
+    for movie in movie_data:
+        args = {'movie_data': movie,
+                'scripts_file': scripts_file,
+                'failures_file': failures_file,
+                'data_file_lock': data_file_lock,
+                'error_file_lock': error_file_lock}
+        operations_list.append(Operation(manager, wrapper_function, args))
+
+    manager.run_all(operations_list)
+
+    start_time = time.time()
+    while not manager.all_ops_finished():
+        if start_time - time.time() > (8*60*60):
+            print("Timeout reached waiting all threads to end..")
+            break
+        time.sleep(__delay__)
