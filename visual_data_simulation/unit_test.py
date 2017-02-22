@@ -2,8 +2,8 @@ import random as rd
 import unittest
 
 import image_dataset.color_dataset as cl
-import visual_data_simulation.simulation_setup as setup
 import tools.movielens_helpers as ml_helpers
+import visual_data_simulation.simulation_setup as setup
 
 __COLOR_DATASET_PALETTE_SIZE__ = 6
 __MIN_CHANNEL_VALUE__ = 0
@@ -11,7 +11,8 @@ __MAX_CHANNEL_VALUE__ = 255
 __MIN_CHANNEL_VALUE_NORMALIZED__ = 0.0
 __MAX_CHANNEL_VALUE_NORMALIZED__ = 1.0
 
-__testing_sample_size__ = 100
+__testing_sample_size__ = 20
+
 
 class MyTestCase(unittest.TestCase):
 
@@ -38,8 +39,8 @@ class MyTestCase(unittest.TestCase):
         for i in index_list:
             for color in palette_dict[i]:
                 for value in color:
-                    self.assertLessEqual(value, __MAX_CHANNEL_VALUE__, msg=(value, i))
-                    self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE__, msg=(value, i))
+                    self.assertLessEqual(value, __MAX_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+                    self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
 
     def test_load_ml_ratings(self):
         ml_ratings = ml_helpers.load_ml_ratings()
@@ -55,6 +56,21 @@ class MyTestCase(unittest.TestCase):
         for i in index_list:
             flat_original = [value for color in original[i] for value in color]
             self.assertListEqual(flat_original, flattened[i])
+
+    def test_user_data_as_color_average(self):
+        user_data = setup.__user_data_as_color_average__()
+        color_data = setup.get_color_data()
+
+        # Take a random list of keys
+        index_list = rd.sample(user_data.keys(), __testing_sample_size__)
+
+        self.assertEqual(len(user_data[index_list[0]]),
+                         len(color_data[list(color_data.keys())[0]]))
+
+        for i in index_list:
+            for value in user_data[i]:
+                    self.assertLessEqual(value, __MAX_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+                    self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
 
 
 if __name__ == '__main__':
