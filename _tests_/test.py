@@ -1,17 +1,17 @@
 import soundtrack_dataset.soundtrack_retriever as sr
 import  keywords.imdb_interface as imdb_r
-import tools.movielens_helper as mlens
+import tools.movielens_helpers as mlens
 import tools.thread_manager as tm
 import time
 
 def test_1():
-    movielens = mlens.load_movielens_movies("resources/movies.dat")
+    movielens = mlens.load_ml_movies("resources/movies.dat")
     soundtracks, errors = sr.get_soundtracks_from_movielens(movielens)
     return soundtracks, errors
 
 
 def test_2():
-    movielens = mlens.load_movielens_movies("resources/movies.dat")
+    movielens = mlens.load_ml_movies("resources/movies.dat")
     for movie in movielens:
         return sr.wrapper_get_soundtrack_from_movie(movie)
 
@@ -21,7 +21,7 @@ def test_3():
 
 
 def test_4():
-    movielens = mlens.load_movielens_movies("resources/movies.dat")
+    movielens = mlens.load_ml_movies("resources/movies.dat")
     # movielens = movielens[]
     soundtracks, errors = sr.get_soundtracks_from_movielens(movielens)
     sr.save_soundtrack_data(soundtracks, "resources/soundtrack.json")
@@ -104,7 +104,7 @@ def test_9():
 
 
 def test_10():
-    movie_data = mlens.load_movielens_movies("resources/movies.dat")
+    movie_data = mlens.load_ml_movies("resources/movies.dat")
     imdb_file = open("resources/imdb_movies.dat", 'w')
     keywords_file = open("resources/imdb_keywords.dat", 'w')
     failure_keyword_file = open("resources/keywords/failures.log", 'w')
@@ -118,7 +118,7 @@ def test_10():
     print("Completed!")
 
 def test_11():
-    movie_data = mlens.load_movielens_movies("resources/movies.dat")
+    movie_data = mlens.load_ml_movies("resources/movies.dat")
     scripts_file = open("resources/scripts_movies.dat", 'w')
     failure_file = open("resources/scripts/failures.log", 'w')
 
