@@ -231,6 +231,26 @@ def __train_data_test__():
     return train_data_test
 
 
+x_y_couples = list(zip(__input_data__, __train_data__))
+rd.shuffle(x_y_couples)
+
+
+def __x_y_couples_train__():
+    x_y_couples_size = len(x_y_couples)
+    x_y_couples_train = x_y_couples[:x_y_couples_size // 3 * 2]
+    return x_y_couples_train
+
+
+def __x_y_couples_test__():
+    x_y_couples_size = len(x_y_couples)
+    x_y_couples_test = x_y_couples[x_y_couples_size // 3 * 2:]
+    return x_y_couples_test
+
+
+def get_only_part(n, x_y_couples_list):
+    return [entry[n] for entry in x_y_couples_list]
+
+
 def next_batch(n=100) -> tuple:
     """
     Returns a random sample of n x and y data points.
@@ -252,4 +272,24 @@ def next_batch(n=100) -> tuple:
 
     return ([xs[i] for i in index_list],
             [ys[i] for i in index_list])
+
+def next_batch_x_y_couples(n=100) -> tuple:
+    """
+    Returns a random sample of n x and y data points.
+
+    Parameters
+    ----------
+    n: int
+        amount of batch
+
+    Returns
+    -------
+    tuple of list
+        a list of xs, a list of ys
+    """
+
+    index_list = rd.sample(range(len(x_y_couples)), n)
+
+    return ([x_y_couples[i][0] for i in index_list],
+            [x_y_couples[i][1] for i in index_list])
 

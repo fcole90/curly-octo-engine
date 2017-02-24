@@ -47,11 +47,19 @@ sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
 for _ in range(10000):
     # run random batch of 100 data points
-    batch_xs, batch_ys = setup.next_batch(100)
+    batch_xs, batch_ys = setup.next_batch_x_y_couples(100)
     sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
 
 correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-print(sess.run(accuracy, feed_dict={x: setup.__input_data_test__(),
-                                        y_: setup.__train_data_test__()}))
+
+squared_error = tf.square(tf.subtract(tf.argmax(y, 1), tf.argmax(y_, 1)))
+rmse = tf.sqrt(tf.reduce_mean(tf.cast(squared_error, tf.float32)))
+
+print("Accuracy: ", end='')
+print(sess.run(accuracy, feed_dict={x: setup.get_only_part(0, setup.__x_y_couples_test__()),
+                                        y_: setup.get_only_part(1, setup.__x_y_couples_test__())}))
+print("RMSE: ", end='')
+print(sess.run(rmse, feed_dict={x: setup.get_only_part(0, setup.__x_y_couples_test__()),
+                                        y_: setup.get_only_part(1, setup.__x_y_couples_test__())}))
 
