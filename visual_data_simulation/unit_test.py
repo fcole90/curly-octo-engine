@@ -48,7 +48,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_simulation_setup_get_color_data(self):
         original = cl.load_as_dict_of_lists(normalize=True)
-        flattened = setup.get_color_data()
+        flattened = setup.__init_color_data__()
 
         # Take a random list of keys
         index_list = rd.sample(list(original.keys()), __testing_sample_size__)
@@ -59,7 +59,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_user_data_as_color_average(self):
         user_data = setup.__user_data_as_color_average__()
-        color_data = setup.get_color_data()
+        color_data = setup.__init_color_data__()
 
         # Take a random list of keys
         index_list = rd.sample(user_data.keys(), __testing_sample_size__)
@@ -71,6 +71,48 @@ class MyTestCase(unittest.TestCase):
             for value in user_data[i]:
                     self.assertLessEqual(value, __MAX_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
                     self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+
+    def test_input_data(self):
+        input_data = setup.__init_input_data__()
+        color_data = setup.__init_color_data__()
+        user_data = setup.__init_user_data__()
+        convert_dict = setup.__init_conversion_dict_data_to_train__()
+
+
+        # Take a random list of keys
+        index_list = rd.sample(list(user_data.keys()), __testing_sample_size__)
+
+        for user_id in index_list:
+            for movie_id in convert_dict[user_id].keys():
+                input_data_entry_index = convert_dict[user_id][movie_id][0]
+                input_data_entry = input_data[input_data_entry_index]
+                input_data_check = user_data[user_id] + color_data[movie_id]
+                self.assertListEqual(input_data_entry, input_data_check)
+
+
+    def test_train_data(self):
+        train_data = setup.__init_train_data__()
+        convert_dict = setup.__init_conversion_dict_data_to_train__()
+        ml_ratings = ml_helpers.load_ml_ratings()
+
+        # Take a random list of keys
+        index_list = rd.sample(list(ml_ratings.keys()), __testing_sample_size__)
+
+        for user_id in index_list:
+            for movie_id in ml_ratings[user_id].keys():
+                rating = ml_ratings[user_id][movie_id]
+                one_hot_check = [0]*5
+                one_hot_check[rating - 1] = 1
+                train_data_index = convert_dict[user_id][movie_id][0]
+                one_hot_train_data_rating = train_data[train_data_index]
+                self.assertListEqual(one_hot_check, one_hot_train_data_rating)
+
+    def test_next_batch(self):
+        setup.next_batch(100)
+        setup.next_batch(100)
+        setup.next_batch(100)
+        setup.next_batch(100)
+        setup.next_batch(100)
 
 
 if __name__ == '__main__':

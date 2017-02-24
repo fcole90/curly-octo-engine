@@ -3,6 +3,7 @@
     <words>
       <w>movielens</w>
       <w>softmax</w>
+      <w>splitted</w>
     </words>
   </dictionary>
 </component>

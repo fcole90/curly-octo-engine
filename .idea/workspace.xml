@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="26d6ebed-af2f-42f1-a84a-d39721e8e73b" name="Default" comment="update">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/curly-octo-engine.iml" afterPath="$PROJECT_DIR$/.idea/curly-octo-engine.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="26d6ebed-af2f-42f1-a84a-d39721e8e73b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/fcole90_work.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/fcole90_work.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_tests_/test.py" afterPath="$PROJECT_DIR$/_tests_/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/generic_helpers.py" afterPath="$PROJECT_DIR$/tools/generic_helpers.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tools/movielens_helpers.py" afterPath="$PROJECT_DIR$/tools/movielens_helpers.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visual_data_simulation/simulation.py" afterPath="$PROJECT_DIR$/visual_data_simulation/simulation.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visual_data_simulation/simulation_setup.py" afterPath="$PROJECT_DIR$/visual_data_simulation/simulation_setup.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/visual_data_simulation/unit_test.py" afterPath="$PROJECT_DIR$/visual_data_simulation/unit_test.py" />
     </list>
@@ -19,7 +16,8 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/curly-octo-engine$unit_test.coverage" NAME="unit_test Coverage Results" MODIFIED="1487769679257" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visual_data_simulation" />
+    <SUITE FILE_PATH="coverage/curly-octo-engine$simulation.coverage" NAME="simulation Coverage Results" MODIFIED="1487943606756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visual_data_simulation" />
+    <SUITE FILE_PATH="coverage/curly-octo-engine$unit_test.coverage" NAME="unit_test Coverage Results" MODIFIED="1487943529212" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visual_data_simulation" />
     <SUITE FILE_PATH="coverage/curly-octo-engine$generate_docs.coverage" NAME="generate_docs Coverage Results" MODIFIED="1487758980104" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/curly-octo-engine$simulation_setup.coverage" NAME="simulation_setup Coverage Results" MODIFIED="1487598334943" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/visual_data_simulation" />
   </component>
@@ -29,28 +27,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="movielens_helpers.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/movielens_helpers.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="102" column="56" lean-forward="false" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-                <element signature="e#546#1670#0" expanded="false" />
-                <element signature="e#3058#4069#0" expanded="false" />
-                <element signature="e#4182#5704#0" expanded="false" />
-                <element signature="e#4182#4640#1" expanded="false" />
-                <element signature="e#5779#6094#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="simulation.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="simulation.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/visual_data_simulation/simulation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+            <state relative-caret-position="293">
+              <caret line="54" column="66" lean-forward="false" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -61,20 +42,20 @@
       <file leaf-file-name="simulation_setup.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visual_data_simulation/simulation_setup.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+            <state relative-caret-position="132">
+              <caret line="92" column="39" lean-forward="false" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
               <folding>
-                <element signature="e#0#19#0" expanded="true" />
+                <element signature="e#0#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="unit_test.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="unit_test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/visual_data_simulation/unit_test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-147">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="360">
+              <caret line="24" column="73" lean-forward="false" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
               </folding>
@@ -105,13 +86,13 @@
       <list>
         <option value="$PROJECT_DIR$/keywords/w2v_experiments.py" />
         <option value="$PROJECT_DIR$/keywords/keggle_functions.py" />
-        <option value="$PROJECT_DIR$/visual_data_simulation/simulation.py" />
         <option value="$PROJECT_DIR$/image_dataset/color_dataset.py" />
         <option value="$PROJECT_DIR$/tools/movielens_helper.py" />
         <option value="$PROJECT_DIR$/tools/generic_helpers.py" />
         <option value="$PROJECT_DIR$/tools/movielens_helpers.py" />
-        <option value="$PROJECT_DIR$/visual_data_simulation/simulation_setup.py" />
+        <option value="$PROJECT_DIR$/visual_data_simulation/simulation.py" />
         <option value="$PROJECT_DIR$/visual_data_simulation/unit_test.py" />
+        <option value="$PROJECT_DIR$/visual_data_simulation/simulation_setup.py" />
       </list>
     </option>
   </component>
@@ -123,9 +104,9 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="44" />
-    <option name="y" value="24" />
+    <option name="y" value="25" />
     <option name="width" value="1322" />
-    <option name="height" value="744" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -142,8 +123,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -242,12 +221,14 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
     <property name="nodejs_interpreter_path" value="/usr/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/bin/node" />
@@ -261,7 +242,7 @@
       </console-settings>
     </option>
   </component>
-  <component name="RunManager" selected="Python.unit_test">
+  <component name="RunManager" selected="Python.simulation">
     <configuration default="false" name="simulation_setup" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -294,6 +275,24 @@
       <module name="curly-octo-engine" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visual_data_simulation/unit_test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="simulation" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/visual_data_simulation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="curly-octo-engine" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/visual_data_simulation/simulation.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <method />
@@ -502,14 +501,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python.simulation_setup" />
       <item index="1" class="java.lang.String" itemvalue="Python.unit_test" />
+      <item index="2" class="java.lang.String" itemvalue="Python.simulation" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.unit_test" />
-        <item index="1" class="java.lang.String" itemvalue="Python.simulation_setup" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python.simulation" />
+        <item index="1" class="java.lang.String" itemvalue="Python.unit_test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.simulation_setup" />
       </list>
     </recent_temporary>
   </component>
@@ -534,21 +535,27 @@
       <option name="project" value="LOCAL" />
       <updated>1487700234867</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added function to to get the user data as an average of the colors of her rated movies">
+      <created>1487770227708</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1487770227708</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="44" y="24" width="1322" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="44" y="25" width="1322" height="743" extended-state="6" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22805643" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24373041" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32847896" sideWeight="0.35188088" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44551283" sideWeight="0.52742946" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44660193" sideWeight="0.47570533" order="8" side_tool="false" content_ui="tabs" x="81" y="283" width="818" height="390" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3264" sideWeight="0.64811915" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5224359" sideWeight="0.47257054" order="8" side_tool="false" content_ui="tabs" x="81" y="283" width="818" height="390" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2676282" sideWeight="0.6442006" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -559,6 +566,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32973805" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32692307" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -571,27 +579,22 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="added function to to get the user data as an average of the colors of her rated movies" />
+    <option name="LAST_COMMIT_MESSAGE" value="added function to to get the user data as an average of the colors of her rated movies" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/neuralNetwork.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tools/movielens_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -620,7 +623,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -649,7 +651,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -678,7 +679,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -707,7 +707,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -736,7 +735,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -765,7 +763,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -794,7 +791,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -823,7 +819,6 @@
         <state relative-caret-position="360">
           <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -852,7 +847,6 @@
         <state relative-caret-position="360">
           <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -881,7 +875,6 @@
         <state relative-caret-position="360">
           <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -910,7 +903,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -925,7 +917,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -940,7 +931,6 @@
         <state relative-caret-position="360">
           <caret line="24" column="40" lean-forward="false" selection-start-line="24" selection-start-column="40" selection-end-line="33" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -955,7 +945,6 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -970,7 +959,6 @@
         <state relative-caret-position="1680">
           <caret line="112" column="0" lean-forward="false" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -1015,9 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1463">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#52#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1025,7 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1033,7 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="428">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1041,16 +1024,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/movielens_helpers.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
+        <state relative-caret-position="915">
           <caret line="102" column="56" lean-forward="false" selection-start-line="102" selection-start-column="56" selection-end-line="102" selection-end-column="56" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
             <element signature="e#546#1670#0" expanded="false" />
             <element signature="e#3058#4069#0" expanded="false" />
             <element signature="e#4182#5704#0" expanded="false" />
@@ -1060,32 +1041,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visual_data_simulation/simulation.py">
+    <entry file="file://$PROJECT_DIR$/image_dataset/list_url_images.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/visual_data_simulation/unit_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="73" lean-forward="false" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/visual_data_simulation/simulation_setup.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+        <state relative-caret-position="132">
+          <caret line="92" column="39" lean-forward="false" selection-start-line="92" selection-start-column="39" selection-end-line="92" selection-end-column="39" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/visual_data_simulation/unit_test.py">
+    <entry file="file://$PROJECT_DIR$/visual_data_simulation/simulation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-147">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="293">
+          <caret line="54" column="66" lean-forward="false" selection-start-line="54" selection-start-column="66" selection-end-line="54" selection-end-column="66" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
