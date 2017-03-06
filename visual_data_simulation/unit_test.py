@@ -3,6 +3,8 @@ import unittest
 
 import image_dataset.color_dataset as cl
 import tools.movielens_helpers as ml_helpers
+from tools.generic_helpers import deprecated
+# import visual_data_simulation.simulation_setup_old as deprecated_setup
 import visual_data_simulation.simulation_setup as setup
 
 __COLOR_DATASET_PALETTE_SIZE__ = 6
@@ -15,6 +17,10 @@ __testing_sample_size__ = 20
 
 
 class MyTestCase(unittest.TestCase):
+
+    def setUp(self):
+        self.dataset = setup.Setup(limit_memory_usage=False, test_mode=True)
+
 
     def test_color_dataset(self):
 
@@ -48,7 +54,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_simulation_setup_get_color_data(self):
         original = cl.load_as_dict_of_lists(normalize=True)
-        flattened = setup.__init_color_data__()
+        self.dataset.load_color_data()
+        flattened = self.dataset.color_data
 
         # Take a random list of keys
         index_list = rd.sample(list(original.keys()), __testing_sample_size__)
@@ -58,8 +65,10 @@ class MyTestCase(unittest.TestCase):
             self.assertListEqual(flat_original, flattened[i])
 
     def test_user_data_as_color_average(self):
-        user_data = setup.__user_data_as_color_average__()
-        color_data = setup.__init_color_data__()
+        self.dataset.load_color_data()
+        self.dataset.load_user_data_as_color_average()
+        user_data = self.dataset.user_data
+        color_data = self.dataset.color_data
 
         # Take a random list of keys
         index_list = rd.sample(user_data.keys(), __testing_sample_size__)
@@ -72,11 +81,47 @@ class MyTestCase(unittest.TestCase):
                     self.assertLessEqual(value, __MAX_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
                     self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
 
-    def test_input_data(self):
-        input_data = setup.__init_input_data__()
-        color_data = setup.__init_color_data__()
-        user_data = setup.__init_user_data__()
-        convert_dict = setup.__init_conversion_dict_data_to_train__()
+    def test_user_data_as_color_weighted_average(self):
+        self.dataset.load_color_data()
+        self.dataset.load_user_data_as_color_weighted_average()
+        user_data = self.dataset.user_data
+        color_data = self.dataset.color_data
+
+        # Take a random list of keys
+        index_list = rd.sample(user_data.keys(), __testing_sample_size__)
+
+        self.assertEqual(len(user_data[index_list[0]]),
+                         len(color_data[list(color_data.keys())[0]]))
+
+        for i in index_list:
+            for value in user_data[i]:
+                self.assertLessEqual(value, __MAX_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+                self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+
+    def test_user_data_as_color_clusters(self):
+        self.dataset.load_color_data()
+        self.dataset.load_user_data_as_color_clusters()
+        user_data = self.dataset.user_data
+        color_data = self.dataset.color_data
+
+        # Take a random list of keys
+        index_list = rd.sample(user_data.keys(), __testing_sample_size__)
+
+        self.assertEqual(len(user_data[index_list[0]]),
+                         len(color_data[list(color_data.keys())[0]]))
+
+        for i in index_list:
+            for value in user_data[i]:
+                self.assertLessEqual(value, __MAX_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+                self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
+
+    def test_dictionary_conversion(self):
+        dataset = setup.Setup(limit_memory_usage=False)
+
+        input_data = dataset.input_data
+        color_data = dataset.color_data
+        user_data = dataset.user_data
+        convert_dict = dataset.convert_dict
 
 
         # Take a random list of keys
@@ -89,10 +134,11 @@ class MyTestCase(unittest.TestCase):
                 input_data_check = user_data[user_id] + color_data[movie_id]
                 self.assertListEqual(input_data_entry, input_data_check)
 
-
     def test_train_data(self):
-        train_data = setup.__init_train_data__()
-        convert_dict = setup.__init_conversion_dict_data_to_train__()
+        dataset = setup.Setup(limit_memory_usage=False)
+
+        labels_data = dataset.labels_data
+        convert_dict = dataset.convert_dict
         ml_ratings = ml_helpers.load_ml_ratings()
 
         # Take a random list of keys
@@ -104,15 +150,10 @@ class MyTestCase(unittest.TestCase):
                 one_hot_check = [0]*5
                 one_hot_check[rating - 1] = 1
                 train_data_index = convert_dict[user_id][movie_id][0]
-                one_hot_train_data_rating = train_data[train_data_index]
+                one_hot_train_data_rating = labels_data[train_data_index]
                 self.assertListEqual(one_hot_check, one_hot_train_data_rating)
 
-    def test_next_batch(self):
-        setup.next_batch(100)
-        setup.next_batch(100)
-        setup.next_batch(100)
-        setup.next_batch(100)
-        setup.next_batch(100)
+
 
 
 if __name__ == '__main__':

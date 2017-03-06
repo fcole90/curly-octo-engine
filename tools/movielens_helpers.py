@@ -98,9 +98,9 @@ def load_ml_ratings(include_timestamp:bool=False) -> dict:
                 ml_ratings[user_id] = dict()
 
             if include_timestamp:
-                ml_ratings[user_id] = {movie_id: (rating, timestamp)}
+                ml_ratings[user_id][movie_id] = (rating, timestamp)
             else:
-                ml_ratings[user_id] = {movie_id: rating}
+                ml_ratings[user_id][movie_id] = rating
 
     return ml_ratings
 

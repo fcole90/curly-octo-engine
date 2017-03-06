@@ -1,5 +1,7 @@
 import os
 
+from tools.generic_helpers import get_project_root
+
 """
 Tools to import the color dataset with ease.
 """
@@ -9,6 +11,7 @@ Tools to import the color dataset with ease.
 # ---------------------------------
 __COLOR_CHANNELS__ = 3
 __HIGHEST_COLOR_VALUE__ = 255
+__COLOR_DATASET_FOLDER__ = "image_dataset"
 __DATASET_FILE__ = "rgb-dataset-rebuilt.dat"
 
 
@@ -23,7 +26,7 @@ def get_dataset_file_path() -> str:
 
     """
     name = __DATASET_FILE__
-    return os.path.join(os.path.dirname(os.path.abspath(__file__)), name)
+    return os.path.join(get_project_root(), __COLOR_DATASET_FOLDER__ , name)
 
 
 def load_as_dict_of_lists(normalize=False) -> dict:
@@ -58,14 +61,15 @@ def load_as_dict_of_lists(normalize=False) -> dict:
         movie_dict = dict()
         for line in color_dataset_file:
             line_list = line[:-1].split("::") # Also remove carriage return
-            palette = []
+            movie_id = int(line_list[0])
+            palette = list()
             for color in line_list[1:]:
                 color_list = color[1:-1].split(", ")
                 rgb_channels_list = [float(color_list[0])/factor,
                                      float(color_list[1])/factor,
                                      float(color_list[2])/factor]
                 palette.append(rgb_channels_list)
-            movie_dict[int(line_list[0])] = palette
+            movie_dict[movie_id] = palette
 
     return movie_dict
 
