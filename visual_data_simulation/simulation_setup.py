@@ -335,7 +335,7 @@ class Setup:
     def get_only_part(n, input_labels_couples_list):
         return [entry[n] for entry in input_labels_couples_list]
 
-    def next_batch(self, n=100) -> tuple:
+    def next_batch(self, n=100, use_permutation=False, limit_permutations=10) -> tuple:
         """
         Returns a random sample of n x and y data points.
 
@@ -352,8 +352,13 @@ class Setup:
 
         index_list = rd.sample(range(len(self.dataset["training"])), n)
 
-        return ([self.dataset["training"][i][0] for i in index_list],
-                [self.dataset["training"][i][1] for i in index_list])
+        batch_couple = ([self.dataset["training"][i][0] for i in index_list],
+                    [self.dataset["training"][i][1] for i in index_list])
+
+        if use_permutation:
+            return batch_couple #todo
+        else:
+            return batch_couple
 
 
 

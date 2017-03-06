@@ -1,3 +1,4 @@
 *.jpeg
-backup/*
+*.pickle
+resources/backup/*
 cache/*
