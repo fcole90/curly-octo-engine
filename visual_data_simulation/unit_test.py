@@ -132,7 +132,7 @@ class MyTestCase(unittest.TestCase):
                 input_data_entry_index = convert_dict[user_id][movie_id][0]
                 input_data_entry = input_data[input_data_entry_index]
                 input_data_check = user_data[user_id] + color_data[movie_id]
-                self.assertListEqual(input_data_entry, input_data_check)
+                self.assertListEqual(list(input_data_entry), input_data_check)
 
     def test_train_data(self):
         dataset = setup.Setup(limit_memory_usage=False)
@@ -151,7 +151,15 @@ class MyTestCase(unittest.TestCase):
                 one_hot_check[rating - 1] = 1
                 train_data_index = convert_dict[user_id][movie_id][0]
                 one_hot_train_data_rating = labels_data[train_data_index]
-                self.assertListEqual(one_hot_check, one_hot_train_data_rating)
+                self.assertListEqual(one_hot_check, list(one_hot_train_data_rating))
+
+    def test_next_batch(self):
+        dataset = setup.Setup()
+        a = dataset.next_batch(10)
+        b = dataset.next_batch(10, use_permutation=True)
+        self.assertIsNotNone(a)
+        self.assertIsNotNone(b)
+
 
 
 

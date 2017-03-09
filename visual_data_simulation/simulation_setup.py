@@ -25,21 +25,42 @@ __LIMIT_PERM_COLOR__ = 30
 class Setup:
 
     def __init__(self, **kwargs):
-        self.color_data = None
-        self.test_set = None
-        self.training_set = None
-        self.validation_set = None
+        """
+        Parameters
+        ----------
+        labels_data_type: str
+            default 'decimal'
+            Values: {decimal, one_hot}
+
+        limit_memory_usage: bool
+            default True
+
+        test_mode: bool
+            default False
+            Doesn't load data automatically.
+
+        use_cache: bool
+            default True
+
+        user_data_function: str
+            default 'weight_average'
+            Values: {average, weight_average, clusters}
+
+        """
 
         # Check keyword arguments
         self.__LIMIT_MEMORY_USAGE__ = self.get_flag_value(kwargs, "limit_memory_usage", default=True)
         self.__TEST_MODE__ = self.get_flag_value(kwargs, "test_mode", default=False)
         self.__USE_CACHE__ = self.get_flag_value(kwargs, "use_cache", default=True)
+        self.__LABELS_DATA_TYPE__ = self.get_flag_value(kwargs, "labels_data_type", default="decimal")
 
         if self.__TEST_MODE__:
             return
 
         self.load_color_data()
-        self.load_user_data()
+        self.load_user_data(loading_fun=self.get_flag_value(kwargs,
+                                                            "user_data_function",
+                                                            default='weight_average'))
         self.create_conversion_dict_data_keys_to_list_index()
         self.create_input_data()
         self.load_labels_data()
@@ -52,6 +73,7 @@ class Setup:
             del self.user_data
             del self.input_data
             del self.labels_data
+            del self.convert_dict
 
         self.dataset_size = len(input_label_couples)
 
@@ -59,10 +81,13 @@ class Setup:
         test_set_stop = training_set_stop + ((self.dataset_size - training_set_stop) // 3 * 2)
 
         self.dataset = {
-            "training": input_label_couples[:training_set_stop],
-            "test": input_label_couples[training_set_stop:test_set_stop],
-            "validation": input_label_couples[test_set_stop:]
+            "training": np.array(input_label_couples[:training_set_stop]),
+            "test": np.array(input_label_couples[training_set_stop:test_set_stop]),
+            "validation": np.array(input_label_couples[test_set_stop:])
         }
+
+        if self.__LIMIT_MEMORY_USAGE__:
+            del input_label_couples
 
     def cache_format_file_name(self, data_name, identifier=""):
         return "_".join([__CACHE_PREFIX__, data_name + identifier])
@@ -227,11 +252,27 @@ class Setup:
             self.user_data = user_data
             gh.save_object_to_cache(self.user_data, cache_name)
 
-    def load_user_data(self, loading_fun=None, *args, **kwargs):
-        if not loading_fun:
+    def load_user_data(self, loading_fun='weight_average'):
+        """
+
+        Parameters
+        ----------
+        loading_fun: str
+            default 'weight_average'
+            Values: {average, weight_average, clusters}
+
+        """
+        if loading_fun is 'weight_average':
             self.load_user_data_as_color_weighted_average()
+        elif loading_fun is 'average':
+                self.load_user_data_as_color_average()
+        elif loading_fun is 'clusters':
+            self.load_user_data_as_color_clusters()
         else:
-            loading_fun(*args, **kwargs)
+            raise ValueError("Expected one among "
+                             "{average, weight_average, clusters}," +
+                             " found {:s} instead.".format(loading_fun))
+
 
     def create_conversion_dict_data_keys_to_list_index(self):
         """
@@ -254,57 +295,26 @@ class Setup:
             self.convert_dict = convert_dict
             gh.save_object_to_cache(convert_dict, cache_name)
 
-    def create_input_data(self, using_all_permutations=False):
+    def create_input_data(self):
         cache_name = self.cache_format_file_name("input_data")
         if self.can_use_cache(cache_name):
             self.input_data = gh.load_object_from_cache(cache_name)
         else:
             input_data = list()
-            list_index = 0
             for user_id in self.convert_dict.keys():
                 for movie_id in self.convert_dict[user_id].keys():
-                    if not using_all_permutations:
-                        input_data.append(self.user_data[user_id] + self.color_data[movie_id])
-                    else:
-                        # Each convert dict entry is now a list
-                        self.convert_dict[user_id][movie_id] = list()
-
-                        user_entry = self.user_data[user_id]
-                        color_data_entry = self.color_data[movie_id]
-
-                        # Split the data in color channels
-                        user_color_list = Setup.splitted_list(user_entry, 3)
-                        color_data_color_list = Setup.splitted_list(color_data_entry, 3)
-
-                        # Make every permutation
-                        user_color_list_perm = list(permutations(user_color_list))
-                        rd.shuffle(user_color_list_perm)
-                        color_data_color_list_perm = list(permutations(color_data_color_list))
-                        rd.shuffle(color_data_color_list_perm)
-
-                        # Flatten
-                        user_color_list_perm = [[color_channel for color in perm
-                                                 for color_channel in color]
-                                                for perm in user_color_list_perm]
-                        color_data_color_list_perm = [[color_channel for color in perm
-                                                       for color_channel in color]
-                                                      for perm in color_data_color_list_perm]
-
-                        for user_perm in user_color_list_perm[:__LIMIT_PERM_USER__]:
-                            for color_perm in color_data_color_list_perm[:__LIMIT_PERM_COLOR__]:
-                                input_data.append(user_perm + color_perm)
-                                self.convert_dict[user_id][movie_id].append(list_index)
-                                list_index += 1
+                    input_data.append(np.array(self.user_data[user_id] + self.color_data[movie_id]))
             self.input_data = input_data
             gh.save_object_to_cache(input_data, cache_name)
 
-    def load_labels_data(self, using_all_permutations=False):
+    def load_labels_data(self):
         """
-        Loads the labels data as a one hot ratings list.
+        Loads the labels data as a one hot ratings list or decimal values.
 
-        E.g. rating 5 becomes [0,0,0,0,1]
+        E.g. rating 5 becomes [0,0,0,0,1] with one hot.
+        E.g. rating 5 becomes [1] with decimal.
         """
-        cache_name = self.cache_format_file_name("labels_data")
+        cache_name = self.cache_format_file_name("labels_data_", self.__LABELS_DATA_TYPE__)
         if self.can_use_cache(cache_name):
             self.labels_data = gh.load_object_from_cache(cache_name)
         else:
@@ -314,16 +324,14 @@ class Setup:
             for user_id in ml_ratings.keys():
                 for movie_id in ml_ratings[user_id].keys():
                     rating = ml_ratings[user_id][movie_id]
-                    rating_in_one_hot = one_hot_list_default[:]
-                    rating_in_one_hot[rating - 1] = 1
-                    if not using_all_permutations:
-                        labels_data.append(rating_in_one_hot)
+                    rating_as_one_hot = one_hot_list_default[:]
+                    rating_as_one_hot[rating - 1] = 1
+                    rating_as_decimal = [rating / __ratings_scale__]
+                    if self.__LABELS_DATA_TYPE__ is "decimal":
+                        labels_data.append(np.array(rating_as_decimal))
                     else:
-                        # permutations_size = math.factorial(__PALETTE_SIZE__) \
-                        #                     * math.factorial(__COLOR_DATA_ENTRY_SIZE)
-                        permutations_limit = __LIMIT_PERM_USER__ * __LIMIT_PERM_COLOR__
-                        for _ in range(permutations_limit):
-                            labels_data.append(rating_in_one_hot)
+                        labels_data.append(np.array(rating_as_one_hot))
+
             self.labels_data = labels_data
             gh.save_object_to_cache(labels_data, cache_name)
 
@@ -335,7 +343,7 @@ class Setup:
     def get_only_part(n, input_labels_couples_list):
         return [entry[n] for entry in input_labels_couples_list]
 
-    def next_batch(self, n=100, use_permutation=False, limit_permutations=10) -> tuple:
+    def next_batch(self, n=100, use_permutation=False, limit_permutations=50) -> tuple:
         """
         Returns a random sample of n x and y data points.
 
@@ -350,15 +358,40 @@ class Setup:
             a list of xs, a list of ys
         """
 
-        index_list = rd.sample(range(len(self.dataset["training"])), n)
+        index_list = np.random.choice(range(len(self.dataset["training"])), n)
+        couples = self.dataset["training"][index_list].transpose()
 
-        batch_couple = ([self.dataset["training"][i][0] for i in index_list],
-                    [self.dataset["training"][i][1] for i in index_list])
+        # # --- Debug ---
+        # print(couples.shape)
+        # print(couples[0][0])
+        # print(couples[1][0])
 
         if use_permutation:
-            return batch_couple #todo
+            inputs = couples[0]
+            labels = couples[1]
+
+            perm_input = list()
+            perm_label = list()
+
+            for i, item in enumerate(inputs):
+                half_item_len = len(item) // 2
+                perm_label.extend([labels[i]] * limit_permutations)
+
+                user_data = item[:half_item_len]
+                color_data = item[half_item_len:]
+
+                user_data.reshape((half_item_len // 3, 3))
+                color_data.reshape((half_item_len // 3, 3))
+
+                for j in range(limit_permutations):
+                    perm_user = np.random.permutation(user_data).reshape((1, half_item_len))[0]
+                    perm_color = np.random.permutation(color_data).reshape((1, half_item_len))[0]
+                    perm_item = np.array([perm_user, perm_color]).reshape((1, half_item_len*2))[0]
+                    perm_input.append(perm_item)
+            return (perm_input, perm_label)
+
         else:
-            return batch_couple
+            return (list(couples[0]), list(couples[1]))
 
 
 
