@@ -27,8 +27,8 @@ __LABELS_DATA_TYPE__ = __ONE_HOT_DATA__
 __LABELS_SIZE__ = 1 if __LABELS_DATA_TYPE__ is __DECIMAL_DATA__ else 5
 
 batch_size = 200
-__LEARNING_RATE__ = 0.08
-__ALPHA__ = 1.0
+__LEARNING_RATE__ = 0.01
+__ALPHA__ = 0.5
 myOptimizer = tf.train.GradientDescentOptimizer
 
 
