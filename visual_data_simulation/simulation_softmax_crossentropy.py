@@ -15,7 +15,18 @@ Function: softmax
 Cost: cross-entropy
 """
 
+class Settings:
+    def __init__(self):
+        pass
+
+    def print_all(self):
+        for key in self.__dict__.keys():
+            print(key, self.__dict__[key], sep=": ")
+
+
 # --- Definitions ---
+# Constant values, should not be changed.
+
 __ONE_HOT_DATA__ = "one_hot"
 __DECIMAL_DATA__ = "decimal"
 __COLOR_INPUT_SIZE__ = 30
@@ -23,45 +34,50 @@ __USER_INPUT_SIZE__ = 6
 __INPUT_SIZE__ = __USER_INPUT_SIZE__ + __COLOR_INPUT_SIZE__
 
 # ---  Settings ---
-__LABELS_DATA_TYPE__ = __ONE_HOT_DATA__
-__LABELS_SIZE__ = 1 if __LABELS_DATA_TYPE__ is __DECIMAL_DATA__ else 5
+# Values that should be tuned to obtain the best results.
+s = Settings()
 
-batch_size = 200
-__LEARNING_RATE__ = 0.01
-__ALPHA__ = 0.5
-myOptimizer = tf.train.GradientDescentOptimizer
+s.use_cache = True
+s.user_data_representation = "clusters"
+s.labels_data_type = __ONE_HOT_DATA__
+__LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
-
-iterations = 10000000
+s.batch_size = 200
+s.learning_rate = 0.01
+s.alpha = 0.5
+s.optimizer = tf.train.GradientDescentOptimizer
+s.iterations = 10000000
 
 # -------------------
 
-setup = sim_setup.Setup(user_data_function="clusters",
-                        use_cache=True,
-                        labels_data_type=__LABELS_DATA_TYPE__)
-# None here means that it can have any length
+setup = sim_setup.Setup(user_data_function=s.user_data_representation,
+                        use_cache=s.use_cache,
+                        labels_data_type=s.labels_data_type)
+
+# None means that it can have any length
 x = tf.placeholder(tf.float32, [None, __INPUT_SIZE__])
 x2 = tf.placeholder(tf.float32, [None, __LABELS_SIZE__])
 
 
-# ---Setup ---
+# --- Neuron functions ---
+def first_layer(x):
+    W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__]))
+    b = tf.Variable(tf.constant([0.01] * __LABELS_SIZE__))
+    return tf.add(tf.matmul(x, W), b)
 
-W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__]))
-b = tf.Variable(tf.constant([0.01] * __LABELS_SIZE__))
-def first_step(x):
-    return (tf.add(tf.matmul(x, W), b))
 
-W2 = tf.Variable(tf.random_normal([__LABELS_SIZE__, __LABELS_SIZE__]))
-b2 = tf.Variable(tf.constant([0.01] * __LABELS_SIZE__))
-def second_step(x):
+def inner_layer(x):
+    W2 = tf.Variable(tf.random_normal([__LABELS_SIZE__, __LABELS_SIZE__]))
+    b2 = tf.Variable(tf.constant([0.01] * __LABELS_SIZE__))
     return tf.add(tf.matmul(x, W2), b2)
 # ------------
 
-# --- Model ---
+# --- Network connections ---
 
-y1 = first_step(x)
-y2 = second_step(y1)
+y1 = first_layer(x)
+y2 = inner_layer(y1)
 
+# Set one function as output function.
 y = y1
 # -------------
 
@@ -70,9 +86,8 @@ y = y1
 y_ = tf.placeholder(tf.float32, [None, __LABELS_SIZE__])
 
 # --- Differentiable argmax ---
-
-
-def max_amplifier(x, amp=10, axis=None, transpose=False):
+# todo: this shall be put in a separate library
+def tf_max_amplifier(x, amp=10, axis=None, transpose=False):
     """
     Amplifies to the greatest element of a tensor while reducing the others.
 
@@ -106,28 +121,29 @@ def max_amplifier(x, amp=10, axis=None, transpose=False):
         return tf.transpose(amplified_x)
 
 
-def differentiable_argmax(x, power=5, decoder=None, axis=None):
+def tf_differentiable_argmax(x, power=5, decoder=None, axis=None):
+    # todo: the decoder size constant, should be dynamic
     if not decoder:
-        decoder = tf.constant([list(range(5))], dtype=tf.float32)
-    amplified_x = max_amplifier(x, power, axis=axis, transpose=True)
+        decoder = tf.constant([list(range(__LABELS_SIZE__))], dtype=tf.float32)
+    amplified_x = tf_max_amplifier(x, power, axis=axis, transpose=True)
     return tf.matmul(decoder, amplified_x)
 
 
 # Cross Entropy function
-if __LABELS_DATA_TYPE__ is __ONE_HOT_DATA__:
+if s.labels_data_type is __ONE_HOT_DATA__:
     cross_entropy = tf.reduce_mean(
         tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y1))
-    mse_loss = tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(differentiable_argmax(y1, axis=1, power=100),
-                                          differentiable_argmax(y_, axis=1, power=100)))))
-    alpha = __ALPHA__
+    mse_loss = tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(tf_differentiable_argmax(y1, axis=1, power=100),
+                                                            tf_differentiable_argmax(y_, axis=1, power=100)))))
+    alpha = s.alpha
     beta = 1.0 - alpha
     combo = tf.add(tf.multiply(mse_loss, alpha),
                    tf.multiply(cross_entropy, beta))
-    train_step = tf.train.GradientDescentOptimizer(__LEARNING_RATE__).minimize(combo)
+    train_step = tf.train.GradientDescentOptimizer(s.learning_rate).minimize(combo)
     train_step2 = None#tf.train.GradientDescentOptimizer(__LEARNING_RATE__).minimize(mse_loss)
 else:
     mse_cost = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y2, y_))), tf.float32)
-    train_step = myOptimizer(__LEARNING_RATE__).minimize(mse_cost)
+    train_step = s.optimizer(s.learning_rate).minimize(mse_cost)
     train_step2 = None
 # ----------------
 
@@ -136,10 +152,10 @@ sess = tf.InteractiveSession()
 tf.global_variables_initializer().run()
 
 # --- Testing functions ---
-if __LABELS_DATA_TYPE__ is __ONE_HOT_DATA__:
+if s.labels_data_type is __ONE_HOT_DATA__:
     error = tf.subtract(tf.argmax(y, 1), tf.argmax(y_, 1))
-    d_error = tf.subtract(differentiable_argmax(y, axis=1, power=100),
-                          differentiable_argmax(y_, axis=1, power=100))
+    d_error = tf.subtract(tf_differentiable_argmax(y, axis=1, power=100),
+                          tf_differentiable_argmax(y_, axis=1, power=100))
     correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
     correct_prediction_sugg = tf.equal(tf.greater_equal(tf.argmax(y, 1), 3),
                                        tf.greater_equal(tf.argmax(y_, 1), 3))
@@ -172,14 +188,14 @@ max_acc_sugg = (0.0, -1)
 min_rmse = (10, -1)
 max_rmse = (0, -1)
 
-print("Batch size:", batch_size)
-print("Learning rate:", __LEARNING_RATE__)
-print("Labels data type:", __LABELS_DATA_TYPE__)
-print("Optimizer:", myOptimizer.__name__)
+print("Batch size:", s.batch_size)
+print("Learning rate:", s.learning_rate)
+print("Labels data type:", s.labels_data_type)
+print("Optimizer:", s.optimizer.__name__)
 
-for i in range(iterations):
+for i in range(s.iterations):
     # run random batch of some data points
-    batch_xs, batch_ys = setup.next_batch(batch_size, use_permutation=True)
+    batch_xs, batch_ys = setup.next_batch(s.batch_size, use_permutation=True)
     train_dict = {x: batch_xs, y_: batch_ys}
     sess.run(train_step, feed_dict = train_dict)
     # print(sess.run(combo, feed_dict = train_dict))
@@ -193,7 +209,7 @@ for i in range(iterations):
     #     gh_tools.updating_text("\r[{0:.2f}%]".format((i + 1) / iterations * 100))
 
     # Update estimators
-    if i % 20 == 0 or i == iterations - 1:
+    if i % 20 == 0 or i == s.iterations - 1:
 
         update = lambda x_new, cmp, x_old: x_new if cmp(x_new[0], x_old[0]) else x_old
         lt = lambda x_1, x_2: x_1 < x_2
