@@ -34,6 +34,7 @@ that considers visual, audio and text data to provide ratings estimates.
  to create a virtualenv with the appropriate Python packages.*
   
 System: python3, python3-virtualenv.
+
 Python packages: tensorflow, numpy, sklearn.
 
 *Other packages may be required in order to run the dataset collecting parts.*
@@ -57,10 +58,10 @@ the source, it's on the todo list.*
 ## Output
 The output shows the current values in the left column and the best value of the experiment on the second one.
 The estimates are rate accuracy, suggestion accuracy and RMSE:
- - the rate accuracy *Acc* is the percentage of correct rate predictions;
- - the suggestion accuracy *Acc s/ns* is the percentage of correct suggestion
+ - the rate accuracy ```Acc``` is the percentage of correct rate predictions;
+ - the suggestion accuracy ```Acc s/ns``` is the percentage of correct suggestion
    predictions, a movie is suggested if it has a rate greater or equal to three;
- - root mean squared error, the metric used by the Netflix Prize.
+ - the root mean squared error, the metric used by the Netflix Prize too.
  
- A *GOOD* on the right highlights an improvement on the best RMSE.
+ A ```GOOD``` on the right highlights an improvement on the best RMSE.
  
