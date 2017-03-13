@@ -3,7 +3,7 @@ import pickle
 import re
 import sys
 
-__CACHE_DIR__ = "cache"
+__CACHE_DIR__ = ".cache"
 
 # --- Functions on paths ---
 def get_project_root():

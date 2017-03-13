@@ -63,5 +63,5 @@ The estimates are rate accuracy, suggestion accuracy and RMSE:
    predictions, a movie is suggested if it has a rate greater or equal to three;
  - the root mean squared error, the metric used by the Netflix Prize too.
  
- A ```GOOD``` on the right highlights an improvement on the best RMSE.
+A ```GOOD``` on the right highlights an improvement on the best RMSE.
  

@@ -49,7 +49,7 @@ s.alpha = 1.2
 # Using combined loss, beta is the percentage of cross entropy, if None it's (1 - alpha).
 s.beta = 0.0
 s.optimizer = tf.train.GradientDescentOptimizer
-s.iterations = 10000000
+s.iterations = int(10.0e+6)
 
 # -------------------
 
