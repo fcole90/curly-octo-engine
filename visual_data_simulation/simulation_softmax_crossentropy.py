@@ -45,7 +45,9 @@ __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 s.batch_size = 2000
 s.learning_rate = 0.008
 # Using combined loss, alpha is the percentage of rmse_loss, the rest is for cross entropy
-s.alpha = 1.0
+s.alpha = 1.2
+# Using combined loss, beta is the percentage of cross entropy, if None it's (1 - alpha).
+s.beta = 0.0
 s.optimizer = tf.train.GradientDescentOptimizer
 s.iterations = 10000000
 
@@ -138,8 +140,9 @@ def cross_entropy(y, y_):
 def root_mean_squared_error(y, y_):
     return tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(y, y_))))
 
-def combine(loss1, loss2, alpha):
-    beta = 1.0 - alpha
+def combine(loss1, loss2, alpha, beta=None):
+    if not beta:
+        beta = 1.0 - alpha
     return tf.add(tf.multiply(loss1, alpha),
                   tf.multiply(loss2, beta))
 
@@ -150,7 +153,7 @@ if s.labels_data_type is __ONE_HOT_DATA__:
     rmse_loss = root_mean_squared_error(tf_differentiable_argmax(y1, axis=1, power=100),
                                         tf_differentiable_argmax(y_, axis=1, power=100))
 
-    combo = combine(rmse_loss, cross_entropy_loss, s.alpha)
+    combo = combine(rmse_loss, cross_entropy_loss, s.alpha, s.beta)
     s.minimize_loss = "combined"
     train_step = tf.train.GradientDescentOptimizer(s.learning_rate).minimize(combo)
 

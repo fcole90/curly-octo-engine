@@ -24,14 +24,14 @@ that considers visual, audio and text data to provide ratings estimates.
 | BellKor's Pragmatic Chaos | 0.8558 |
 | The Ensemble              | 0.8554 |
 
-* Note: RMSE is probably not the best metric to estimate the accuracy over the
-  predictions. Tough it's a widely used one and allows to make comparisons
-  with other approaches. *
+*Note: RMSE is probably not the best metric to estimate the accuracy over the
+ predictions. Tough it's a widely used one and allows to make comparisons
+ with other approaches.*
 
 
 ## Requirements
-* Follow the tensorflow guide to create a virtualenv with the appropriate
-  Python packages. *
+*Follow the [tensorflow guide](https://www.tensorflow.org/install/install_linux)
+ to create a virtualenv with the appropriate Python packages.*
   
 System: python3, python3-virtualenv.
 Python packages: tensorflow, numpy, sklearn.
@@ -49,10 +49,10 @@ Python packages: tensorflow, numpy, sklearn.
 | math_fun                  | some experimental fun |
 
 ## First tests
-Run ```simulation_softmax_crossentropy.py```. You'll updates on the experiment
-estimators. To tweak the settings, change the values of the settings at the
-top of the file. (Yes, I should split the settings from the source, it's on my
-todo list).
+Run ```simulation_softmax_crossentropy.py```. You'll get updates on the
+experiment estimators. To tweak the settings, change the values of the 
+settings at the top of the file. *Yes, I should split the settings from 
+the source, it's on the todo list.*
  
 ## Output
 The output shows the current values in the left column and the best value of the experiment on the second one.
