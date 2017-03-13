@@ -343,7 +343,7 @@ class Setup:
     def get_only_part(n, input_labels_couples_list):
         return [entry[n] for entry in input_labels_couples_list]
 
-    def next_batch(self, n=100, use_permutation=False, limit_permutations=50) -> tuple:
+    def next_batch(self, n=100, use_permutations=False, limit_permutations=50) -> tuple:
         """
         Returns a random sample of n x and y data points.
 
@@ -366,7 +366,7 @@ class Setup:
         # print(couples[0][0])
         # print(couples[1][0])
 
-        if use_permutation:
+        if use_permutations:
             inputs = couples[0]
             labels = couples[1]
 

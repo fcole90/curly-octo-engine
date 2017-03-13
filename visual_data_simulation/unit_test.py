@@ -156,7 +156,7 @@ class MyTestCase(unittest.TestCase):
     def test_next_batch(self):
         dataset = setup.Setup()
         a = dataset.next_batch(10)
-        b = dataset.next_batch(10, use_permutation=True)
+        b = dataset.next_batch(10, use_permutations=True)
         self.assertIsNotNone(a)
         self.assertIsNotNone(b)
 

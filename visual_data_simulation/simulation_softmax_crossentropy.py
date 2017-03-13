@@ -42,9 +42,10 @@ s.user_data_representation = "clusters"
 s.labels_data_type = __ONE_HOT_DATA__
 __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
-s.batch_size = 200
-s.learning_rate = 0.01
-s.alpha = 0.5
+s.batch_size = 2000
+s.learning_rate = 0.008
+# Using combined loss, alpha is the percentage of rmse_loss, the rest is for cross entropy
+s.alpha = 1.0
 s.optimizer = tf.train.GradientDescentOptimizer
 s.iterations = 10000000
 
@@ -129,116 +130,153 @@ def tf_differentiable_argmax(x, power=5, decoder=None, axis=None):
     return tf.matmul(decoder, amplified_x)
 
 
-# Cross Entropy function
-if s.labels_data_type is __ONE_HOT_DATA__:
-    cross_entropy = tf.reduce_mean(
+# --- Loss functions ---
+def cross_entropy(y, y_):
+    return tf.reduce_mean(
         tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y1))
-    mse_loss = tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(tf_differentiable_argmax(y1, axis=1, power=100),
-                                                            tf_differentiable_argmax(y_, axis=1, power=100)))))
-    alpha = s.alpha
+
+def root_mean_squared_error(y, y_):
+    return tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(y, y_))))
+
+def combine(loss1, loss2, alpha):
     beta = 1.0 - alpha
-    combo = tf.add(tf.multiply(mse_loss, alpha),
-                   tf.multiply(cross_entropy, beta))
+    return tf.add(tf.multiply(loss1, alpha),
+                  tf.multiply(loss2, beta))
+
+# ----------------------
+
+if s.labels_data_type is __ONE_HOT_DATA__:
+    cross_entropy_loss = cross_entropy(y, y_)
+    rmse_loss = root_mean_squared_error(tf_differentiable_argmax(y1, axis=1, power=100),
+                                        tf_differentiable_argmax(y_, axis=1, power=100))
+
+    combo = combine(rmse_loss, cross_entropy_loss, s.alpha)
+    s.minimize_loss = "combined"
     train_step = tf.train.GradientDescentOptimizer(s.learning_rate).minimize(combo)
-    train_step2 = None#tf.train.GradientDescentOptimizer(__LEARNING_RATE__).minimize(mse_loss)
+
 else:
-    mse_cost = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y2, y_))), tf.float32)
-    train_step = s.optimizer(s.learning_rate).minimize(mse_cost)
-    train_step2 = None
+    rmse_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y2, y_))), tf.float32)
+    train_step = s.optimizer(s.learning_rate).minimize(rmse_loss)
+
 # ----------------
 
-# --- Session ---
-sess = tf.InteractiveSession()
-tf.global_variables_initializer().run()
 
-# --- Testing functions ---
+# --- Estimators setup (RMSE, Accuracies) ---
 if s.labels_data_type is __ONE_HOT_DATA__:
+    # Error using standard argmax
     error = tf.subtract(tf.argmax(y, 1), tf.argmax(y_, 1))
-    d_error = tf.subtract(tf_differentiable_argmax(y, axis=1, power=100),
-                          tf_differentiable_argmax(y_, axis=1, power=100))
+    # Error using differentiable argmax
+    d_error = tf.subtract(tf_differentiable_argmax(y, axis=1, power=1000),
+                          tf_differentiable_argmax(y_, axis=1, power=1000))
     correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
-    correct_prediction_sugg = tf.equal(tf.greater_equal(tf.argmax(y, 1), 3),
-                                       tf.greater_equal(tf.argmax(y_, 1), 3))
+    correct_yesno_prediction = tf.equal(tf.greater_equal(tf.argmax(y, 1), 3),
+                                        tf.greater_equal(tf.argmax(y_, 1), 3))
 
 
 else:
     error = tf.scalar_mul(5, tf.subtract(y, y_))
+    # Here differentiable argmax is not in use
     d_error = error
     correct_prediction = tf.equal(tf.ceil(tf.scalar_mul(5, y)),
                                   tf.ceil(tf.scalar_mul(5,y_)))
-    correct_prediction_sugg = tf.equal(tf.greater_equal(y, 0.6),
-                                       tf.greater_equal(y_, 0.6))
+    correct_yesno_prediction = tf.equal(tf.greater_equal(y, 0.6),
+                                        tf.greater_equal(y_, 0.6))
 
-
-rmse = tf.sqrt(tf.reduce_mean(tf.cast(tf.square(error), tf.float32)))
-d_rmse = tf.sqrt(tf.reduce_mean(tf.cast(tf.square(d_error), tf.float32)))
+# Estimators operations
+rmse_error = root_mean_squared_error(tf.cast(error, tf.float32), 0.0)
+d_rmse_error = root_mean_squared_error(tf.cast(d_error, tf.float32), 0.0)
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
-accuracy_sugg = tf.reduce_mean(tf.cast(correct_prediction_sugg, tf.float32))
+yesno_accuracy = tf.reduce_mean(tf.cast(correct_yesno_prediction, tf.float32))
 
-experiment_feed_dict = {x: sim_setup.Setup.get_only_part(0, setup.dataset['test']),
-                        y_: sim_setup.Setup.get_only_part(1, setup.dataset['test'])}
+# Feed dictionary for the test set
+test_set_feed_dict = {x: sim_setup.Setup.get_only_part(0, setup.dataset['test']),
+                      y_: sim_setup.Setup.get_only_part(1, setup.dataset['test'])}
 # --------------------------
 
-# --- Execution Loop ---
 
-min_acc = (1.0, -1)
-max_acc = (0.0, -1)
-min_acc_sugg = (1.0, -1)
-max_acc_sugg = (0.0, -1)
-min_rmse = (10, -1)
-max_rmse = (0, -1)
+# --- Session ---
+with tf.Session().as_default() as sess:
+    tf.global_variables_initializer().run()
 
-print("Batch size:", s.batch_size)
-print("Learning rate:", s.learning_rate)
-print("Labels data type:", s.labels_data_type)
-print("Optimizer:", s.optimizer.__name__)
+    # Print settings data for reference
+    s.print_all()
 
-for i in range(s.iterations):
-    # run random batch of some data points
-    batch_xs, batch_ys = setup.next_batch(s.batch_size, use_permutation=True)
-    train_dict = {x: batch_xs, y_: batch_ys}
-    sess.run(train_step, feed_dict = train_dict)
-    # print(sess.run(combo, feed_dict = train_dict))
-    if train_step2:
-        sess.run(train_step2, feed_dict={x2: sess.run(y1, feed_dict=train_dict), y_: batch_ys})
-        experiment_feed_dict[x2] = sess.run(y1, experiment_feed_dict)
+    # Create a dict for the estimators
+    data = dict()
 
+    # Accuracy on rate prediction
+    data['acc'] = {
+        'min': dict(val=1.0, index=-1),
+        'max': dict(val=0.0, index=-1),
+        "current": dict(val=None, index=-1)
+    }
 
-    # # Update percentage
-    # if i%20 == 0 or i == iterations - 1:
-    #     gh_tools.updating_text("\r[{0:.2f}%]".format((i + 1) / iterations * 100))
+    # Accuracy on suggest/not suggest base (suggests if rate >= 3).
+    data['yesno_acc'] = {
+        'min': dict(val=1.0, index=-1),
+        'max': dict(val=0.0, index=-1),
+        "current": dict(val=None, index=-1)
+    }
 
-    # Update estimators
-    if i % 20 == 0 or i == s.iterations - 1:
+    # Root mean squared error
+    data['rmse'] = {
+        'min': dict(val=10.0, index=-1),
+        'max': dict(val=0.0, index=-1),
+        "current": dict(val=None, index=-1)
+    }
 
-        update = lambda x_new, cmp, x_old: x_new if cmp(x_new[0], x_old[0]) else x_old
-        lt = lambda x_1, x_2: x_1 < x_2
-        gt = lambda x_1, x_2: x_1 > x_2
+    # Root mean squared error using diff_argmax
+    data['d_rmse'] = {
+        'min': dict(val=10.0, index=-1),
+        'max': dict(val=0.0, index=-1),
+        "current": dict(val=None, index=-1)
+    }
 
-        acc_run = sess.run(accuracy, feed_dict=experiment_feed_dict)
-        rmse_run = sess.run(rmse, feed_dict=experiment_feed_dict)
-        d_rmse_run = sess.run(d_rmse, feed_dict=experiment_feed_dict)
-        acc_sugg_run = sess.run(accuracy_sugg, feed_dict=experiment_feed_dict)
+    # --- Execution Loop ---
 
-        print("[{:10d}]".format(i), "Acc:", "{:2.4f}".format(acc_run), end=' | ')
-        print("Acc s/ns:", "{:2.4f}".format(acc_sugg_run), end=' | ')
-        print("d_RMSE: {:2.4f}".format(d_rmse_run), end=' | ')
-        print("RMSE:", "{:2.4f}".format(rmse_run), end=' |   | ')
+    for i in range(s.iterations):
 
-        is_good = " GOOD" if rmse_run < min_rmse[0] else ""
+        # Run the experiment on a random batch of data points
+        batch_xs, batch_ys = setup.next_batch(s.batch_size, use_permutations=True)
+        train_dict = {x: batch_xs, y_: batch_ys}
+        sess.run(train_step, feed_dict = train_dict)
 
-        min_acc = update((acc_run, i), lt, min_acc)
-        max_acc = update((acc_run, i), gt, max_acc)
-        min_acc_sugg = update((acc_sugg_run, i), lt, min_acc_sugg)
-        max_acc_sugg = update((acc_sugg_run, i), gt, max_acc_sugg)
-        min_rmse = update((rmse_run, i), lt, min_rmse)
-        max_rmse = update((rmse_run, i), gt, max_rmse)
+        # # Update percentage
+        # if i%20 == 0 or i == iterations - 1:
+        #     gh_tools.updating_text("\r[{0:.2f}%]".format((i + 1) / iterations * 100))
 
-        print("B. acc: {:2.4f} | B. s/ns: {:2.4f} |"
-               " B. RMSE: {:2.4f}{:s}".format(max_acc[0],
-                                                 max_acc_sugg[0],
-                                                 min_rmse[0],
-                                                 is_good))
+        # Update the estimators
+        if i % 20 == 0 or i == s.iterations - 1:
 
-# ----------------------
+            # Update the estimators
+            data["acc"]["current"]["val"] = sess.run(accuracy, feed_dict=test_set_feed_dict)
+            data["yesno_acc"]["current"]["val"] = sess.run(yesno_accuracy, feed_dict=test_set_feed_dict)
+            data["rmse"]["current"]["val"] = sess.run(rmse_error, feed_dict=test_set_feed_dict)
+            data["d_rmse"]["current"]["val"] = sess.run(d_rmse_error, feed_dict=test_set_feed_dict)
+
+            # Display current values
+            print("[{:10d}]".format(i), "Acc:", "{:2.4f}".format(data["acc"]["current"]["val"]), end=' | ')
+            print("Acc s/ns:", "{:2.4f}".format(data["yesno_acc"]["current"]["val"]), end=' | ')
+            print("d_RMSE: {:2.4f}".format(data["d_rmse"]["current"]["val"]), end=' | ')
+            print("RMSE:", "{:2.4f}".format(data["rmse"]["current"]["val"]), end=' |   | ')
+
+            # I like having a lower RMSE!
+            is_good = " GOOD" if data["rmse"]["current"]["val"] < data["rmse"]["min"]["val"] else ""
+
+            # Update the max and min of the estimators
+            for key in data.keys():
+                if data[key]["current"]["val"] < data[key]["min"]["val"]:
+                    data[key]["min"] = dict(val=data[key]["current"]["val"], index=i)
+                if data[key]["current"]["val"] > data[key]["max"]["val"]:
+                    data[key]["max"] = dict(val=data[key]["current"]["val"], index=i)
+
+            # Display the best values
+            print("B. acc: {:2.4f} | B. s/ns: {:2.4f} |"
+                   " B. RMSE: {:2.4f}{:s}".format(data["acc"]["max"]["val"],
+                                                  data["yesno_acc"]["max"]["val"],
+                                                  data["rmse"]["min"]["val"],
+                                                  is_good))
+
+    # --- End loop ---
+# --- End session ---
 

@@ -4,6 +4,7 @@
       <w>argmax</w>
       <w>kmeans</w>
       <w>movielens</w>
+      <w>rmse</w>
       <w>softmax</w>
       <w>splitted</w>
     </words>
