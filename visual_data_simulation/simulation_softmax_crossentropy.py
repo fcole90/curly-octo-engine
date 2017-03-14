@@ -43,11 +43,11 @@ s.labels_data_type = __ONE_HOT_DATA__
 __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
 s.batch_size = 2000
-s.learning_rate = 0.008
+s.learning_rate = 0.005
 # Using combined loss, alpha is the percentage of rmse_loss, the rest is for cross entropy
 s.alpha = 1.2
-# Using combined loss, beta is the percentage of cross entropy, if None it's (1 - alpha).
-s.beta = 0.0
+# Using combined loss, beta is the percentage of cross entropy, if None becomes (1 - alpha).
+s.beta = 0.8
 s.optimizer = tf.train.GradientDescentOptimizer
 s.iterations = int(10.0e+6)
 
@@ -191,9 +191,9 @@ d_rmse_error = root_mean_squared_error(tf.cast(d_error, tf.float32), 0.0)
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 yesno_accuracy = tf.reduce_mean(tf.cast(correct_yesno_prediction, tf.float32))
 
-# Feed dictionary for the test set
-test_set_feed_dict = {x: sim_setup.Setup.get_only_part(0, setup.dataset['test']),
-                      y_: sim_setup.Setup.get_only_part(1, setup.dataset['test'])}
+# Feed dictionary for the validation set
+valid_set_feed_dict = {x: sim_setup.Setup.get_only_part(0, setup.dataset['validation']),
+                       y_: sim_setup.Setup.get_only_part(1, setup.dataset['validation'])}
 # --------------------------
 
 
@@ -252,10 +252,10 @@ with tf.Session().as_default() as sess:
         if i % 20 == 0 or i == s.iterations - 1:
 
             # Update the estimators
-            data["acc"]["current"]["val"] = sess.run(accuracy, feed_dict=test_set_feed_dict)
-            data["yesno_acc"]["current"]["val"] = sess.run(yesno_accuracy, feed_dict=test_set_feed_dict)
-            data["rmse"]["current"]["val"] = sess.run(rmse_error, feed_dict=test_set_feed_dict)
-            data["d_rmse"]["current"]["val"] = sess.run(d_rmse_error, feed_dict=test_set_feed_dict)
+            data["acc"]["current"]["val"] = sess.run(accuracy, feed_dict=valid_set_feed_dict)
+            data["yesno_acc"]["current"]["val"] = sess.run(yesno_accuracy, feed_dict=valid_set_feed_dict)
+            data["rmse"]["current"]["val"] = sess.run(rmse_error, feed_dict=valid_set_feed_dict)
+            data["d_rmse"]["current"]["val"] = sess.run(d_rmse_error, feed_dict=valid_set_feed_dict)
 
             # Display current values
             print("[{:10d}]".format(i), "Acc:", "{:2.4f}".format(data["acc"]["current"]["val"]), end=' | ')

@@ -62,6 +62,6 @@ The estimates are rate accuracy, suggestion accuracy and RMSE:
  - the suggestion accuracy ```Acc s/ns``` is the percentage of correct suggestion
    predictions, a movie is suggested if it has a rate greater or equal to three;
  - the root mean squared error, the metric used by the Netflix Prize too.
- 
+The estimates are made over the validation set to avoid overfitting.
 A ```GOOD``` on the right highlights an improvement on the best RMSE.
  
