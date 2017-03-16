@@ -5,3 +5,4 @@ resources/backup/*
 resources/model_type2_multiwords.w2v
 resources/soundtrack-errors.json
 .cache/*
+.idea/workspace.xml

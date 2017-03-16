@@ -14,6 +14,7 @@ from image_dataset import color_dataset as colors
 This script is an helper to have all the data in the right place in the simulation.
 """
 
+# --- Definitions ---
 __CACHE_PREFIX__ = "visual_simulation_setup"
 
 __ratings_scale__ = 5
@@ -21,19 +22,28 @@ __PALETTE_SIZE__ = 6
 __COLOR_DATA_ENTRY_SIZE = 5
 __LIMIT_PERM_USER__ = 30
 __LIMIT_PERM_COLOR__ = 30
+# -------------------
 
 class Setup:
 
-    def __init__(self, **kwargs):
+    def __init__(self,
+                 labels_data_type='one_hot',
+                 limit_memory_usage=True,
+                 test_mode=False,
+                 use_cache=True,
+                 user_data_function='weight_average',
+                 subsets_relative_sizes=None):
         """
         Parameters
         ----------
         labels_data_type: str
-            default 'decimal'
+            default 'one_hot'
             Values: {decimal, one_hot}
 
         limit_memory_usage: bool
             default True
+            Removes all the datasets except the final ones,
+            i.e. training, test and validation sets.
 
         test_mode: bool
             default False
@@ -46,27 +56,57 @@ class Setup:
             default 'weight_average'
             Values: {average, weight_average, clusters}
 
+        subsets_relative_sizes: list()
+            default: None
+            Defines the relative sizes of the dataset subsets.
+            If a list of only one element is provided, it will be used first as
+            the relative size of the training to the test set, and then as
+            the relative size of the test to the validation set.
+            If a list of two elements is provided, the first will be used as
+            the relative size of the training to the test set, and the second
+            as the relative size of the test to the validation set.
+            If None, the relative sizes will be set to 2 / 3.
+
         """
 
         # Check keyword arguments
-        self.__LIMIT_MEMORY_USAGE__ = self.get_flag_value(kwargs, "limit_memory_usage", default=True)
-        self.__TEST_MODE__ = self.get_flag_value(kwargs, "test_mode", default=False)
-        self.__USE_CACHE__ = self.get_flag_value(kwargs, "use_cache", default=True)
-        self.__LABELS_DATA_TYPE__ = self.get_flag_value(kwargs, "labels_data_type", default="decimal")
+        self.__LIMIT_MEMORY_USAGE__ = limit_memory_usage
+        self.__TEST_MODE__ = test_mode
+        self.__USE_CACHE__ = use_cache
+        self.__LABELS_DATA_TYPE__ = labels_data_type
+
+        if subsets_relative_sizes is None:
+            self.subsets_len_ratio = [2 / 3, 2 / 3]
+        elif len(subsets_relative_sizes) == 1:
+            self.subsets_len_ratio = [subsets_relative_sizes[0]] * 2
+        elif len(subsets_relative_sizes) > 2:
+            raise ValueError("Expected list of at most 2 elements.")
+        else:
+            self.subsets_len_ratio = subsets_relative_sizes
+
+        # Avoid unintended usage
+        del subsets_relative_sizes
 
         if self.__TEST_MODE__:
             return
 
+        self.create_conversion_data_keys_to_list_index()
+        self.create_subsets_indices()
         self.load_color_data()
-        self.load_user_data(loading_fun=self.get_flag_value(kwargs,
-                                                            "user_data_function",
-                                                            default='weight_average'))
-        self.create_conversion_dict_data_keys_to_list_index()
-        self.create_input_data()
+        self.load_user_data(user_data_function)
+        self.create_input_data(user_data_function)
         self.load_labels_data()
 
-        input_label_couples = list(zip(self.input_data, self.labels_data))
-        rd.shuffle(input_label_couples)
+        self.dataset_size = len(self.input_data)
+        self.dataset_couples = (np.array(self.input_data), np.array(self.labels_data))
+        self.dataset = {
+            "training": (self.dataset_couples[0][self.train_indices],
+                         self.dataset_couples[1][self.train_indices]),
+            "test": (self.dataset_couples[0][self.test_indices],
+                     self.dataset_couples[1][self.test_indices]),
+            "validation": (self.dataset_couples[0][self.validation_indices],
+                           self.dataset_couples[1][self.validation_indices])
+        }
 
         if self.__LIMIT_MEMORY_USAGE__:
             del self.color_data
@@ -75,32 +115,86 @@ class Setup:
             del self.labels_data
             del self.convert_dict
 
-        self.dataset_size = len(input_label_couples)
-
-        training_set_stop = (self.dataset_size // 3) * 2
-        test_set_stop = training_set_stop + ((self.dataset_size - training_set_stop) // 3 * 2)
-
-        self.dataset = {
-            "training": np.array(input_label_couples[:training_set_stop]),
-            "test": np.array(input_label_couples[training_set_stop:test_set_stop]),
-            "validation": np.array(input_label_couples[test_set_stop:])
-        }
-
-        if self.__LIMIT_MEMORY_USAGE__:
-            del input_label_couples
-
     def cache_format_file_name(self, data_name, identifier=""):
         return "_".join([__CACHE_PREFIX__, data_name + identifier])
 
-    def can_use_cache(self, cache_name):
-        return gh.cache_file_exists(cache_name) or\
-                        self.__USE_CACHE__ is False
+    def can_load_cache(self, cache_name):
+        return self.__USE_CACHE__ is True and \
+               not self.__TEST_MODE__ and \
+               gh.cache_file_exists(cache_name)
+
+    def can_save_cache(self):
+        return self.__USE_CACHE__ is True and \
+               not self.__TEST_MODE__
 
     def get_flag_value(self, kwargs, name, default):
         if name in kwargs:
             return kwargs[name]
         else:
             return default
+
+    def create_conversion_data_keys_to_list_index(self):
+        """
+        Creates a dictionary from the user id and movie id to the convert_list index.
+
+        Usage: convert_dict[user_id][movie_id] -> [convert_list_index]
+        """
+        cache_convert_dict = self.cache_format_file_name("convert_dict")
+        cache_convert_list = self.cache_format_file_name("convert_list")
+
+        if self.can_load_cache(cache_convert_dict):
+            self.convert_dict = gh.load_object_from_cache(cache_convert_dict)
+            self.convert_list = gh.load_object_from_cache(cache_convert_list)
+
+        else:
+            ml_ratings = ml_helpers.load_ml_ratings()
+            convert_list = list()
+            convert_dict = dict()
+            convert_list_index = 0
+            for user_id in ml_ratings.keys():
+                for movie_id in ml_ratings[user_id].keys():
+                    convert_list.append((user_id, movie_id, convert_list_index))
+                    if user_id not in convert_dict.keys():
+                        convert_dict[user_id] = dict()
+                    convert_dict[user_id][movie_id] = convert_list_index
+                    convert_list_index += 1
+
+            self.convert_list = convert_list
+            self.convert_dict = convert_dict
+
+            if self.can_save_cache():
+                gh.save_object_to_cache(convert_dict, cache_convert_dict)
+                gh.save_object_to_cache(convert_list, cache_convert_list)
+
+    def create_subsets_indices(self):
+        relative_len_train = self.subsets_len_ratio[0]
+        relative_len_test = (1 - relative_len_train) * self.subsets_len_ratio[1]
+        relative_len_validation = (1 - relative_len_test) * (1 - self.subsets_len_ratio[1])
+
+        validation_len = lambda l: max(1, int(relative_len_validation * l))
+        test_len = lambda l: max(1, int(relative_len_test * l))
+        train_len = lambda l: max(1, int(relative_len_train * l))
+
+        validation_indices = list()
+        test_indices = list()
+        train_indices = list()
+
+        for user_id in self.convert_dict:
+            # indices of the convert list
+            movie_list_indices = list(self.convert_dict[user_id].values())
+            len_movie_list_indices = len(movie_list_indices)
+
+            vl = validation_len(len_movie_list_indices)
+            ts = test_len(len_movie_list_indices)
+            tr = train_len(len_movie_list_indices)
+
+            train_indices.extend(movie_list_indices[0:tr])
+            test_indices.extend(movie_list_indices[tr:(tr+ts)])
+            validation_indices.extend(movie_list_indices[(tr+ts):])
+
+        self.validation_indices = validation_indices
+        self.test_indices = test_indices
+        self.train_indices = train_indices
 
     def load_color_data(self):
         """
@@ -119,7 +213,7 @@ class Setup:
 
         """
         cache_name = self.cache_format_file_name("color_data")
-        if self.can_use_cache(cache_name):
+        if self.can_load_cache(cache_name):
             self.color_data = gh.load_object_from_cache(cache_name)
         else:
             color_dict = colors.load_as_dict_of_lists(normalize=True)
@@ -127,7 +221,24 @@ class Setup:
             self.color_data = {key: [value for color in color_dict[key]
                                      for value in color]
                                for key in color_dict_keys}
-            gh.save_object_to_cache(self.color_data, cache_name)
+
+            if self.can_save_cache():
+                gh.save_object_to_cache(self.color_data, cache_name)
+
+    def create_subset_dict(self, subset_indices):
+        subset_dict = dict()
+
+        for i in subset_indices:
+            item = self.convert_list[i]
+            user_id = item[0]
+            movie_id = item[1]
+
+            if user_id not in subset_dict.keys():
+                subset_dict[user_id] = dict()
+
+            subset_dict[user_id][movie_id] = i
+
+        return subset_dict
 
     def load_user_data_as_color_average(self, color_data=None):
         """
@@ -141,20 +252,22 @@ class Setup:
             color_data = self.color_data
 
         cache_name = self.cache_format_file_name("user_data_avg")
-        if self.can_use_cache(cache_name):
+        if self.can_load_cache(cache_name):
             self.user_data = gh.load_object_from_cache(cache_name)
         else:
-            ml_ratings = ml_helpers.load_ml_ratings()
             ml_color_data = color_data
+            train_set_dict = self.create_subset_dict(self.train_indices)
 
             user_color_data = {user_id: [ml_color_data[movie_id]
-                                         for movie_id in ml_ratings[user_id].keys()]
-                               for user_id in ml_ratings.keys()}
+                                         for movie_id in train_set_dict[user_id].keys()]
+                               for user_id in train_set_dict.keys()}
 
             self.user_data = {i: [st.mean(color_channel_list)
                                   for color_channel_list in zip(*user_color_data[i])]
                               for i in user_color_data.keys()}
-            gh.save_object_to_cache(self.user_data, cache_name)
+
+            if self.can_save_cache():
+                gh.save_object_to_cache(self.user_data, cache_name)
 
     def load_user_data_as_color_weighted_average(self, color_data=None):
         """
@@ -176,12 +289,13 @@ class Setup:
             color_data = self.color_data
 
         cache_name = self.cache_format_file_name("user_data_weight_avg")
-        if self.can_use_cache(cache_name):
+        if self.can_load_cache(cache_name):
             self.user_data = gh.load_object_from_cache(cache_name)
         else:
 
             weights = [.000001, .00001, .1892, .4142, 1.0]
             ml_ratings = ml_helpers.load_ml_ratings()
+            train_set_dict = self.create_subset_dict(self.train_indices)
             ml_color_data = color_data
 
             """
@@ -194,18 +308,20 @@ class Setup:
             """
             user_color_data = {user_id: ([[color * weights[ml_ratings[user_id][movie_id] - 1]
                                          for color in ml_color_data[movie_id]]
-                                         for movie_id in ml_ratings[user_id].keys()],
+                                         for movie_id in train_set_dict[user_id].keys()],
                                          [weights[ml_ratings[user_id][movie_id] - 1]
-                                          for movie_id in ml_ratings[user_id].keys()])
-                               for user_id in ml_ratings.keys()}
+                                          for movie_id in train_set_dict[user_id].keys()])
+                               for user_id in train_set_dict.keys()}
 
 
             self.user_data = {i: [sum(color_channel_list) / sum(user_color_data[i][1])
                                   for color_channel_list in zip(*user_color_data[i][0])]
                               for i in user_color_data.keys()}
-            gh.save_object_to_cache(self.user_data, cache_name)
 
-    def load_user_data_as_color_clusters(self, color_data=None):
+            if self.can_save_cache():
+                gh.save_object_to_cache(self.user_data, cache_name)
+
+    def load_user_data_as_color_clusters(self, color_data=None, min_rate=3, clusters_number=6):
         """
         Loads a dict of user data as color cluster centroids.
 
@@ -220,7 +336,7 @@ class Setup:
 
         """
         cache_name = self.cache_format_file_name("user_data_clusters")
-        if self.can_use_cache(cache_name):
+        if self.can_load_cache(cache_name):
             self.user_data = gh.load_object_from_cache(cache_name)
         else:
 
@@ -228,15 +344,14 @@ class Setup:
                 color_data = self.color_data
 
             ml_ratings = ml_helpers.load_ml_ratings()
-            min_rate = 3
-            clusters_number = 6
+            train_set_dict = self.create_subset_dict(self.train_indices)
 
             kmeans = KMeans(n_clusters=clusters_number)
 
             user_data = dict()
-            for user_id in ml_ratings.keys():
+            for user_id in train_set_dict.keys():
                 user_movie_list = list()
-                for movie_id in ml_ratings[user_id].keys():
+                for movie_id in train_set_dict[user_id].keys():
                     if ml_ratings[user_id][movie_id] >= min_rate:
                         user_movie_list.extend(Setup.splitted_list(color_data[movie_id], 3))
 
@@ -250,9 +365,11 @@ class Setup:
                     user_data[user_id] = [rd.random() for i in range(3*__PALETTE_SIZE__)]
 
             self.user_data = user_data
-            gh.save_object_to_cache(self.user_data, cache_name)
 
-    def load_user_data(self, loading_fun='weight_average'):
+            if self.can_save_cache():
+              gh.save_object_to_cache(self.user_data, cache_name)
+
+    def load_user_data(self, loading_fun='clusters'):
         """
 
         Parameters
@@ -273,39 +390,20 @@ class Setup:
                              "{average, weight_average, clusters}," +
                              " found {:s} instead.".format(loading_fun))
 
-
-    def create_conversion_dict_data_keys_to_list_index(self):
-        """
-        Creates a dictionary from the user id and movie id to the input data index.
-
-        Usage: convert_dict[user_id][movie_id] -> [train_index]
-        """
-        cache_name = self.cache_format_file_name("convert_dict")
-        if self.can_use_cache(cache_name):
-            self.convert_dict = gh.load_object_from_cache(cache_name)
-        else:
-            ml_ratings = ml_helpers.load_ml_ratings()
-            train_index = 0
-            convert_dict = dict()
-            for user_id in ml_ratings.keys():
-                convert_dict[user_id] = dict()
-                for movie_id in ml_ratings[user_id].keys():
-                    convert_dict[user_id][movie_id] = [train_index]
-                    train_index += 1
-            self.convert_dict = convert_dict
-            gh.save_object_to_cache(convert_dict, cache_name)
-
-    def create_input_data(self):
-        cache_name = self.cache_format_file_name("input_data")
-        if self.can_use_cache(cache_name):
+    def create_input_data(self, loading_fun='clusters'):
+        cache_name = self.cache_format_file_name("input_data_" + loading_fun)
+        if self.can_load_cache(cache_name):
             self.input_data = gh.load_object_from_cache(cache_name)
         else:
             input_data = list()
-            for user_id in self.convert_dict.keys():
-                for movie_id in self.convert_dict[user_id].keys():
-                    input_data.append(np.array(self.user_data[user_id] + self.color_data[movie_id]))
+            for item in self.convert_list:
+                user_id = item[0]
+                movie_id = item[1]
+                input_data.append(np.array(self.user_data[user_id] + self.color_data[movie_id]))
             self.input_data = input_data
-            gh.save_object_to_cache(input_data, cache_name)
+
+            if self.can_save_cache():
+                gh.save_object_to_cache(input_data, cache_name)
 
     def load_labels_data(self):
         """
@@ -315,25 +413,30 @@ class Setup:
         E.g. rating 5 becomes [1] with decimal.
         """
         cache_name = self.cache_format_file_name("labels_data_", self.__LABELS_DATA_TYPE__)
-        if self.can_use_cache(cache_name):
+        if self.can_load_cache(cache_name):
             self.labels_data = gh.load_object_from_cache(cache_name)
         else:
             labels_data = list()
             one_hot_list_default = [0] * __ratings_scale__
             ml_ratings = ml_helpers.load_ml_ratings()
-            for user_id in ml_ratings.keys():
-                for movie_id in ml_ratings[user_id].keys():
-                    rating = ml_ratings[user_id][movie_id]
-                    rating_as_one_hot = one_hot_list_default[:]
-                    rating_as_one_hot[rating - 1] = 1
-                    rating_as_decimal = [rating / __ratings_scale__]
-                    if self.__LABELS_DATA_TYPE__ is "decimal":
-                        labels_data.append(np.array(rating_as_decimal))
-                    else:
-                        labels_data.append(np.array(rating_as_one_hot))
+
+            for item in self.convert_list:
+                user_id = item[0]
+                movie_id = item[1]
+
+                rating = ml_ratings[user_id][movie_id]
+                rating_as_one_hot = one_hot_list_default[:]
+                rating_as_one_hot[rating - 1] = 1
+                rating_as_decimal = [rating / __ratings_scale__]
+                if self.__LABELS_DATA_TYPE__ is "decimal":
+                    labels_data.append(np.array(rating_as_decimal))
+                else:
+                    labels_data.append(np.array(rating_as_one_hot))
 
             self.labels_data = labels_data
-            gh.save_object_to_cache(labels_data, cache_name)
+
+            if self.can_save_cache():
+                gh.save_object_to_cache(labels_data, cache_name)
 
     @staticmethod
     def splitted_list(my_list, n=3) -> list:
@@ -358,40 +461,67 @@ class Setup:
             a list of xs, a list of ys
         """
 
-        index_list = np.random.choice(range(len(self.dataset["training"])), n)
-        couples = self.dataset["training"][index_list].transpose()
-
-        # # --- Debug ---
-        # print(couples.shape)
-        # print(couples[0][0])
-        # print(couples[1][0])
+        # index_list = np.random.choice(range(len(self.dataset["training"])), n)
+        index_list = np.random.choice(self.train_indices, n)
+        inputs = self.dataset_couples[0][index_list]
+        labels = self.dataset_couples[1][index_list]
 
         if use_permutations:
-            inputs = couples[0]
-            labels = couples[1]
 
-            perm_input = list()
-            perm_label = list()
+            half_len = len(inputs[0]) // 2
 
-            for i, item in enumerate(inputs):
-                half_item_len = len(item) // 2
-                perm_label.extend([labels[i]] * limit_permutations)
+            # ----- Inputs -----
+            # Each item of the original input is subdivided in the user and
+            # color part.
+            # Both are then reshaped to match the RGB structure (half // 3, 3)
+            # and  then permutated preserving the RGB ordering.
+            # The two are then restored to the previous shape and merged.
+            # The merged array is reshaped as the original item and added
+            # in the form of an np array.
+            #
+            # For each item for each permutation in the limit of permutations.
+            perm_input = [np.array(
+                [np.random.permutation(item[:half_len].reshape((half_len // 3, 3)))
+                     .reshape((1, half_len))[0],
+                 np.random.permutation(item[half_len:].reshape((half_len // 3, 3)))
+                     .reshape((1, half_len))[0]])
+                                  .reshape((1, half_len*2))[0]
+                              for i, item in enumerate(inputs)
+                              for _ in range(limit_permutations)]
+            # ------------------
 
-                user_data = item[:half_item_len]
-                color_data = item[half_item_len:]
+            # --- Labels ---
+            perm_label = [labels[i]
+                          for i, item in enumerate(labels)
+                          for _ in range(limit_permutations)]
+            # --------------
 
-                user_data.reshape((half_item_len // 3, 3))
-                color_data.reshape((half_item_len // 3, 3))
+            # Previous code without list comprehension.
+            #
+            # for i, item in enumerate(labels):
+            #     perm_label.extend([labels[i]] * limit_permutations)
+            #
+            # for i, item in enumerate(inputs):
+            #     user_data = item[:half_len].reshape((half_len // 3, 3))
+            #     color_data = item[half_len:].reshape((half_len // 3, 3))
+            #
+            #     # Initial preparation for list comprehension
+            #     #
+            #     # perm_input += [np.array([np.random.permutation(user_data).reshape((1, half_len))[0],
+            #     #                         np.random.permutation(color_data).reshape((1, half_len))[0]])
+            #     #                   .reshape((1, half_len*2))[0]
+            #     #               for j in range(limit_permutations)]
+            #
+            #     for j in range(limit_permutations):
+            #         perm_user = np.random.permutation(user_data).reshape((1, half_len))[0]
+            #         perm_color = np.random.permutation(color_data).reshape((1, half_len))[0]
+            #         perm_item = np.array([perm_user, perm_color]).reshape((1, half_len*2))[0]
+            #         perm_input.append(perm_item)
 
-                for j in range(limit_permutations):
-                    perm_user = np.random.permutation(user_data).reshape((1, half_item_len))[0]
-                    perm_color = np.random.permutation(color_data).reshape((1, half_item_len))[0]
-                    perm_item = np.array([perm_user, perm_color]).reshape((1, half_item_len*2))[0]
-                    perm_input.append(perm_item)
-            return (perm_input, perm_label)
+            return (list(perm_input), list(perm_label))
 
         else:
-            return (list(couples[0]), list(couples[1]))
+            return (list(inputs), list(labels))
 
 
 

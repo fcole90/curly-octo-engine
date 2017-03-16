@@ -2,7 +2,6 @@ import numpy as np
 import tensorflow as tf
 
 import visual_data_simulation.simulation_setup as sim_setup
-import tools.generic_helpers as gh_tools
 
 """
 Simulation that uses only the visual part of the data.
@@ -39,17 +38,16 @@ s = Settings()
 
 s.use_cache = True
 s.user_data_representation = "clusters"
+s.use_permutations = True
+s.limit_permutations = 30
 s.labels_data_type = __ONE_HOT_DATA__
 __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
-s.batch_size = 2000
-s.learning_rate = 0.005
-# Using combined loss, alpha is the percentage of rmse_loss, the rest is for cross entropy
-s.alpha = 1.2
-# Using combined loss, beta is the percentage of cross entropy, if None becomes (1 - alpha).
-s.beta = 0.8
-s.optimizer = tf.train.GradientDescentOptimizer
+s.batch_size = 256
+s.learning_rate = 0.001
 s.iterations = int(10.0e+6)
+s.hidden_layers = 0
+s.optimizer = tf.train.AdamOptimizer(s.learning_rate)
 
 # -------------------
 
@@ -58,30 +56,32 @@ setup = sim_setup.Setup(user_data_function=s.user_data_representation,
                         labels_data_type=s.labels_data_type)
 
 # None means that it can have any length
-x = tf.placeholder(tf.float32, [None, __INPUT_SIZE__])
-x2 = tf.placeholder(tf.float32, [None, __LABELS_SIZE__])
-
+x = tf.placeholder(tf.float32, [None, __INPUT_SIZE__]) - 0.5
+layers = list()
 
 # --- Neuron functions ---
 def first_layer(x):
-    W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__]))
-    b = tf.Variable(tf.constant([0.01] * __LABELS_SIZE__))
-    return tf.add(tf.matmul(x, W), b)
+    W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
+    b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
+    return dict(W=W, a=tf.nn.relu(tf.add(tf.matmul(x, W), b)))
 
 
-def inner_layer(x):
-    W2 = tf.Variable(tf.random_normal([__LABELS_SIZE__, __LABELS_SIZE__]))
-    b2 = tf.Variable(tf.constant([0.01] * __LABELS_SIZE__))
-    return tf.add(tf.matmul(x, W2), b2)
+def hidden_layer(x):
+    W = tf.Variable(tf.random_normal([__LABELS_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
+    b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
+    return dict(W=W, a=tf.nn.relu(tf.add(tf.matmul(x, W), b)))
+
 # ------------
 
 # --- Network connections ---
+layers.append(first_layer(x))
 
-y1 = first_layer(x)
-y2 = inner_layer(y1)
+for i in range(s.hidden_layers):
+    layers.append(hidden_layer(layers[i]["a"]))
 
-# Set one function as output function.
-y = y1
+y = layers[-1]["a"]
+
+
 # -------------
 
 # --- Training ---
@@ -115,8 +115,12 @@ def tf_max_amplifier(x, amp=10, axis=None, transpose=False):
     pos_x = tf.add(x, tf.abs(tf.reduce_min(x)))
     amplified_x = tf.pow(tf.divide(tf.transpose(pos_x),
                                    tf.add(tf.reduce_max(pos_x, axis=axis),
-                                          0.1e-100))
+                                          0.1e-20))
                          , amp)
+
+    # amplified_x = tf.cond(tf.is_nan(amplified_x),
+    #                         lambda: tf.zeros_like(amplified_x),
+    #                       lambda: amplified_x)
 
     if transpose:
         return amplified_x
@@ -135,31 +139,64 @@ def tf_differentiable_argmax(x, power=5, decoder=None, axis=None):
 # --- Loss functions ---
 def cross_entropy(y, y_):
     return tf.reduce_mean(
-        tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y1))
+        tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y), name="cross_entropy")
 
 def root_mean_squared_error(y, y_):
     return tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(y, y_))))
 
-def combine(loss1, loss2, alpha, beta=None):
-    if not beta:
-        beta = 1.0 - alpha
-    return tf.add(tf.multiply(loss1, alpha),
-                  tf.multiply(loss2, beta))
+def error_suggestion_yesno(y, y_, val=3.00000000000000001):
+    correct_yesno_prediction = tf.maximum(tf.sign(tf.multiply(tf.subtract(y, val),
+                                                     tf.subtract(y_, val))),
+                                          0.0)
+    return tf.subtract(1.0, tf.reduce_mean(correct_yesno_prediction))
+
+def SVM(y, y_, delta=1.0):
+    return tf.reduce_mean(tf.square(tf.maximum(0.0, tf.add(tf.subtract(y, y_), delta))), name="SVM")
+
+def regularization(network):
+    loss = 0.0
+    for layer in network:
+        loss = tf.add(loss, tf.nn.l2_loss(layer['W']))
+    return loss
 
 # ----------------------
 
+# --- Loss ---
 if s.labels_data_type is __ONE_HOT_DATA__:
-    cross_entropy_loss = cross_entropy(y, y_)
-    rmse_loss = root_mean_squared_error(tf_differentiable_argmax(y1, axis=1, power=100),
-                                        tf_differentiable_argmax(y_, axis=1, power=100))
+    pseudo_rate_y = tf_differentiable_argmax(y, axis=1, power=100)
+    pseudo_rate_y_ = tf_differentiable_argmax(y_, axis=1, power=100)
 
-    combo = combine(rmse_loss, cross_entropy_loss, s.alpha, s.beta)
-    s.minimize_loss = "combined"
-    train_step = tf.train.GradientDescentOptimizer(s.learning_rate).minimize(combo)
+    cross_entropy_loss = cross_entropy(y, y_)
+    yesno_loss = error_suggestion_yesno(pseudo_rate_y, pseudo_rate_y_)
+    rmse_loss = root_mean_squared_error(pseudo_rate_y, pseudo_rate_y_)
+    # rmse_loss = SVM(pseudo_rate_y, pseudo_rate_y_)
+    weight_loss = regularization(network=layers)
+
+
+    s.rmse_loss_perc = 1.2
+    s.cross_entropy_loss_perc = 0.8 * 4.0
+    s.yesno_loss_perc = 0.6 * 10.0
+
+    s.regularization = 0.001 / (s.hidden_layers + 1) ** 2
+
+    # s.loss = tf.add(tf.add(tf.multiply(s.rmse_loss_perc, rmse_loss),
+    #                        tf.multiply(s.cross_entropy_loss_perc, cross_entropy_loss)),
+    #                 tf.add(tf.multiply(s.regularization, weight_loss),
+    #                        tf.multiply(s.yesno_loss_perc, yesno_loss)),
+    #                 name="all_combined")
+
+    s.loss = 1.0
+    s.loss = tf.multiply(s.loss, tf.multiply(s.rmse_loss_perc, rmse_loss))
+    s.loss = tf.multiply(s.loss, tf.multiply(s.cross_entropy_loss_perc,
+                                             cross_entropy_loss))
+    s.loss = tf.multiply(s.loss, tf.multiply(s.yesno_loss_perc, yesno_loss))
+    s.loss = tf.add(s.loss, tf.multiply(s.regularization, weight_loss))
+
+    train_step = s.optimizer.minimize(s.loss)
 
 else:
-    rmse_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y2, y_))), tf.float32)
-    train_step = s.optimizer(s.learning_rate).minimize(rmse_loss)
+    rmse_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y, y_))), tf.float32)
+    train_step = s.optimizer.minimize(rmse_loss)
 
 # ----------------
 
@@ -192,8 +229,8 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 yesno_accuracy = tf.reduce_mean(tf.cast(correct_yesno_prediction, tf.float32))
 
 # Feed dictionary for the validation set
-valid_set_feed_dict = {x: sim_setup.Setup.get_only_part(0, setup.dataset['validation']),
-                       y_: sim_setup.Setup.get_only_part(1, setup.dataset['validation'])}
+valid_set_feed_dict = {x: setup.dataset['validation'][0],
+                       y_: setup.dataset['validation'][1]}
 # --------------------------
 
 
@@ -240,9 +277,11 @@ with tf.Session().as_default() as sess:
     for i in range(s.iterations):
 
         # Run the experiment on a random batch of data points
-        batch_xs, batch_ys = setup.next_batch(s.batch_size, use_permutations=True)
+        batch_xs, batch_ys = setup.next_batch(s.batch_size,
+                                              use_permutations=s.use_permutations,
+                                              limit_permutations=s.limit_permutations)
         train_dict = {x: batch_xs, y_: batch_ys}
-        sess.run(train_step, feed_dict = train_dict)
+        sess.run([train_step], feed_dict = train_dict)
 
         # # Update percentage
         # if i%20 == 0 or i == iterations - 1:
@@ -257,11 +296,14 @@ with tf.Session().as_default() as sess:
             data["rmse"]["current"]["val"] = sess.run(rmse_error, feed_dict=valid_set_feed_dict)
             data["d_rmse"]["current"]["val"] = sess.run(d_rmse_error, feed_dict=valid_set_feed_dict)
 
+            current_loss = sess.run(s.loss, feed_dict = train_dict)
+
             # Display current values
             print("[{:10d}]".format(i), "Acc:", "{:2.4f}".format(data["acc"]["current"]["val"]), end=' | ')
             print("Acc s/ns:", "{:2.4f}".format(data["yesno_acc"]["current"]["val"]), end=' | ')
             print("d_RMSE: {:2.4f}".format(data["d_rmse"]["current"]["val"]), end=' | ')
-            print("RMSE:", "{:2.4f}".format(data["rmse"]["current"]["val"]), end=' |   | ')
+            print("RMSE:", "{:2.4f}".format(data["rmse"]["current"]["val"]), end=' | ')
+            print("Loss:", "{:07.4f}".format(current_loss), end=' |   | ')
 
             # I like having a lower RMSE!
             is_good = " GOOD" if data["rmse"]["current"]["val"] < data["rmse"]["min"]["val"] else ""

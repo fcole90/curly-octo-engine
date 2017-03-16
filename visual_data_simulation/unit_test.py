@@ -13,7 +13,7 @@ __MAX_CHANNEL_VALUE__ = 255
 __MIN_CHANNEL_VALUE_NORMALIZED__ = 0.0
 __MAX_CHANNEL_VALUE_NORMALIZED__ = 1.0
 
-__testing_sample_size__ = 20
+__testing_sample_size__ = 5
 
 
 class MyTestCase(unittest.TestCase):
@@ -65,6 +65,8 @@ class MyTestCase(unittest.TestCase):
             self.assertListEqual(flat_original, flattened[i])
 
     def test_user_data_as_color_average(self):
+        self.dataset.create_conversion_data_keys_to_list_index()
+        self.dataset.create_subsets_indices()
         self.dataset.load_color_data()
         self.dataset.load_user_data_as_color_average()
         user_data = self.dataset.user_data
@@ -82,6 +84,8 @@ class MyTestCase(unittest.TestCase):
                     self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
 
     def test_user_data_as_color_weighted_average(self):
+        self.dataset.create_conversion_data_keys_to_list_index()
+        self.dataset.create_subsets_indices()
         self.dataset.load_color_data()
         self.dataset.load_user_data_as_color_weighted_average()
         user_data = self.dataset.user_data
@@ -99,6 +103,8 @@ class MyTestCase(unittest.TestCase):
                 self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
 
     def test_user_data_as_color_clusters(self):
+        self.dataset.create_conversion_data_keys_to_list_index()
+        self.dataset.create_subsets_indices()
         self.dataset.load_color_data()
         self.dataset.load_user_data_as_color_clusters()
         user_data = self.dataset.user_data
@@ -116,23 +122,31 @@ class MyTestCase(unittest.TestCase):
                 self.assertGreaterEqual(value, __MIN_CHANNEL_VALUE_NORMALIZED__, msg=(value, i))
 
     def test_dictionary_conversion(self):
-        dataset = setup.Setup(limit_memory_usage=False)
+        dataset = setup.Setup(limit_memory_usage=False, use_cache=False)
 
         input_data = dataset.input_data
         color_data = dataset.color_data
         user_data = dataset.user_data
         convert_dict = dataset.convert_dict
-
+        convert_list = dataset.convert_list
 
         # Take a random list of keys
         index_list = rd.sample(list(user_data.keys()), __testing_sample_size__)
 
+        previous_index = -1
         for user_id in index_list:
             for movie_id in convert_dict[user_id].keys():
-                input_data_entry_index = convert_dict[user_id][movie_id][0]
-                input_data_entry = input_data[input_data_entry_index]
+                data_index = convert_dict[user_id][movie_id]
+                input_data_entry = input_data[data_index]
                 input_data_check = user_data[user_id] + color_data[movie_id]
+
+                self.assertEqual(user_id, convert_list[data_index][0])
+                self.assertEqual(movie_id, convert_list[data_index][1])
+                self.assertEqual(data_index, convert_list[data_index][2])
+
                 self.assertListEqual(list(input_data_entry), input_data_check)
+                self.assertListEqual(list(dataset.dataset_couples[1][data_index]),
+                                     list(dataset.labels_data[data_index]))
 
     def test_train_data(self):
         dataset = setup.Setup(limit_memory_usage=False)
@@ -149,9 +163,31 @@ class MyTestCase(unittest.TestCase):
                 rating = ml_ratings[user_id][movie_id]
                 one_hot_check = [0]*5
                 one_hot_check[rating - 1] = 1
-                train_data_index = convert_dict[user_id][movie_id][0]
+                train_data_index = convert_dict[user_id][movie_id]
                 one_hot_train_data_rating = labels_data[train_data_index]
                 self.assertListEqual(one_hot_check, list(one_hot_train_data_rating))
+
+    def test_subsets(self):
+        dataset = setup.Setup(use_cache=False, user_data_function="average")
+        len_tr = len(dataset.dataset['training'][0])
+        len_ts = len(dataset.dataset['test'][0])
+        len_vl = len(dataset.dataset['validation'][0])
+
+        tot_len = len_tr + len_ts + len_vl
+        delta = tot_len / 100 * 5
+
+        # print(len_tr)
+        # print(len_ts)
+        # print(len_vl)
+
+        ratio_1 = dataset.subsets_len_ratio[0]
+        ratio_2 = dataset.subsets_len_ratio[1]
+
+        self.assertAlmostEqual(len_tr, ratio_1 * tot_len, delta=delta)
+        self.assertAlmostEqual((len_ts + len_vl), (1 - ratio_1) * tot_len, delta=delta)
+        self.assertAlmostEqual(len_ts, ratio_2 * (len_ts + len_vl), delta=delta)
+        self.assertAlmostEqual(len_vl, (1 - ratio_2) * (len_ts + len_vl), delta=delta)
+
 
     def test_next_batch(self):
         dataset = setup.Setup()
