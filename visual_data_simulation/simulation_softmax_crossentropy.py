@@ -37,39 +37,43 @@ __INPUT_SIZE__ = __USER_INPUT_SIZE__ + __COLOR_INPUT_SIZE__
 s = Settings()
 
 s.use_cache = True
+s.allow_negative_data = True
 s.user_data_representation = "clusters"
+s.movie_amount_limit = 0 # set to 0 for no limit
 s.use_permutations = True
 s.limit_permutations = 30
-s.labels_data_type = __ONE_HOT_DATA__
+s.labels_data_type = __DECIMAL_DATA__
 __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
 s.batch_size = 256
-s.learning_rate = 0.001
+s.learning_rate = 0.00001
 s.iterations = int(10.0e+6)
 s.hidden_layers = 0
-s.optimizer = tf.train.AdamOptimizer(s.learning_rate)
+s.optimizer = tf.train.AdamOptimizer()
 
 # -------------------
 
 setup = sim_setup.Setup(user_data_function=s.user_data_representation,
                         use_cache=s.use_cache,
-                        labels_data_type=s.labels_data_type)
+                        labels_data_type=s.labels_data_type,
+                        allow_negative_data=s.allow_negative_data,
+                        movie_amount_limit=s.movie_amount_limit)
 
 # None means that it can have any length
-x = tf.placeholder(tf.float32, [None, __INPUT_SIZE__]) - 0.5
+x = tf.placeholder(tf.float32, [None, __INPUT_SIZE__])
 layers = list()
 
 # --- Neuron functions ---
 def first_layer(x):
     W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
     b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
-    return dict(W=W, a=tf.nn.relu(tf.add(tf.matmul(x, W), b)))
+    return dict(W=W, a=tf.nn.sigmoid(tf.add(tf.matmul(x, W), b)))
 
 
 def hidden_layer(x):
     W = tf.Variable(tf.random_normal([__LABELS_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
     b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
-    return dict(W=W, a=tf.nn.relu(tf.add(tf.matmul(x, W), b)))
+    return dict(W=W, a=tf.nn.sigmoid(tf.add(tf.matmul(x, W), b)))
 
 # ------------
 
@@ -150,9 +154,6 @@ def error_suggestion_yesno(y, y_, val=3.00000000000000001):
                                           0.0)
     return tf.subtract(1.0, tf.reduce_mean(correct_yesno_prediction))
 
-def SVM(y, y_, delta=1.0):
-    return tf.reduce_mean(tf.square(tf.maximum(0.0, tf.add(tf.subtract(y, y_), delta))), name="SVM")
-
 def regularization(network):
     loss = 0.0
     for layer in network:
@@ -163,40 +164,36 @@ def regularization(network):
 
 # --- Loss ---
 if s.labels_data_type is __ONE_HOT_DATA__:
-    pseudo_rate_y = tf_differentiable_argmax(y, axis=1, power=100)
-    pseudo_rate_y_ = tf_differentiable_argmax(y_, axis=1, power=100)
+    pseudo_rate_y = tf_differentiable_argmax(y, axis=1, power=2)
+    pseudo_rate_y_ = tf_differentiable_argmax(y_, axis=1, power=2)
 
     cross_entropy_loss = cross_entropy(y, y_)
-    yesno_loss = error_suggestion_yesno(pseudo_rate_y, pseudo_rate_y_)
-    rmse_loss = root_mean_squared_error(pseudo_rate_y, pseudo_rate_y_)
-    # rmse_loss = SVM(pseudo_rate_y, pseudo_rate_y_)
+    l2_yesno_loss = tf.nn.l2_loss(error_suggestion_yesno(pseudo_rate_y, pseudo_rate_y_) * 10)
+    l2_loss = tf.nn.l2_loss(tf.subtract(pseudo_rate_y, pseudo_rate_y_))
     weight_loss = regularization(network=layers)
 
 
-    s.rmse_loss_perc = 1.2
-    s.cross_entropy_loss_perc = 0.8 * 4.0
-    s.yesno_loss_perc = 0.6 * 10.0
+    s.l2_loss_perc = 0.07
+    s.cross_entropy_loss_perc = 1.0 * 4.0
+    s.yesno_loss_perc = 0.01
 
-    s.regularization = 0.001 / (s.hidden_layers + 1) ** 2
-
-    # s.loss = tf.add(tf.add(tf.multiply(s.rmse_loss_perc, rmse_loss),
-    #                        tf.multiply(s.cross_entropy_loss_perc, cross_entropy_loss)),
-    #                 tf.add(tf.multiply(s.regularization, weight_loss),
-    #                        tf.multiply(s.yesno_loss_perc, yesno_loss)),
-    #                 name="all_combined")
+    s.regularization = 0.1 / (s.hidden_layers + 1) ** 2
 
     s.loss = 1.0
-    s.loss = tf.multiply(s.loss, tf.multiply(s.rmse_loss_perc, rmse_loss))
-    s.loss = tf.multiply(s.loss, tf.multiply(s.cross_entropy_loss_perc,
-                                             cross_entropy_loss))
-    s.loss = tf.multiply(s.loss, tf.multiply(s.yesno_loss_perc, yesno_loss))
+    s.loss = tf.multiply(s.loss, tf.multiply(s.l2_loss_perc, l2_loss))
+    s.loss = tf.multiply(s.loss, tf.multiply(s.cross_entropy_loss_perc, cross_entropy_loss))
+    # s.loss = tf.multiply(s.loss, tf.multiply(s.yesno_loss_perc, l2_yesno_loss))
     s.loss = tf.add(s.loss, tf.multiply(s.regularization, weight_loss))
 
     train_step = s.optimizer.minimize(s.loss)
 
 else:
-    rmse_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y, y_))), tf.float32)
-    train_step = s.optimizer.minimize(rmse_loss)
+    l2_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y, y_))), tf.float32)
+
+    s.loss = tf.nn.l2_loss(tf.subtract(y, y_))
+    # s.loss = s.loss * tf.nn.l2_loss(error_suggestion_yesno(y, y_, 0.6)*10)
+    s.loss = tf.add(s.loss, regularization(network=layers))
+    train_step = s.optimizer.minimize(s.loss)
 
 # ----------------
 
@@ -229,8 +226,8 @@ accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 yesno_accuracy = tf.reduce_mean(tf.cast(correct_yesno_prediction, tf.float32))
 
 # Feed dictionary for the validation set
-valid_set_feed_dict = {x: setup.dataset['validation'][0],
-                       y_: setup.dataset['validation'][1]}
+valid_set_feed_dict = {x: list(setup.dataset['validation'][0]),
+                       y_: list(setup.dataset['validation'][1])}
 # --------------------------
 
 

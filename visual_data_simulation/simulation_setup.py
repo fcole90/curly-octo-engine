@@ -29,9 +29,11 @@ class Setup:
     def __init__(self,
                  labels_data_type='one_hot',
                  limit_memory_usage=True,
+                 movie_amount_limit=0,
                  test_mode=False,
                  use_cache=True,
                  user_data_function='weight_average',
+                 allow_negative_data=True,
                  subsets_relative_sizes=None):
         """
         Parameters
@@ -45,6 +47,11 @@ class Setup:
             Removes all the datasets except the final ones,
             i.e. training, test and validation sets.
 
+        movie_amount_limit: int
+            default 0
+            Disabled by default, if enabled, limits the amount of movies in the
+            dataset.
+
         test_mode: bool
             default False
             Doesn't load data automatically.
@@ -55,6 +62,10 @@ class Setup:
         user_data_function: str
             default 'weight_average'
             Values: {average, weight_average, clusters}
+
+        allow_negative_data: bool
+            default True
+            If enabled, the user data of poorly rated movies may become negative.
 
         subsets_relative_sizes: list()
             default: None
@@ -74,6 +85,7 @@ class Setup:
         self.__TEST_MODE__ = test_mode
         self.__USE_CACHE__ = use_cache
         self.__LABELS_DATA_TYPE__ = labels_data_type
+        self.__ALLOW_NEGATIVE_DATA = allow_negative_data
 
         if subsets_relative_sizes is None:
             self.subsets_len_ratio = [2 / 3, 2 / 3]
@@ -99,6 +111,10 @@ class Setup:
 
         self.dataset_size = len(self.input_data)
         self.dataset_couples = (np.array(self.input_data), np.array(self.labels_data))
+
+        if movie_amount_limit > 0:
+            self.limit_movies(movie_amount_limit)
+
         self.dataset = {
             "training": (self.dataset_couples[0][self.train_indices],
                          self.dataset_couples[1][self.train_indices]),
@@ -141,30 +157,41 @@ class Setup:
         """
         cache_convert_dict = self.cache_format_file_name("convert_dict")
         cache_convert_list = self.cache_format_file_name("convert_list")
+        cache_movie_indices = self.cache_format_file_name("movie_indices")
 
         if self.can_load_cache(cache_convert_dict):
             self.convert_dict = gh.load_object_from_cache(cache_convert_dict)
             self.convert_list = gh.load_object_from_cache(cache_convert_list)
+            self.movie_indices = gh.load_object_from_cache(cache_movie_indices)
 
         else:
             ml_ratings = ml_helpers.load_ml_ratings()
             convert_list = list()
             convert_dict = dict()
+            movie_indices = dict()
             convert_list_index = 0
             for user_id in ml_ratings.keys():
                 for movie_id in ml_ratings[user_id].keys():
                     convert_list.append((user_id, movie_id, convert_list_index))
+
                     if user_id not in convert_dict.keys():
                         convert_dict[user_id] = dict()
                     convert_dict[user_id][movie_id] = convert_list_index
+
+                    if movie_id not in movie_indices.keys():
+                        movie_indices[movie_id] = list()
+                    movie_indices[movie_id].append(convert_list_index)
+
                     convert_list_index += 1
 
             self.convert_list = convert_list
             self.convert_dict = convert_dict
+            self.movie_indices = movie_indices
 
             if self.can_save_cache():
                 gh.save_object_to_cache(convert_dict, cache_convert_dict)
                 gh.save_object_to_cache(convert_list, cache_convert_list)
+                gh.save_object_to_cache(movie_indices, cache_movie_indices)
 
     def create_subsets_indices(self):
         relative_len_train = self.subsets_len_ratio[0]
@@ -240,7 +267,7 @@ class Setup:
 
         return subset_dict
 
-    def load_user_data_as_color_average(self, color_data=None):
+    def load_user_data_as_color_average(self, color_data=None, min_rate=3):
         """
         Loads a dict of user data as averaged colors.
 
@@ -251,20 +278,34 @@ class Setup:
         if not color_data:
             color_data = self.color_data
 
-        cache_name = self.cache_format_file_name("user_data_avg")
+        suffix = "_allow_negative" if self.__ALLOW_NEGATIVE_DATA else ""
+        cache_name = self.cache_format_file_name("user_data_average" + suffix)
         if self.can_load_cache(cache_name):
             self.user_data = gh.load_object_from_cache(cache_name)
         else:
             ml_color_data = color_data
+            ml_ratings = ml_helpers.load_ml_ratings()
             train_set_dict = self.create_subset_dict(self.train_indices)
 
-            user_color_data = {user_id: [ml_color_data[movie_id]
-                                         for movie_id in train_set_dict[user_id].keys()]
-                               for user_id in train_set_dict.keys()}
+            user_data = dict()
 
-            self.user_data = {i: [st.mean(color_channel_list)
-                                  for color_channel_list in zip(*user_color_data[i])]
-                              for i in user_color_data.keys()}
+            for user_id in train_set_dict.keys():
+                user_color_data = list()
+
+                for movie_id in train_set_dict[user_id].keys():
+                    if ml_ratings[user_id][movie_id] >= min_rate:
+                        user_color_data.append(ml_color_data[movie_id])
+                    elif self.__ALLOW_NEGATIVE_DATA:
+                        user_color_data.append([- color for color in ml_color_data[movie_id]])
+
+                if user_color_data:
+                    user_data[user_id] = [st.mean(color_channel_list)
+                     for color_channel_list in zip(*user_color_data)]
+                else:
+                    # Use random data when no data is available
+                    user_data[user_id] = [rd.random() for i in range(3*__PALETTE_SIZE__)]
+
+            self.user_data = user_data
 
             if self.can_save_cache():
                 gh.save_object_to_cache(self.user_data, cache_name)
@@ -288,12 +329,16 @@ class Setup:
         if not color_data:
             color_data = self.color_data
 
-        cache_name = self.cache_format_file_name("user_data_weight_avg")
+        suffix = "_allow_negative" if self.__ALLOW_NEGATIVE_DATA else ""
+        cache_name = self.cache_format_file_name("user_data_weight_avg" + suffix)
         if self.can_load_cache(cache_name):
             self.user_data = gh.load_object_from_cache(cache_name)
         else:
 
-            weights = [.000001, .00001, .1892, .4142, 1.0]
+            if self.__ALLOW_NEGATIVE_DATA:
+                weights = [-1.0, -.4142, .1892, .4142, 1.0]
+            else:
+                weights = [.000001, .00001, .1892, .4142, 1.0]
             ml_ratings = ml_helpers.load_ml_ratings()
             train_set_dict = self.create_subset_dict(self.train_indices)
             ml_color_data = color_data
@@ -335,7 +380,8 @@ class Setup:
         represented on the same space.
 
         """
-        cache_name = self.cache_format_file_name("user_data_clusters")
+        suffix = "_allow_negative" if self.__ALLOW_NEGATIVE_DATA else ""
+        cache_name = self.cache_format_file_name("user_data_clusters" + suffix)
         if self.can_load_cache(cache_name):
             self.user_data = gh.load_object_from_cache(cache_name)
         else:
@@ -354,6 +400,9 @@ class Setup:
                 for movie_id in train_set_dict[user_id].keys():
                     if ml_ratings[user_id][movie_id] >= min_rate:
                         user_movie_list.extend(Setup.splitted_list(color_data[movie_id], 3))
+                    elif self.__ALLOW_NEGATIVE_DATA:
+                        negative_color_data = [-color for color in color_data[movie_id]]
+                        user_movie_list.extend(Setup.splitted_list(negative_color_data, 3))
 
                 if user_movie_list:
                     x_to_cluster = np.array(user_movie_list, dtype=float)
@@ -437,6 +486,23 @@ class Setup:
 
             if self.can_save_cache():
                 gh.save_object_to_cache(labels_data, cache_name)
+
+    def limit_movies(self, limit):
+        allowed_movies = np.random.choice(list(self.movie_indices.keys()), limit)
+        allowed_movies_indices = {index for movie_id in allowed_movies
+                                  for index in self.movie_indices[movie_id]}
+
+        for i in range(len(self.train_indices) - 1, -1, -1):
+            if self.train_indices[i] not in allowed_movies_indices:
+                del self.train_indices[i]
+
+        for i in range(len(self.test_indices) - 1, -1, -1):
+            if self.test_indices[i] not in allowed_movies_indices:
+                del self.test_indices[i]
+
+        for i in range(len(self.validation_indices) - 1, -1, -1):
+            if self.validation_indices[i] not in allowed_movies_indices:
+                del self.validation_indices[i]
 
     @staticmethod
     def splitted_list(my_list, n=3) -> list:
