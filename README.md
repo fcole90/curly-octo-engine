@@ -13,12 +13,12 @@ that considers visual, audio and text data to provide ratings estimates.
 | loss function     | differentiable RMSE   |
 | diff_argmax power | 100                   |
 | layers            | 1                     |
-| **RMSE min**      | **1.1918**            |
+| **RMSE min**      | **1.0572**            |
 
 ## Reference results
 | Project                   | RMSE   |
 |---------------------------|--------|
-| curly-octo-engine         | 1.1918 |
+| curly-octo-engine         | 1.0572 |
 | Netflix's Cinematch       | 0.9525 |
 | Netflix Prize Target      | 0.8572 |
 | BellKor's Pragmatic Chaos | 0.8558 |
