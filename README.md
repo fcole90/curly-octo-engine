@@ -4,6 +4,8 @@ curly_octo_engine
 This project aims to create a movie recommendation system trough a neural network
 that considers visual, audio and text data to provide ratings estimates.
 
+[More info](https://docs.google.com/document/d/1L938fAQHDsJLYEgXK3je3L8G_iaqjNOVznfS_yI6gOc/edit?usp=sharing)
+
 ## Current best result
 | data              | value                 |
 |-------------------|-----------------------|
