@@ -13,7 +13,9 @@ that considers visual, audio and text data to provide ratings estimates.
 | loss function     | differentiable RMSE   |
 | diff_argmax power | 100                   |
 | layers            | 1                     |
-| **RMSE min**      | **1.0572**            |
+| **RMSE**          | **1.0572**            |
+| **Acc s/ns**      | **83.58%**            |
+| **Accuracy**      | **35.26%**            |
 
 ## Reference results
 | Project                   | RMSE   |
@@ -25,8 +27,8 @@ that considers visual, audio and text data to provide ratings estimates.
 | The Ensemble              | 0.8554 |
 
 *Note: RMSE is probably not the best metric to estimate the accuracy over the
- predictions. Tough it's a widely used one and allows to make comparisons
- with other approaches.*
+ predictions. Tough in this field it's a widely used one and allows to make
+ comparisons with other approaches.*
 
 
 ## Requirements
@@ -44,13 +46,13 @@ Python packages: tensorflow, numpy, sklearn.
 |---------------------------|-----------------------|
 | image_dataset             | scripts to download images and create a dataset |
 | soundtrack_dataset        | scripts to collect Spotify music data and create a dataset |
-| keywords                  | scripts to collect IMDB movie keywords and movie plots and create a dataset |
+| textual_dataset           | scripts to collect IMDB movie keywords and movie plots and create a dataset |
 | visual_data_simulation    | experiment to test the behaviour using only visual data |
 | tools                     | helper functions library |
 | math_fun                  | some experimental fun |
 
 ## First tests
-Run ```simulation_softmax_crossentropy.py```. You'll get updates on the
+Run ```experiment_alpha.py```. You'll get updates on the
 experiment estimators. To tweak the settings, change the values of the 
 settings at the top of the file. *Yes, I should split the settings from 
 the source, it's on the todo list.*
