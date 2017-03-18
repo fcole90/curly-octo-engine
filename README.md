@@ -7,12 +7,13 @@ that considers visual, audio and text data to provide ratings estimates.
 ## Current best result
 | data              | value                 |
 |-------------------|-----------------------|
-| batch             | 200                   |
-| learning rate     | 0.01                  |
-| optimizer         | Gradient Descent      |
-| loss function     | differentiable RMSE   |
-| diff_argmax power | 100                   |
-| layers            | 1                     |
+| output_type       | decimal               |
+| batch             | 256                   |
+| learning rate     | 0.000001              |
+| optimizer         | Adam                  |
+| loss function     | L2 loss               |
+| diff_argmax power | *Not in use*          |
+| layers            | 3                     |
 | **RMSE**          | **1.0572**            |
 | **Acc s/ns**      | **83.58%**            |
 | **Accuracy**      | **35.26%**            |
