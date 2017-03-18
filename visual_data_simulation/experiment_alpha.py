@@ -46,10 +46,11 @@ s.labels_data_type = __DECIMAL_DATA__
 __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
 s.batch_size = 256
-s.learning_rate = 0.00001
+s.learning_rate = 0.000001
 s.iterations = int(10.0e+6)
-s.hidden_layers = 0
+s.hidden_layers = 2
 s.optimizer = tf.train.AdamOptimizer()
+
 
 # -------------------
 
@@ -63,28 +64,40 @@ setup = sim_setup.Setup(user_data_function=s.user_data_representation,
 x = tf.placeholder(tf.float32, [None, __INPUT_SIZE__])
 layers = list()
 
+
+
 # --- Neuron functions ---
-def first_layer(x):
+def hidden_layer(x):
+    W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __INPUT_SIZE__], mean=0.0, stddev=0.8))
+    b = tf.Variable(tf.constant([0.0] * __INPUT_SIZE__))
+    activation = tf.nn.relu6 if s.labels_data_type is __DECIMAL_DATA__ else tf.nn.relu6
+    return dict(W=W, a=activation(tf.add(tf.matmul(x, W), b)))
+
+
+def output_layer(x):
     W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
     b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
-    return dict(W=W, a=tf.nn.sigmoid(tf.add(tf.matmul(x, W), b)))
-
-
-def hidden_layer(x):
-    W = tf.Variable(tf.random_normal([__LABELS_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
-    b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
-    return dict(W=W, a=tf.nn.sigmoid(tf.add(tf.matmul(x, W), b)))
+    activation = tf.nn.relu6 if s.labels_data_type is __DECIMAL_DATA__ else tf.nn.relu6
+    return dict(W=W, a=activation(tf.add(tf.matmul(x, W), b)))
 
 # ------------
 
 # --- Network connections ---
-layers.append(first_layer(x))
 
 for i in range(s.hidden_layers):
-    layers.append(hidden_layer(layers[i]["a"]))
+    if not layers:
+        layers.append(hidden_layer(x))
+    else:
+        layers.append(hidden_layer(layers[i-1]["a"]))
 
-y = layers[-1]["a"]
+# If there is no hidden layer
+if not layers:
+    layers.append(output_layer(x))
+else:
+    layers.append(output_layer(layers[-1]["a"]))
 
+s.scale_factor_output = 1.0 / 6.0 if s.labels_data_type is __DECIMAL_DATA__ else 1.0
+y = layers[-1]["a"] * s.scale_factor_output
 
 # -------------
 
@@ -187,7 +200,7 @@ if s.labels_data_type is __ONE_HOT_DATA__:
 
     train_step = s.optimizer.minimize(s.loss)
 
-else:
+else: # DECIMAL DATA
     l2_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y, y_))), tf.float32)
 
     s.loss = tf.nn.l2_loss(tf.subtract(y, y_))

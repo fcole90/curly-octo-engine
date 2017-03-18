@@ -67,7 +67,7 @@ def get_title_and_year(movielens_title):
 
 
 def get_imdb_keywords(imdb_id):
-    soup = ur.get_soup("http://www.imdb.com/title/" + imdb_id + "/keywords")
+    soup = ur.get_soup("http://www.imdb.com/title/" + imdb_id + "/textual_dataset")
     keywords = [el.get('data-item-keyword') for el in soup.find_all('td', class_="soda sodavote")]
     return keywords
 

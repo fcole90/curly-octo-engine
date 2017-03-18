@@ -1,6 +1,6 @@
 import time
 
-import  keywords.imdb_interface as imdb_r
+import  textual_dataset.imdb_interface as imdb_r
 import soundtrack_dataset.soundtrack_retriever as sr
 import tools.movielens_helpers as mlens
 import tools.thread_manager as tm
@@ -109,7 +109,7 @@ def test_10():
     movie_data = mlens.__load_ml_movies__("resources/movies.dat")
     imdb_file = open("resources/imdb_movies.dat", 'w')
     keywords_file = open("resources/imdb_keywords.dat", 'w')
-    failure_keyword_file = open("resources/keywords/failures.log", 'w')
+    failure_keyword_file = open("resources/textual_dataset/failures.log", 'w')
 
     imdb_r.get_all_keywords_and_imdb_id_from_movielens(movie_data, imdb_file, keywords_file, failure_keyword_file)
 
