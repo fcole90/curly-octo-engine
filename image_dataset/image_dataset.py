@@ -8,31 +8,36 @@ import os
 import sys
 
 
-def rebuild_colors(dataset):
-    prefix_dir = "images"
+IMAGE_DIR = "images"
+IMAGE_DATASET_FILE = "rgb-dataset-03042017.dat"
+PALETTE_SIZE = 16 + 1
+
+def rebuild_colors(dataset, reapply_merge=False):
     movielens = open(dataset, "r", encoding="latin-1")
-    rgb_file = open("rgb-dataset-rebuilt.dat", "a+")
+    rgb_file = open(IMAGE_DATASET_FILE, "a+")
 
     for line in movielens:
-        movie = line.split("::")[1]
+        splitted_line = line.split("::")
         element = {
-            "name": movie,
+            "name": splitted_line[1],
             "url_list": [],
-            "dir": line.split("::")[0]
+            "dir": splitted_line[0]
         }
-        print(movie)
+        print(element['name'])
 
-        dir_path = os.path.join(prefix_dir, element["dir"])
+        if reapply_merge:
+            dir_path = os.path.join(IMAGE_DIR, element["dir"])
 
-        for file in os.listdir(dir_path):
-            imglist.append(os.path.join(dir_path, file))
+            for file in os.listdir(dir_path):
+                imglist.append(os.path.join(dir_path, file))
 
-        im = image_merger.ImageMerger(imglist)
-        im.merge_and_save(prefix_dir, element["dir"] + ".jpg")
+            im = image_merger.ImageMerger(imglist)
+            im.merge_and_save(IMAGE_DIR, element["dir"] + ".jpg")
 
-        ide = image_data_extractor.ImageDataExtractor(os.path.join(prefix_dir, element["dir"] + ".jpg"))
-        ide.print_palette("screen")
-        rgb_list = ide.get_palette(6)
+        ide = image_data_extractor.ImageDataExtractor(os.path.join(IMAGE_DIR, element["dir"] + ".jpg"))
+        rgb_list = ide.get_palette(PALETTE_SIZE)
+        print(str(rgb_list))
+
         rgb_file.write(element["dir"])
 
         for rgb in rgb_list:
@@ -45,7 +50,7 @@ def rebuild_colors(dataset):
 
 def find_errors(name=None):
     if not name:
-        name = "rgb-dataset-rebuilt.dat"
+        name = IMAGE_DATASET_FILE
     rgb_file = open(name, "r")
     missing_list = []
 
@@ -103,7 +108,7 @@ if __name__ == "__main__":
         print("Exactly one argument required: movies.dat")
     else:
 
-        prefix_dir = "images"
+        IMAGE_DIR = "images"
         max_threads = 10
 
         movielens = open(sys.argv[1], "r", encoding="latin-1")
@@ -133,23 +138,23 @@ if __name__ == "__main__":
                 d = downloader.Downloader(sublist, max_threads)
                 d.get()
 
-                rgb_file = open("rgb-dataset.dat", "a+")
+                rgb_file = open(IMAGE_DATASET_FILE, "a+")
 
                 for element in sublist:
                     imglist = []
-                    dir_path = os.path.join(prefix_dir, element["dir"])
+                    dir_path = os.path.join(IMAGE_DIR, element["dir"])
                     for file in os.listdir(dir_path):
                         imglist.append(os.path.join(dir_path, file))
 
                     im = image_merger.ImageMerger(imglist)
-                    im.merge_and_save(prefix_dir, element["dir"] + ".jpg")
-                    file_name = os.path.join(prefix_dir, element["dir"])
+                    im.merge_and_save(IMAGE_DIR, element["dir"] + ".jpg")
+                    file_name = os.path.join(IMAGE_DIR, element["dir"])
 
-                    ide = image_data_extractor.ImageDataExtractor(os.path.join(prefix_dir, element["dir"] + ".jpg"))
+                    ide = image_data_extractor.ImageDataExtractor(os.path.join(IMAGE_DIR, element["dir"] + ".jpg"))
                     ide.print_palette("screen")
                     ide.print_palette("txt", file_name + ".txt")
                     ide.print_palette("html", file_name + ".html")
-                    rgb_list = ide.get_palette(6)
+                    rgb_list = ide.get_palette(PALETTE_SIZE)
                     rgb_file.write(element["dir"])
                     for rgb in rgb_list:
                         rgb_file.write("::" + str(rgb))
