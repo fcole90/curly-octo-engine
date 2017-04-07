@@ -163,7 +163,7 @@ class DownloaderThread(threading.Thread):
 class Downloader:
     """Spawns DownloaderThreads
 
-    element_list: dict
+    element_list: list
         dictionary of elements
 
     sleep_delay: int, optional
@@ -188,7 +188,7 @@ class Downloader:
 
         Parameters
         ----------
-        element_list: dict
+        element_list: list
             dictionary of elements
 
         sleep_delay: int, optional

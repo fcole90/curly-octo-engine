@@ -7,7 +7,7 @@ from tools.generic_helpers import deprecated
 # import visual_data_simulation.simulation_setup_old as deprecated_setup
 import visual_data_simulation.simulation_setup as setup
 
-__COLOR_DATASET_PALETTE_SIZE__ = 6
+__COLOR_DATASET_PALETTE_SIZE__ = setup.__PALETTE_SIZE__
 __MIN_CHANNEL_VALUE__ = 0
 __MAX_CHANNEL_VALUE__ = 255
 __MIN_CHANNEL_VALUE_NORMALIZED__ = 0.0

@@ -49,8 +49,8 @@ def load_ml_movies(include_genres:bool=False):
         for line in ml_movies_file:
             line_list = line[:-1].split('::') # Also remove carriage return
             movie_id = int(line_list[0])
-            title = str(line_list[2])
-            genre_list = line_list[3].split('|')
+            title = str(line_list[1])
+            genre_list = line_list[2].split('|')
 
             if include_genres:
                 ml_movies[movie_id] = (title, genre_list)
