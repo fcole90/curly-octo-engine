@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from downloader import Downloader
+from tools.downloader import Downloader
 import re
 import sys
 

@@ -18,8 +18,7 @@ This script is an helper to have all the data in the right place in the simulati
 __CACHE_PREFIX__ = "visual_simulation_setup"
 
 __ratings_scale__ = 5
-__PALETTE_SIZE__ = 6
-__COLOR_DATA_ENTRY_SIZE = 5
+__PALETTE_SIZE__ = 16
 __LIMIT_PERM_USER__ = 30
 __LIMIT_PERM_COLOR__ = 30
 # -------------------
@@ -132,7 +131,9 @@ class Setup:
             del self.convert_dict
 
     def cache_format_file_name(self, data_name, identifier=""):
-        return "_".join([__CACHE_PREFIX__, data_name + identifier])
+        return "_".join([__CACHE_PREFIX__,
+                         str(__PALETTE_SIZE__),
+                         data_name + identifier])
 
     def can_load_cache(self, cache_name):
         return self.__USE_CACHE__ is True and \
@@ -366,7 +367,7 @@ class Setup:
             if self.can_save_cache():
                 gh.save_object_to_cache(self.user_data, cache_name)
 
-    def load_user_data_as_color_clusters(self, color_data=None, min_rate=3, clusters_number=6):
+    def load_user_data_as_color_clusters(self, color_data=None, min_rate=3, clusters_number=__PALETTE_SIZE__):
         """
         Loads a dict of user data as color cluster centroids.
 

@@ -12,7 +12,7 @@ Tools to import the color dataset with ease.
 __COLOR_CHANNELS__ = 3
 __HIGHEST_COLOR_VALUE__ = 255
 __COLOR_DATASET_FOLDER__ = "image_dataset"
-__DATASET_FILE__ = "rgb-dataset-rebuilt.dat"
+__DATASET_FILE__ = "rgb-dataset-03042017.dat"
 
 
 def get_dataset_file_path() -> str:

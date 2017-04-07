@@ -28,8 +28,8 @@ class Settings:
 
 __ONE_HOT_DATA__ = "one_hot"
 __DECIMAL_DATA__ = "decimal"
-__COLOR_INPUT_SIZE__ = 30
-__USER_INPUT_SIZE__ = 6
+__COLOR_INPUT_SIZE__ = 16 * 3
+__USER_INPUT_SIZE__ = 16 * 3
 __INPUT_SIZE__ = __USER_INPUT_SIZE__ + __COLOR_INPUT_SIZE__
 
 # ---  Settings ---
@@ -38,15 +38,15 @@ s = Settings()
 
 s.use_cache = True
 s.allow_negative_data = True
-s.user_data_representation = "clusters"
+s.user_data_representation = "average"
 s.movie_amount_limit = 0 # set to 0 for no limit
 s.use_permutations = True
-s.limit_permutations = 30
+s.limit_permutations = 64
 s.labels_data_type = __DECIMAL_DATA__
 __LABELS_SIZE__ = 1 if s.labels_data_type is __DECIMAL_DATA__ else 5
 
-s.batch_size = 256
-s.learning_rate = 0.000001
+s.batch_size = 64
+s.learning_rate = 0.0000001
 s.iterations = int(10.0e+6)
 s.hidden_layers = 2
 s.optimizer = tf.train.AdamOptimizer()
@@ -67,37 +67,44 @@ layers = list()
 
 
 # --- Neuron functions ---
-def hidden_layer(x):
-    W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __INPUT_SIZE__], mean=0.0, stddev=0.8))
-    b = tf.Variable(tf.constant([0.0] * __INPUT_SIZE__))
-    activation = tf.nn.relu6 if s.labels_data_type is __DECIMAL_DATA__ else tf.nn.relu6
+def hidden_layer(x, m=__INPUT_SIZE__, n=__INPUT_SIZE__):
+    W = tf.Variable(tf.random_normal([m, n], mean=0.0, stddev=1.2))
+    b = tf.Variable(tf.constant([0.0] * n))
+    activation = tf.nn.sigmoid
     return dict(W=W, a=activation(tf.add(tf.matmul(x, W), b)))
 
 
-def output_layer(x):
-    W = tf.Variable(tf.random_normal([__INPUT_SIZE__, __LABELS_SIZE__], mean=0.0, stddev=0.8))
-    b = tf.Variable(tf.constant([0.0] * __LABELS_SIZE__))
-    activation = tf.nn.relu6 if s.labels_data_type is __DECIMAL_DATA__ else tf.nn.relu6
+def output_layer(x, m=__INPUT_SIZE__, n=__LABELS_SIZE__):
+    W = tf.Variable(tf.random_normal([m, n], mean=0.0, stddev=1.2))
+    b = tf.Variable(tf.constant([0.0] * n))
+    activation = tf.nn.sigmoid
     return dict(W=W, a=activation(tf.add(tf.matmul(x, W), b)))
 
 # ------------
 
 # --- Network connections ---
 
+input_size = [__INPUT_SIZE__,
+              __INPUT_SIZE__ * (__INPUT_SIZE__ // 6),
+              __INPUT_SIZE__ // 6,
+              __LABELS_SIZE__]
+
+s.hidden_layers = len(input_size) - 1
+
 for i in range(s.hidden_layers):
     if not layers:
-        layers.append(hidden_layer(x))
+        layers.append(hidden_layer(x, input_size[i], input_size[i + 1]))
     else:
-        layers.append(hidden_layer(layers[i-1]["a"]))
+        layers.append(hidden_layer(layers[i-1]["a"], input_size[i], input_size[i + 1]))
 
-# If there is no hidden layer
-if not layers:
-    layers.append(output_layer(x))
-else:
-    layers.append(output_layer(layers[-1]["a"]))
+# # If there is no hidden layer
+# if not layers:
+#     layers.append(output_layer(x))
+# else:
+#     layers.append(output_layer(layers[-1]["a"]))
 
-s.scale_factor_output = 1.0 / 6.0 if s.labels_data_type is __DECIMAL_DATA__ else 1.0
-y = layers[-1]["a"] * s.scale_factor_output
+s.scale_factor_output = 1.2  if s.labels_data_type is __DECIMAL_DATA__ else 1.0
+y = layers[-1]["a"] * s.scale_factor_output - 0.1
 
 # -------------
 
@@ -162,10 +169,12 @@ def root_mean_squared_error(y, y_):
     return tf.sqrt(tf.reduce_mean(tf.square(tf.subtract(y, y_))))
 
 def error_suggestion_yesno(y, y_, val=3.00000000000000001):
-    correct_yesno_prediction = tf.maximum(tf.sign(tf.multiply(tf.subtract(y, val),
-                                                     tf.subtract(y_, val))),
-                                          0.0)
-    return tf.subtract(1.0, tf.reduce_mean(correct_yesno_prediction))
+    wrong_yesno_prediction = tf.nn.relu(-tf.sign(tf.multiply(tf.subtract(y, val),
+                                                     tf.subtract(y_, val))))
+    return wrong_yesno_prediction
+
+def diff_greater_than(a, b):
+    return tf.nn.relu(tf.sign(tf.subtract(a, b)))
 
 def regularization(network):
     loss = 0.0
@@ -182,18 +191,18 @@ if s.labels_data_type is __ONE_HOT_DATA__:
 
     cross_entropy_loss = cross_entropy(y, y_)
     l2_yesno_loss = tf.nn.l2_loss(error_suggestion_yesno(pseudo_rate_y, pseudo_rate_y_) * 10)
-    l2_loss = tf.nn.l2_loss(tf.subtract(pseudo_rate_y, pseudo_rate_y_))
+    mse_loss = tf.nn.l2_loss(tf.subtract(pseudo_rate_y, pseudo_rate_y_))
     weight_loss = regularization(network=layers)
 
 
-    s.l2_loss_perc = 0.07
+    s.l2_loss_perc = 0.1
     s.cross_entropy_loss_perc = 1.0 * 4.0
-    s.yesno_loss_perc = 0.01
+    s.yesno_loss_perc = 0.00
 
-    s.regularization = 0.1 / (s.hidden_layers + 1) ** 2
+    s.regularization = 0.01 / (s.hidden_layers + 1) ** 2
 
     s.loss = 1.0
-    s.loss = tf.multiply(s.loss, tf.multiply(s.l2_loss_perc, l2_loss))
+    # s.loss = tf.multiply(s.loss, tf.multiply(s.l2_loss_perc, mse_loss))
     s.loss = tf.multiply(s.loss, tf.multiply(s.cross_entropy_loss_perc, cross_entropy_loss))
     # s.loss = tf.multiply(s.loss, tf.multiply(s.yesno_loss_perc, l2_yesno_loss))
     s.loss = tf.add(s.loss, tf.multiply(s.regularization, weight_loss))
@@ -201,11 +210,13 @@ if s.labels_data_type is __ONE_HOT_DATA__:
     train_step = s.optimizer.minimize(s.loss)
 
 else: # DECIMAL DATA
-    l2_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y, y_))), tf.float32)
+    mse_loss = tf.cast(tf.reduce_mean(tf.square(tf.subtract(y, y_))), tf.float32)
 
-    s.loss = tf.nn.l2_loss(tf.subtract(y, y_))
-    # s.loss = s.loss * tf.nn.l2_loss(error_suggestion_yesno(y, y_, 0.6)*10)
-    s.loss = tf.add(s.loss, regularization(network=layers))
+    s.loss = 1.0
+    s.loss = tf.nn.l2_loss(tf.subtract(y, y_)) / (s.limit_permutations * s.batch_size) * 1000
+    # s.loss = s.loss * tf.nn.l2_loss(tf.subtract(diff_greater_than(y, 0.6),
+    #                                             diff_greater_than(y_,0.6)))
+    s.loss = tf.add(s.loss, regularization(network=layers)*0.0001/s.hidden_layers)
     train_step = s.optimizer.minimize(s.loss)
 
 # ----------------
