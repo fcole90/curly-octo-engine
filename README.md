@@ -17,7 +17,7 @@ that considers visual, audio and text data to provide ratings estimates.
 | diff_argmax power | *Not in use*          |
 | layers            | 3                     |
 | **RMSE**          | **1.0572**            |
-| **Acc s/ns**      | **83.58%**            |
+| **Acc y:n?rate>3**| **83.58%**            |
 | **Accuracy**      | **35.26%**            |
 
 ## Reference results
